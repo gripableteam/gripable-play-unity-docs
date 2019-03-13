@@ -1,239 +1,137 @@
 ---
-title: API Reference
+title: Gripable Play Unity
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - ruby
-  - python
-  - javascript
+  - C#
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
 
 includes:
-  - errors
 
 search: true
 ---
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Provides an api for communicating with a Gripable Play device over bluetooth
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+# Setup
 
-This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
+To get started with Gripable Play Unity follow the steps [here](https://bitbucket.org/gripable/gripable-play-unity/src/master/README.md)
 
-# Authentication
+# Connecting and Disconnecting
 
-> To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
+Gripable Play provides a wrapper around the underlying [Android BLE stack](https://developer.android.com/guide/topics/connectivity/bluetooth-le). In order to connect a GripablePlay you will first have to have discovered it by scanning for devices. This can acheived by simply turning on your Gripable Play and using the Android OS to scan for devices.
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+Future version will scan for bluetooth devices automatically and you will no longer need to use the Android OS to scan.
 </aside>
 
-# Kittens
+## Connect
 
-## Get All Kittens
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
+```csharp
+bool Connect();
 ```
 
-```python
-import kittn
+> Connect return true or false depending of whether a connection attempt has been successfully initiated.
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
+```csharp
+bool connectionInitiated = gripablePlay.Connect();
 ```
 
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
+Calling Connect will attempt to initiate a connection attempt. Bluetooth connection is async so to find out whether the the connection attempt was successfull you can either listen for the [OnConnected](#connection-callbacks) callback or call the synchronous [IsConnected](#IsConnected) function.
 
-```javascript
-const kittn = require('kittn');
+### Query Parameters and Return Values
 
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
+Parameter | Returns | Description
 --------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+none | true | Failed to initiated connection attempt
+none | false | Successfully initiated connection attempt
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
+# Getting Grip and Motion Data
 
-## Get a Specific Kitten
+## GetGripForce
 
-```ruby
-require 'kittn'
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
+```csharp
+float GetGripForce();
 ```
 
-```python
-import kittn
+> GetGripForce returns an float value for Grip Force in Kg;
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
+```csharp
+float gripForce = gripablePlay.GetGripForce();
 ```
 
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
+GetGripForce return the force in KG that is currently being applied to the Gripable. It is sampled at 50hz.
 
-```javascript
-const kittn = require('kittn');
+### Query Parameters and Return Values
 
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
+Parameter | Default | Min | Max | Description
+--------- | ------- | --- | --- | -----------
+none | 0f | -129f | 128f | Returns the Grip Force in KG as a float
 
-> The above command returns JSON structured like this:
 
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+
+# Connection Callbacks
+
+> To add a function to the callback simply assign an zero argument function that returns void to the property
+
+```csharp
+class MyView : MonoBehaviour {
+
+  private GripablePlay _gripablePlay;
+
+  Awake(){
+    // make sure you have a reference to your GripablePlay before trying to assign to it
+    _gripablePlay.OnConnected += DoSomethingWhenTheGripableConnectes    
+  }
+ 
+  public void DoSomethingWhenTheGripableConnects(){
+    Debug.Log("YAY, the Gripable has connected")
+  }
 }
+
 ```
 
-This endpoint retrieves a specific kitten.
+GripablePlay has a series of connection callbacks that are [UnityActions](https://docs.unity3d.com/ScriptReference/Events.UnityAction.html) and are triggered at different stages of the connection lifecycle.
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
 
-### HTTP Request
+Callback Name | Triggered
+--------- | -------
+OnConnected | When the device has been successfully connected and the Gatt Services have been discovered.
+OnDisoconnect | When the device has been fully disconnected and the Gatt Connection has been closed.
+OnConnecting | When a Connection attempt has been successfully triggered in the underlying Android BLE layer.
+OnDisconnnecting | When a Disconnection attempt has been successfully triggered in the underlying Android BLE layer.
 
-`GET http://example.com/kittens/<ID>`
 
-### URL Parameters
+# Gesture Callbacks
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+> To add a function to the callback simply assign an zero argument function that returns void to the property
 
-## Delete a Specific Kitten
+```csharp
+class MyView : MonoBehaviour {
 
-```ruby
-require 'kittn'
+  private GripablePlay _gripablePlay;
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
+  Awake(){
+    // make sure you have a reference to your GripablePlay before trying to assign to it
+    _gripablePlay.OSqueeze += DoSomethingWhenTheGripableIsSqueezed  
+  }
+ 
+  public void DoSomethingWhenTheGripableIsSqueezed(){
+    Debug.Log("YAY, the Gripable has been squeezed")
+  }
 }
+
 ```
 
-This endpoint deletes a specific kitten.
+GripablePlay has a series of gesture callbacks that are [UnityActions](https://docs.unity3d.com/ScriptReference/Events.UnityAction.html) and are triggered when the Gripable in moved in predefined specfic movements.
 
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
+Callback Name | Triggered
+--------- | -------
+OnSqueeze | When the devices is squeezed, more speically when the Grip Force reading goes from a MIN_THRESHOLD to a MAX_THRESHOLD within a given time period.
 
