@@ -119,10 +119,15 @@ class MyView : MonoBehaviour {
 
   Awake(){
     // make sure you have a reference to your GripablePlay before trying to assign to it
-    _gripablePlay.OSqueeze += DoSomethingWhenTheGripableIsSqueezed  
+    _gripablePlay.OnSqueeze += DoSomethingWhenTheGripableIsSqueezed  
+    _gripablePlay.OnRelease += DoSomethingWhenTheGripableIsReleased  
   }
  
   public void DoSomethingWhenTheGripableIsSqueezed(){
+    Debug.Log("YAY, the Gripable has been squeezed")
+  }
+
+  public void DoSomethingWhenTheGripableIsReleased(){
     Debug.Log("YAY, the Gripable has been squeezed")
   }
 }
@@ -133,5 +138,6 @@ GripablePlay has a series of gesture callbacks that are [UnityActions](https://d
 
 Callback Name | Triggered
 --------- | -------
-OnSqueeze | When the devices is squeezed, more speically when the Grip Force reading goes from a MIN_THRESHOLD to a MAX_THRESHOLD within a given time period.
+OnSqueeze | When the devices is squeezed, more specifically when the Grip Force reading goes from a MIN_THRESHOLD to a MAX_THRESHOLD within a given time period.
+OnRelease | When the devices is released, more specifically when the Grip Force reading goes from a MAX_THRESHOLD to a MIN_THRESHOLD within a given time period.
 
