@@ -372,10 +372,15 @@ Future version will scan for bluetooth devices automatically and you will no lon
 
   <span class="nf">Awake</span><span class="p">(){</span>
     <span class="c1">// make sure you have a reference to your GripablePlay before trying to assign to it</span>
-    <span class="n">_gripablePlay</span><span class="p">.</span><span class="n">OSqueeze</span> <span class="p">+=</span> <span class="n">DoSomethingWhenTheGripableIsSqueezed</span>  
+    <span class="n">_gripablePlay</span><span class="p">.</span><span class="n">OnSqueeze</span> <span class="p">+=</span> <span class="n">DoSomethingWhenTheGripableIsSqueezed</span>  
+    <span class="n">_gripablePlay</span><span class="p">.</span><span class="n">OnRelease</span> <span class="p">+=</span> <span class="n">DoSomethingWhenTheGripableIsReleased</span>  
   <span class="p">}</span>
 
   <span class="k">public</span> <span class="k">void</span> <span class="nf">DoSomethingWhenTheGripableIsSqueezed</span><span class="p">(){</span>
+    <span class="n">Debug</span><span class="p">.</span><span class="nf">Log</span><span class="p">(</span><span class="s">"YAY, the Gripable has been squeezed"</span><span class="p">)</span>
+  <span class="p">}</span>
+
+  <span class="k">public</span> <span class="k">void</span> <span class="nf">DoSomethingWhenTheGripableIsReleased</span><span class="p">(){</span>
     <span class="n">Debug</span><span class="p">.</span><span class="nf">Log</span><span class="p">(</span><span class="s">"YAY, the Gripable has been squeezed"</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
@@ -391,7 +396,11 @@ Future version will scan for bluetooth devices automatically and you will no lon
 </thead><tbody>
 <tr>
 <td>OnSqueeze</td>
-<td>When the devices is squeezed, more speically when the Grip Force reading goes from a MIN_THRESHOLD to a MAX_THRESHOLD within a given time period.</td>
+<td>When the devices is squeezed, more specifically when the Grip Force reading goes from a MIN_THRESHOLD to a MAX_THRESHOLD within a given time period.</td>
+</tr>
+<tr>
+<td>OnRelease</td>
+<td>When the devices is released, more specifically when the Grip Force reading goes from a MAX_THRESHOLD to a MIN_THRESHOLD within a given time period.</td>
 </tr>
 </tbody></table>
 
