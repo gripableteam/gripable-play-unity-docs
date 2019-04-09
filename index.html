@@ -241,7 +241,7 @@
               </ul>
           </li>
           <li>
-            <a href="#connection-callbacks" class="toc-h1 toc-link" data-title="Connection Callbacks">Connection Callbacks</a>
+            <a href="#connection-events" class="toc-h1 toc-link" data-title="Connection Events">Connection Events</a>
           </li>
           <li>
             <a href="#gesture-callbacks" class="toc-h1 toc-link" data-title="Gesture Callbacks">Gesture Callbacks</a>
@@ -256,23 +256,23 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Provides an api for communicating with a Gripable Play device over bluetooth</p>
+<p>API for communicating with a Gripable Play device over Bluetooth</p>
 <h1 id='setup'>Setup</h1>
 <p>To get started with Gripable Play Unity follow the steps <a href="https://bitbucket.org/gripable/gripable-play-unity/src/master/README.md">here</a></p>
 <h1 id='connecting-and-disconnecting'>Connecting and Disconnecting</h1>
-<p>Gripable Play provides a wrapper around the underlying <a href="https://developer.android.com/guide/topics/connectivity/bluetooth-le">Android BLE stack</a>. In order to connect a GripablePlay you will first have to have discovered it by scanning for devices. This can acheived by simply turning on your Gripable Play and using the Android OS to scan for devices.</p>
+<p>Gripable Play provides a wrapper around the underlying <a href="https://developer.android.com/guide/topics/connectivity/bluetooth-le">Android BLE stack</a>. In order to connect to a Gripable Play, it must first be discovered by the Android device. This is achieved by turning on the Gripable Play and using the Android OS to scan for Bluetooth devices.</p>
 
 <aside class="notice">
-Future version will scan for bluetooth devices automatically and you will no longer need to use the Android OS to scan.
+In the future, Bluetooth devices will be scanned automatically without the Android OS.
 </aside>
 <h2 id='connect'>Connect</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">Connect</span><span class="p">();</span>
 </code></pre>
 <blockquote>
-<p>Connect return true or false depending of whether a connection attempt has been successfully initiated.</p>
+<p>Connect returns true or false depending of whether a connection attempt has been successfully initiated.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">connectionInitiated</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">Connect</span><span class="p">();</span>
 </code></pre>
-<p>Calling Connect will attempt to initiate a connection attempt. Bluetooth connection is async so to find out whether the the connection attempt was successfull you can either listen for the <a href="#connection-callbacks">OnConnected</a> callback or call the synchronous <a href="#IsConnected">IsConnected</a> function.</p>
+<p>Calling Connect will initiate a connection attempt. Bluetooth connection is asynchronous and requires a listener for the <a href="#connection-callbacks">OnConnected</a> callback or call to the synchronous <a href="#IsConnected">IsConnected</a> function to check whether the connection attempt was successful.</p>
 <h3 id='query-parameters-and-return-values'>Query Parameters and Return Values</h3>
 <table><thead>
 <tr>
@@ -284,12 +284,12 @@ Future version will scan for bluetooth devices automatically and you will no lon
 <tr>
 <td>none</td>
 <td>true</td>
-<td>Failed to initiated connection attempt</td>
+<td>Failed to connect</td>
 </tr>
 <tr>
 <td>none</td>
 <td>false</td>
-<td>Successfully initiated connection attempt</td>
+<td>Successfully connected</td>
 </tr>
 </tbody></table>
 <h1 id='getting-grip-and-motion-data'>Getting Grip and Motion Data</h1><h2 id='getgripforce'>GetGripForce</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">float</span> <span class="nf">GetGripForce</span><span class="p">();</span>
@@ -299,7 +299,7 @@ Future version will scan for bluetooth devices automatically and you will no lon
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="kt">float</span> <span class="n">gripForce</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">GetGripForce</span><span class="p">();</span>
 </code></pre>
-<p>GetGripForce return the force in KG that is currently being applied to the Gripable. It is sampled at 50hz.</p>
+<p>GetGripForce returns the force in Kg that is currently being applied to the Gripable. It is sampled at 50Hz.</p>
 <h3 id='query-parameters-and-return-values-2'>Query Parameters and Return Values</h3>
 <table><thead>
 <tr>
@@ -315,19 +315,19 @@ Future version will scan for bluetooth devices automatically and you will no lon
 <td>0f</td>
 <td>-129f</td>
 <td>128f</td>
-<td>Returns the Grip Force in KG as a float</td>
+<td>Returns the Grip Force in Kg as a float</td>
 </tr>
 </tbody></table>
-<h1 id='connection-callbacks'>Connection Callbacks</h1>
+<h1 id='connection-events'>Connection Events</h1>
 <blockquote>
-<p>To add a function to the callback simply assign an zero argument function that returns void to the property</p>
+<p>To subscribe a handler to an event, assign a function without arguments that returns void to it</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="k">class</span> <span class="nc">MyView</span> <span class="p">:</span> <span class="n">MonoBehaviour</span> <span class="p">{</span>
 
   <span class="k">private</span> <span class="n">GripablePlay</span> <span class="n">_gripablePlay</span><span class="p">;</span>
 
   <span class="nf">Awake</span><span class="p">(){</span>
-    <span class="c1">// make sure you have a reference to your GripablePlay before trying to assign to it</span>
+    <span class="c1">// make sure you have a reference to your Gripable Play before trying to assign to it</span>
     <span class="n">_gripablePlay</span><span class="p">.</span><span class="n">OnConnected</span> <span class="p">+=</span> <span class="n">DoSomethingWhenTheGripableConnectes</span>    
   <span class="p">}</span>
 
@@ -337,7 +337,7 @@ Future version will scan for bluetooth devices automatically and you will no lon
 <span class="p">}</span>
 
 </code></pre>
-<p>GripablePlay has a series of connection callbacks that are <a href="https://docs.unity3d.com/ScriptReference/Events.UnityAction.html">UnityActions</a> and are triggered at different stages of the connection lifecycle.</p>
+<p>Gripable Play has a series of <a href="https://docs.microsoft.com/en-us/dotnet/api/system.action?view=netframework-4.7.2">Action Delegate</a> connection events, which are fired at different stages of the connection process.</p>
 
 <table><thead>
 <tr>
@@ -347,31 +347,31 @@ Future version will scan for bluetooth devices automatically and you will no lon
 </thead><tbody>
 <tr>
 <td>OnConnected</td>
-<td>When the device has been successfully connected and the Gatt Services have been discovered.</td>
+<td>Device has been successfully connected and is ready.</td>
 </tr>
 <tr>
-<td>OnDisoconnect</td>
-<td>When the device has been fully disconnected and the Gatt Connection has been closed.</td>
+<td>OnDisconnect</td>
+<td>Device has been fully disconnected.</td>
 </tr>
 <tr>
 <td>OnConnecting</td>
-<td>When a Connection attempt has been successfully triggered in the underlying Android BLE layer.</td>
+<td>Device is attempting to connect.</td>
 </tr>
 <tr>
-<td>OnDisconnnecting</td>
-<td>When a Disconnection attempt has been successfully triggered in the underlying Android BLE layer.</td>
+<td>OnDisconnecting</td>
+<td>Device is attempting to disconnect.</td>
 </tr>
 </tbody></table>
 <h1 id='gesture-callbacks'>Gesture Callbacks</h1>
 <blockquote>
-<p>To add a function to the callback simply assign an zero argument function that returns void to the property</p>
+<p>To subscribe a handler to an event, assign a function without arguments that returns void to it</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="k">class</span> <span class="nc">MyView</span> <span class="p">:</span> <span class="n">MonoBehaviour</span> <span class="p">{</span>
 
   <span class="k">private</span> <span class="n">GripablePlay</span> <span class="n">_gripablePlay</span><span class="p">;</span>
 
   <span class="nf">Awake</span><span class="p">(){</span>
-    <span class="c1">// make sure you have a reference to your GripablePlay before trying to assign to it</span>
+    <span class="c1">// make sure you have a reference to your Gripable Play before trying to assign to it</span>
     <span class="n">_gripablePlay</span><span class="p">.</span><span class="n">OnSqueeze</span> <span class="p">+=</span> <span class="n">DoSomethingWhenTheGripableIsSqueezed</span>  
     <span class="n">_gripablePlay</span><span class="p">.</span><span class="n">OnRelease</span> <span class="p">+=</span> <span class="n">DoSomethingWhenTheGripableIsReleased</span>  
   <span class="p">}</span>
@@ -386,7 +386,9 @@ Future version will scan for bluetooth devices automatically and you will no lon
 <span class="p">}</span>
 
 </code></pre>
-<p>GripablePlay has a series of gesture callbacks that are <a href="https://docs.unity3d.com/ScriptReference/Events.UnityAction.html">UnityActions</a> and are triggered when the Gripable in moved in predefined specfic movements.</p>
+<p>Gripable Play has a series of <a href="https://docs.microsoft.com/en-us/dotnet/api/system.action?view=netframework-4.7.2">Action Delegate</a> gesture events, which are triggered when the Gripable detects specific, predefined movements.</p>
+
+<p><img src="images/xyz.png" alt="alt text" /></p>
 
 <table><thead>
 <tr>
@@ -396,11 +398,47 @@ Future version will scan for bluetooth devices automatically and you will no lon
 </thead><tbody>
 <tr>
 <td>OnSqueeze</td>
-<td>When the devices is squeezed, more specifically when the Grip Force reading goes from a MIN_THRESHOLD to a MAX_THRESHOLD within a given time period.</td>
+<td>When the device is squeezed, more specifically when the Grip Force reading goes from a MIN_THRESHOLD to a MAX_THRESHOLD within a given time period.</td>
 </tr>
 <tr>
 <td>OnRelease</td>
-<td>When the devices is released, more specifically when the Grip Force reading goes from a MAX_THRESHOLD to a MIN_THRESHOLD within a given time period.</td>
+<td>When the device is released, more specifically when the Grip Force reading goes from a MAX_THRESHOLD to a MIN_THRESHOLD within a given time period.</td>
+</tr>
+<tr>
+<td>OnSupination</td>
+<td>When the device is rotated around the X axis in the positive direction.</td>
+</tr>
+<tr>
+<td>OnPronation</td>
+<td>When the device is rotated around the X axis in the negative direction.</td>
+</tr>
+<tr>
+<td>OnUlnar</td>
+<td>When the device is rotated around the Y axis in the positive direction.</td>
+</tr>
+<tr>
+<td>OnRadial</td>
+<td>When the device is rotated around the Y axis in the negative direction.</td>
+</tr>
+<tr>
+<td>OnExtension</td>
+<td>When the device is rotated around the Z axis in the positive direction.</td>
+</tr>
+<tr>
+<td>OnFlexion</td>
+<td>When the device is rotated around the Z axis in the negative direction.</td>
+</tr>
+<tr>
+<td>OnNeutralRoll</td>
+<td>When the device&#39;s X rotation has returned to its starting position.</td>
+</tr>
+<tr>
+<td>OnNeutralPitch</td>
+<td>When the device&#39;s Y rotation has returned to its starting position.</td>
+</tr>
+<tr>
+<td>OnNeutralYaw</td>
+<td>When the device&#39;s Z rotation has returned to its starting position.</td>
 </tr>
 </tbody></table>
 
