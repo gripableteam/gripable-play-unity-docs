@@ -242,7 +242,7 @@
             <a href="#connecting-and-disconnecting" class="toc-h1 toc-link" data-title="Connecting and Disconnecting">Connecting and Disconnecting</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#setbluetoothdevice-bluetoothdeviceandroid-bluetoothdevice" class="toc-h2 toc-link" data-title="SetBluetoothDevice(BluetoothDeviceAndroid bluetoothDevice)">SetBluetoothDevice(BluetoothDeviceAndroid bluetoothDevice)</a>
+                    <a href="#setbluetoothdevice-bluetoothdevice" class="toc-h2 toc-link" data-title="SetBluetoothDevice(bluetoothDevice)">SetBluetoothDevice(bluetoothDevice)</a>
                   </li>
                   <li>
                     <a href="#connect" class="toc-h2 toc-link" data-title="Connect()">Connect()</a>
@@ -344,6 +344,20 @@
           <li>
             <a href="#gesture-callbacks" class="toc-h1 toc-link" data-title="Gesture Callbacks">Gesture Callbacks</a>
           </li>
+          <li>
+            <a href="#using-udpclientmanager" class="toc-h1 toc-link" data-title="Using UdpClientManager">Using UdpClientManager</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#startclient-ipaddress-port" class="toc-h2 toc-link" data-title="StartClient(ipAddress, port)">StartClient(ipAddress, port)</a>
+                  </li>
+                  <li>
+                    <a href="#stopclient" class="toc-h2 toc-link" data-title="StopClient()">StopClient()</a>
+                  </li>
+                  <li>
+                    <a href="#isstarted" class="toc-h2 toc-link" data-title="IsStarted()">IsStarted()</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='#'>Sign Up for a Developer Key</a></li>
@@ -386,12 +400,13 @@
 <aside class="notice">
 In the future, Bluetooth devices will be scanned automatically without the Android OS.
 </aside>
-<h2 id='setbluetoothdevice-bluetoothdeviceandroid-bluetoothdevice'>SetBluetoothDevice(BluetoothDeviceAndroid bluetoothDevice)</h2><pre class="highlight csharp tab-csharp"><code><span class="k">void</span> <span class="nf">SetBluetoothDevice</span><span class="p">(</span><span class="n">BluetoothDeviceAndroid</span> <span class="n">bluetoothDevice</span><span class="p">);</span>
+<h2 id='setbluetoothdevice-bluetoothdevice'>SetBluetoothDevice(bluetoothDevice)</h2><pre class="highlight csharp tab-csharp"><code><span class="k">void</span> <span class="nf">SetBluetoothDevice</span><span class="p">(</span><span class="n">BluetoothDeviceAndroid</span> <span class="n">bluetoothDevice</span><span class="p">);</span>
 </code></pre>
 <blockquote>
 <p>SetBluetoothDevice sets a Bluetooth Device to the Gripable Play.</p>
 </blockquote>
-<pre class="highlight csharp tab-csharp"><code><span class="n">BluetoothDeviceAndroid</span> <span class="n">bluetoothDevice</span> <span class="p">=</span> <span class="n">AndroidHelper</span><span class="p">.</span><span class="nf">GetBluetoothDevice</span><span class="p">(</span><span class="n">macAddress</span><span class="p">);</span>
+<pre class="highlight csharp tab-csharp"><code><span class="kt">string</span> <span class="n">macAdress</span> <span class="p">=</span> <span class="s">"F3:FC:A9:B1:36:BD"</span><span class="p">;</span>
+<span class="n">BluetoothDeviceAndroid</span> <span class="n">bluetoothDevice</span> <span class="p">=</span> <span class="n">AndroidHelper</span><span class="p">.</span><span class="nf">GetBluetoothDevice</span><span class="p">(</span><span class="n">macAddress</span><span class="p">);</span>
 <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">SetBluetoothDevice</span><span class="p">(</span><span class="n">bluetoothDevice</span><span class="p">);</span>
 </code></pre>
 <p>SetBluetoothDevice sets a Bluetooth Device, with a specified MAC address, to the Gripable Play. Setting a Bluetooth Device for the first time flags the Gripable Play as initialised. Resetting the Bluetooth Device additional times is used to connect the Gripable Play to a different physical Gripable Play device (i.e. with a different MAC adress).</p>
@@ -1142,6 +1157,74 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 <tr>
 <td>OnNeutralYaw</td>
 <td>When the device&#39;s Z rotation has returned to its starting position.</td>
+</tr>
+</tbody></table>
+<h1 id='using-udpclientmanager'>Using UdpClientManager</h1>
+<p>The UdpClientManager class can be very useful to sen serialised data of the connected Gripable Plays to a machine through UDP. The UdpClientManager can be accessed via the UdpManager static attribute of the Gripable plugin.</p>
+<h2 id='startclient-ipaddress-port'>StartClient(ipAddress, port)</h2><pre class="highlight csharp tab-csharp"><code><span class="k">void</span> <span class="nf">StartClient</span><span class="p">(</span><span class="kt">string</span> <span class="n">ipAddress</span><span class="p">,</span> <span class="kt">int</span> <span class="n">port</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Starts sending udp packets to the specified IP address and port.</p>
+</blockquote>
+<pre class="highlight csharp tab-csharp"><code><span class="kt">string</span> <span class="n">ipAddress</span> <span class="p">=</span> <span class="s">"10.0.145.3"</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">port</span> <span class="p">=</span> <span class="m">8088</span><span class="p">;</span>
+<span class="n">udpManager</span><span class="p">.</span><span class="nf">StartClient</span><span class="p">(</span><span class="n">ipAddress</span><span class="p">,</span> <span class="n">port</span><span class="p">);</span>
+</code></pre>
+<p>StartClient starts sending udp packets of serialised data of all the connected gripable plays to the specified IP address and port through UDP.</p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ipAddress, port</td>
+<td>Starts the client with the specified IP address (string) and port (integer)</td>
+</tr>
+</tbody></table>
+<h2 id='stopclient'>StopClient()</h2><pre class="highlight csharp tab-csharp"><code><span class="k">void</span> <span class="nf">StopClient</span><span class="p">();</span>
+</code></pre>
+<blockquote>
+<p>Stops sending udp packets.</p>
+</blockquote>
+<pre class="highlight csharp tab-csharp"><code><span class="n">udpManager</span><span class="p">.</span><span class="nf">StopClient</span><span class="p">();</span>
+</code></pre>
+<p>StopClient stops sending udp packets to whatever IP address and port the UdpClientManager was sending before, if started. otherwise does nothing.</p>
+<h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>none</td>
+<td>Stops the Udp Client</td>
+</tr>
+</tbody></table>
+<h2 id='isstarted'>IsStarted()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">IsStarted</span><span class="p">();</span>
+</code></pre>
+<blockquote>
+<p>Returns true or false whether the Udp Client is currently sending packets.</p>
+</blockquote>
+<pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">udpStarted</span> <span class="p">=</span> <span class="n">udpManager</span><span class="p">.</span><span class="nf">IsStarted</span><span class="p">();</span>
+</code></pre>
+<p>IsStarted returns true or false whether the Udp Client is currently sending packets.</p>
+<h3 id='return-values-25'>Return Values</h3>
+<table><thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>true</td>
+<td>The Udp Client is currently sending packets</td>
+</tr>
+<tr>
+<td>false</td>
+<td>The Udp Client is currently stopped</td>
 </tr>
 </tbody></table>
 
