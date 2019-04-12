@@ -63,7 +63,7 @@ Gripable Play provides a wrapper around the underlying [Android BLE stack](https
 In the future, Bluetooth devices will be scanned automatically without the Android OS.
 </aside>
 
-## SetBluetoothDevice(BluetoothDeviceAndroid bluetoothDevice)
+## SetBluetoothDevice(bluetoothDevice)
 
 ```csharp
 void SetBluetoothDevice(BluetoothDeviceAndroid bluetoothDevice);
@@ -72,6 +72,7 @@ void SetBluetoothDevice(BluetoothDeviceAndroid bluetoothDevice);
 > SetBluetoothDevice sets a Bluetooth Device to the Gripable Play.
 
 ```csharp
+string macAdress = "F3:FC:A9:B1:36:BD";
 BluetoothDeviceAndroid bluetoothDevice = AndroidHelper.GetBluetoothDevice(macAddress);
 gripablePlay.SetBluetoothDevice(bluetoothDevice);
 ```
@@ -680,3 +681,70 @@ OnFlexion | When the device is rotated around the Z axis in the negative directi
 OnNeutralRoll | When the device's X rotation has returned to its starting position.
 OnNeutralPitch | When the device's Y rotation has returned to its starting position.
 OnNeutralYaw | When the device's Z rotation has returned to its starting position.
+
+# Using UdpClientManager
+
+The UdpClientManager class can be very useful to sen serialised data of the connected Gripable Plays to a machine through UDP. The UdpClientManager can be accessed via the UdpManager static attribute of the Gripable plugin.
+
+## StartClient(ipAddress, port)
+
+```csharp
+void StartClient(string ipAddress, int port);
+```
+
+> Starts sending udp packets to the specified IP address and port.
+
+```csharp
+string ipAddress = "10.0.145.3";
+int port = 8088;
+udpManager.StartClient(ipAddress, port);
+```
+
+StartClient starts sending udp packets of serialised data of all the connected gripable plays to the specified IP address and port through UDP.
+
+### Query Parameters
+
+Parameters | Description
+--------- | -----------
+ipAddress, port | Starts the client with the specified IP address (string) and port (integer)
+
+## StopClient()
+
+```csharp
+void StopClient();
+```
+
+> Stops sending udp packets.
+
+```csharp
+udpManager.StopClient();
+```
+
+StopClient stops sending udp packets to whatever IP address and port the UdpClientManager was sending before, if started. otherwise does nothing.
+
+### Query Parameters
+
+Parameters | Description
+--------- | -----------
+none | Stops the Udp Client
+
+## IsStarted()
+
+```csharp
+bool IsStarted();
+```
+
+> Returns true or false whether the Udp Client is currently sending packets.
+
+```csharp
+bool udpStarted = udpManager.IsStarted();
+```
+
+IsStarted returns true or false whether the Udp Client is currently sending packets.
+
+### Return Values
+
+Returns | Description
+------- | -----------
+true | The Udp Client is currently sending packets
+false | The Udp Client is currently stopped
