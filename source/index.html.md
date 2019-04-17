@@ -15,31 +15,31 @@ search: true
 
 # Introduction
 
-API for communicating with a Gripable Play device over Bluetooth
+API for communicating with a Gripable Play device over Bluetooth.
 
 # Setup
 
-To get started with Gripable Play Unity follow the steps [here](https://bitbucket.org/gripable/gripable-play-unity/src/master/README.md)
+To get started with Gripable Play Unity, follow the steps [here](https://bitbucket.org/gripable/gripable-play-unity/src/master/README.md).
 
-# Accessing the Gripable plugin
+# Accessing the Gripable Plugin
 
-The Gripable plugin can easily be accessed in a static fashion in order to retrieve the main ojects needed to interface with the Gripable Play. At the moment the Gripable plugin allows you to retrieve the two available Gripable Plays and the UDP Client Manager. the Gripable plugin does not need any setup and can be called in a static fashion whenever needed.
+The Gripable Plugin is statically accessed to retrieve the main ojects needed to interface with the Gripable Play device. At the moment the Gripable Plugin allows you to retrieve up to two available Gripable Play devices and the UDP Client Manager. The Gripable Plugin does not need any setup and can be called statically when needed.
 
 ## Play1
 
-> Play1 returns a reference to the first Gripable Play.
+> Play1 returns a reference to the first Gripable Play device.
 
 ```csharp
 GripablePlay gripablePlay = Gripable.Play1;
 ```
 
-The first Gripable Play can be accessed through the static attribute Play1, which returns a GripablePlay object.
+The first Gripable Play device is accessed via the static attribute Play1, which returns a <code>GripablePlay</code> object.
 
 ## Play2
 
-The second Gripable Play can be accessed through the static attribute Play2, which returns a GripablePlay object.
+The second Gripable Play device is accessed via the static attribute Play2, which returns a <code>GripablePlay</code> object.
 
-> Play2 returns a reference to the second Gripable Play.
+> Play2 returns a reference to the second Gripable Play device.
 
 ```csharp
 GripablePlay secondGripablePlay = Gripable.Play2;
@@ -47,17 +47,18 @@ GripablePlay secondGripablePlay = Gripable.Play2;
 
 ## UdpManager
 
-> UdpManager returns a reference to the UDP Client Manager.
+> Returns a reference to the UDP Client Manager.
 
 ```csharp
 UdpClientManager udpManager = Gripable.UdpManager;
 ```
 
-UdpManager returns a reference to the [UDP Client Manager](#using-udpclientmanager), used to send serialised data from the connected Gripable Plays to a machine through UDP.
+Returns a reference to the [UDP Client Manager](#using-udpclientmanager), used to send serialised data from the connected Gripable Plays to a machine through UDP.
 
 # Connecting and Disconnecting
 
-Gripable Play provides a wrapper around the underlying [Android BLE stack](https://developer.android.com/guide/topics/connectivity/bluetooth-le). In order to connect to a Gripable Play, it must first be discovered by the Android device. This is achieved by turning on the Gripable Play and using the Android OS to scan for Bluetooth devices.
+In order to connect to a Gripable Play device, it must first be discovered by the Android device. This is achieved by turning on the Gripable Play and using the Android OS to scan for Bluetooth devices.
+The <code>GripablePlay</code> object provides a wrapper around the underlying [Android BLE stack](https://developer.android.com/guide/topics/connectivity/bluetooth-le). 
 
 <aside class="notice">
 In the future, Bluetooth devices will be scanned automatically without the Android OS.
@@ -69,7 +70,7 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 void SetBluetoothDevice(BluetoothDeviceAndroid bluetoothDevice);
 ```
 
-> SetBluetoothDevice sets a Bluetooth Device to the Gripable Play.
+> Sets a Bluetooth Device to the <code>GripablePlay</code> object.
 
 ```csharp
 string macAdress = "F3:FC:A9:B1:36:BD";
@@ -77,13 +78,13 @@ BluetoothDeviceAndroid bluetoothDevice = AndroidHelper.GetBluetoothDevice(macAdd
 gripablePlay.SetBluetoothDevice(bluetoothDevice);
 ```
 
-SetBluetoothDevice sets a Bluetooth Device, with a specified MAC address, to the Gripable Play. Setting a Bluetooth Device for the first time flags the Gripable Play as initialised. Resetting the Bluetooth Device additional times is used to connect the Gripable Play to a different physical Gripable Play device (i.e. with a different MAC adress).
+Setting a Bluetooth Device, with a specified MAC address, to the <code>GripablePlay</code> object. Setting a Bluetooth Device for the first time flags the <code>GripablePlay</code> as initialized. Resetting the Bluetooth Device additional times is used to connect the <code>GripablePlay</code> object to a different Gripable Play device (i.e. with a different MAC adress).
 
 ### Query Parameters
 
 Parameter | Description
 --------- | -----------
-bluetoothDevice | Sets bluetoothDevice as the Bluetooth Device
+<code>bluetoothDevice</code> | Sets <code>BluetoothDeviceAndroid</code> as the Bluetooth Device
 
 ## Connect()
 
@@ -91,20 +92,20 @@ bluetoothDevice | Sets bluetoothDevice as the Bluetooth Device
 bool Connect();
 ```
 
-> Connect returns true or false depending of whether a connection attempt has been successfully initiated.
+> Returns <code>bool</code> that represents if a connection attempt has been successfully initiated.
 
 ```csharp
 bool connectionInitiated = gripablePlay.Connect();
 ```
 
-Calling Connect will initiate a connection attempt. Bluetooth connection is asynchronous and requires a listener for the [OnConnected](#connection-events) callback or call to the synchronous [IsConnected](#isconnected) function to check whether the connection attempt was successful.
+Initiates a connection attempt. Bluetooth connection is asynchronous and requires a listener for the [OnConnected](#connection-events) callback or call to the synchronous [IsConnected](#isconnected) function to check whether the connection attempt was successful.
 
 ### Return Values
 
 Returns | Description
 ------- | -----------
-true | Successfully triggered connection attempt
-false | Failed to trigger connection attempt
+<code>true</code> | Successfully triggered connection attempt
+<code>false</code> | Failed to trigger connection attempt
 
 ## Disconnect()
 
@@ -113,20 +114,20 @@ false | Failed to trigger connection attempt
 bool Disconnect();
 ```
 
-> Disconnect returns true or false depending of whether a disconnection attempt has been successfully initiated.
+> Returns a <code>bool</code> that represents if a disconnection attempt has been successfully initiated.
 
 ```csharp
 bool disconnectionInitiated = gripablePlay.Disconnect();
 ```
 
-Calling Disconnect will initiate a disconnection attempt. Bluetooth connection is asynchronous and requires a listener for the [OnDisconnected](#disconnection-events) callback or call to the synchronous [IsDisconnected](#isdisconnected) function to check whether the connection attempt was successful.
+Initiates a disconnection attempt. Bluetooth connection is asynchronous and requires a listener for the [OnDisconnected](#disconnection-events) callback or call to the synchronous [IsDisconnected](#isdisconnected) function to check whether the connection attempt was successful.
 
 ### Return Values
 
 Returns | Description
 ------- | -----------
-true | Successfully triggered disconnection attempt
-false | Failed to trigger disconnection attempt
+<code>true</code> | Successfully triggered disconnection attempt
+</code>false</code> | Failed to trigger disconnection attempt
 
 # Device Info
 
@@ -136,20 +137,20 @@ false | Failed to trigger disconnection attempt
 bool IsInitialized();
 ```
 
-> IsInitialized returns true or false whether a Bluetooth Device have been set or not.
+> Returns true if the <code>GripablePlay</code> object has been initialized with a Bluetooth Device.
 
 ```csharp
 bool gripableIsInitialized = gripablePlay.IsInitialized();
 ```
 
-IsInitialized returns true or false whether a the Gripable Play has been initialised with a Bluetooth Device or not, which can be done through the [SetBluetoothDevice](#setbluetoothdevice) function. This can often be useful as most of the operations on the Gripale Play can only be executed while the Gripable Play is correctly initialised.
+Returns a <code>bool</code> that represents if the <code>GripablePlay</code> object has been initialized with a Bluetooth Device.
 
 ### Return Values
 
 Returns | Description
 ------- | -----------
-true | The device is initialised
-false | The device is not initialised
+<code>true</code> | The device is initialised
+<code>false</code> | The device is not initialised
 
 ## GetDevicenfo()
 
@@ -166,20 +167,20 @@ public struct DeviceInfo
 }
 ```
 
-> GetDeviceInfo returns an object containing all the device information.
+> Returns an object containing all the device information.
 
 ```csharp
 DeviceInfo deviceInfo = gripablePlay.GetDeviceInfo();
 ```
 
-GetDeviceInfo returns a DeviceInfo object, which contains useful information about the connected device, such as manufacturer, device model or firmware version.
+Returns a <code>DeviceInfo</code> object, which contains useful information about the connected device, such as manufacturer, device model or firmware version.
 
 ### Return Values
 
 Returns | Description
 ------- | -----------
-deviceInfo | Returns an object containing the device information
-empty DeviceInfo | Returns an empty object if the device is not initialised
+<code>DeviceInfo</code> | Object containing the device information
+empty <code>DeviceInfo</code> | Empty object if the device is not initialized
 
 ## GetMacAddress()
 
@@ -187,20 +188,20 @@ empty DeviceInfo | Returns an empty object if the device is not initialised
 string GetMacAddress();
 ```
 
-> GetMacAddress returns the MAC address of Bluetooth Device.
+> Returns the MAC address of Bluetooth Device.
 
 ```csharp
 string macAddress = gripablePlay.GetMacAddress();
 ```
 
-GetMacAddress returns the associated MAC address of the currently set Bluetooth Device.
+Returns the associated MAC address of the currently set Bluetooth Device.
 
 ### Return Values
 
 Returns | Description
 ------- | -----------
-macAddress | Returns a string containing the MAC address of the current Bluetooth Device
-null | Returns null if the device is not initialised
+macAddress | String containing the MAC address of the current Bluetooth Device
+null | The device is not initialized
 
 ## GetConnectionStatus()
 
@@ -208,22 +209,22 @@ null | Returns null if the device is not initialised
 ConnectionStatus GetConnectionStatus();
 ```
 
-> GetConnectionStatus returns the current connection status of the device.
+> Returns the current connection status of the device.
 
 ```csharp
 ConnectionStatus status = gripablePlay.GetConnectionStatus();
 ```
 
-GetConnectionStatus returns an enum that represents the current connection status of the device. This can be one of the following values: CONNECTING, CONNECTED, DISCONNECTING or DISCONECTED.
+Returns an enum that represents the current connection status of the device as one of the following values: <code>CONNECTED</code>, <code>CONNECTING</code>, <code>DISCONNECTED</code> and <code>DISCONNECTING</code>.
 
 ### Return Values
 
 Returns | Description
 ------- | -----------
-ConnectionStatus.CONNECTING | The device is in the middle of a connection attempt
-ConnectionStatus.CONNECTED | The device is connected
-ConnectionStatus.DISCONNECTING | The device is in the middle of a disconnection attempt
-ConnectionStatus.DISCONNECTED | The device is disconnected or not initialised
+<code>ConnectionStatus.CONNECTING</code> | The device is in the middle of a connection attempt
+<code>ConnectionStatus.CONNECTED</code> | The device is connected
+<code>ConnectionStatus.DISCONNECTING</code> | The device is in the middle of a disconnection attempt
+<code>ConnectionStatus.DISCONNECTED</code> | The device is disconnected or not initialised
 
 ## IsConnected()
 
@@ -231,13 +232,13 @@ ConnectionStatus.DISCONNECTED | The device is disconnected or not initialised
 bool IsConnected();
 ```
 
-> IsConnected returns true or false whether the device is connected or not.
+> Returns true if the device is connected.
 
 ```csharp
 bool isConnected = gripablePlay.IsConnected();
 ```
 
-IsConnected returns true or false whether the device is connected or not. This is equivalent of checking if the [connection status](#getconnectionstatus) is CONNECTED.
+Returns a <code>bool</code> that represents the device's current connected state. This is equivalent to checking if the [ConnectionStatus](#getconnectionstatus) is <code>CONNECTED</code>.
 
 ### Return Values
 
@@ -252,24 +253,24 @@ false | The device is connecting, disconnecting, disconected or not initialised
 bool IsDisconnected();
 ```
 
-> IsDisconnected returns true or false whether the device is disconnected or not.
+> Returns true if the device is disconnected.
 
 ```csharp
 bool isDisconnected = gripablePlay.IsDisconnected();
 ```
 
-IsDisconnected returns true or false whether the device is disconnected or not. This is equivalent of checking if the [connection status](#getconnectionstatus) is DISCONNECTED.
+Returns a <code>bool</code> that represents the device's current disconnected state. This is equivalent to checking if the [ConnectionStatus](#getconnectionstatus) is <code>DISCONECTED</code>.
 
 ### Return Values
 
 Returns | Description
 ------- | -----------
-true | The device is disconnected or not initialised
-false | The device is connecting, connected or disconnecting
+<code>true</code> | The device is disconnected or not initialised
+<code>false</code> | The device is connecting, connected or disconnecting
 
 # Grip Data
 
-Grip Data contains the sensor information from squeezing the Gripable Play.
+<code>GripData</code> contains the sensor information from squeezing the Gripable Play device.
 
 ## SubscribeToGripData()
 
@@ -277,20 +278,20 @@ Grip Data contains the sensor information from squeezing the Gripable Play.
 bool SubscribeToGripData();
 ```
 
-> SubscribeToGripData attempts to subscribe to the device grip data, returns true if successful.
+> Attempts to subscribe to the device grip data, returns true if successful.
 
 ```csharp
 bool subscriptionSuccessful = gripablePlay.SubscribeToGripData();
 ```
 
-SubscribeToGripData attempts to subscribe to the device grip data. It returns true if the subscription was successful.
+Attempts to subscribe to the device grip data. It returns true if the subscription was successful.
 
 ### Return Values
 
 Returns | Description
 ------- | -----------
-true | The subscription was successful
-false | The subscription failed
+<code>true</code> | The subscription was successful
+<code>false</code> | The subscription failed
 
 ## UnsubscribeFromGripData()
 
@@ -298,20 +299,20 @@ false | The subscription failed
 bool UnsubscribeFromGripData();
 ```
 
-> UnsubscribeFromGripData attempts to unsubscribe from the device grip data, returns true if successful.
+> Attempts to unsubscribe from the device grip data, returns true if successful.
 
 ```csharp
 bool unsubscriptionSuccessful = gripablePlay.UnsubscribeFromGripData();
 ```
 
-UnsubscribeFromGripData attempts to unsubscribe from the device grip data. It returns true if the unsubscription was successful.
+Attempts to unsubscribe from the device grip data. It returns true if the unsubscription was successful.
 
 ### Return Values
 
 Returns | Description
 ------- | -----------
-true | The unsubscription was successful
-false | The unsubscription failed
+<code>true</code> | The unsubscription was successful
+<code>false</code> | The unsubscription failed
 
 ## IsSubscribedToGripData()
 
@@ -319,20 +320,20 @@ false | The unsubscription failed
 bool IsSubscribedToGripData();
 ```
 
-> IsSubscribedToGripData returns true or false whether the device is subscribed to grip data or not.
+> Returns true if the device is subscribed to grip data.
 
 ```csharp
 bool isSubscribed = gripablePlay.IsSubscribedToGripData();
 ```
 
-IsSubscribedToGripData returns true or false whether the device is subscribed to grip data or not.
+Returns a <code>bool</code> that represents if the device is subscribed to grip data.
 
 ### Return Values
 
 Returns | Description
 ------- | -----------
-true | The device is subscribed to Grip Data
-false | The device is not subscribed to Grip Data or not initialised
+<code>true</code> | The device is subscribed to Grip Data
+<code>false</code> | The device is not subscribed to Grip Data or not initialised
 
 ## GetGripData()
 
@@ -347,20 +348,20 @@ public struct GripData
 }
 ```
 
-> GetGripData returns an object containing data from the grip sensor.
+> Returns an object containing data from the grip sensor.
 
 ```csharp
 GripData gripData = gripablePlay.GetGripData();
 ```
 
-GetGripData returns a GripData object containing data from the grip sensor, including the grip force and a timestamp.
+Returns a <code>GripData</code> object containing data from the grip sensor, including the grip force and timestamp.
 
 ### Return Values
 
 Returns | Description
 ------- | -----------
-gripData | Returns an object containg the grip data
-empty GripData | Returns an empty GripData object if not subscribed or not initialised
+<code>GripData</code> | Object containing the grip data
+empty </code>GripData</code> | Empty GripData object if not subscribed or not initialised
 
 <aside class="warning">The <code>CenterOfPressure</code> attribute of <code>GripData</code> is currently not used and will be implemented in future releases.</aside>
 
@@ -370,24 +371,24 @@ empty GripData | Returns an empty GripData object if not subscribed or not initi
 float GetGripForce();
 ```
 
-> GetGripForce returns a float value for Grip Force in Kg.
+> Returns a float value for Grip Force in Kg.
 
 ```csharp
 float gripForce = gripablePlay.GetGripForce();
 ```
 
-GetGripForce returns the force in Kg that is currently being applied to the Gripable. This is equivalent to retrieving the force attribute from a [GripData](#getgripdata) object. It is sampled at 50Hz.
+Returns the force in Kg that is currently being applied to the Gripable Play device. This is equivalent to retrieving the force attribute from a <code>[GripData](#getgripdata)</code> object. It is sampled at 50Hz.
 
 ### Return Values
 
 Returns | Min | Max | Description
 ------- | --- | --- | -----------
-gripForce | -129f | 128f | Returns the Grip Force in Kg as a float
-0f | | | Returns 0 if the device is not subscribed or not initialised
+<code>gripForce</code> | <code>-129f</code> | <code>128f</code> | Returns the Grip Force in Kg as a float
+<code>0f</code> | | | Returns 0 if the device is not subscribed or not initialised
 
 # World Frame Quaternion
 
-World frame Quaternion data contains the sensor information about the orientation of the device in 3D space.
+World Frame Quaternion data contains the sensor information about the orientation of the device in 3D space.
 
 ## SubscribeToWorldFrameQuaternion()
 
@@ -395,20 +396,20 @@ World frame Quaternion data contains the sensor information about the orientatio
 bool SubscribeToWorldFrameQuaternion();
 ```
 
-> SubscribeToWorldFrameQuaternion attempts to subscribe to the device world frame quaternion data, returns true if successful.
+> Attempts to subscribe to the device world frame quaternion data, returns true if successful.
 
 ```csharp
 bool subscriptionSuccessful = gripablePlay.SubscribeToWorldFrameQuaternion();
 ```
 
-SubscribeToWorldFrameQuaternion attempts to subscribe to the device world frame quaternion data. It returns true if the subscription was successful.
+Attempts to subscribe to the device world frame quaternion data. It returns true if the subscription was successful.
 
 ### Return Values
 
 Returns | Description
 ------- | -----------
-true | The subscription was successful
-false | The subscription failed
+<code>true</code> | The subscription was successful
+<code>false</code> | The subscription failed
 
 ## UnsubscribeFromWorldFrameQuaternion()
 
@@ -416,20 +417,20 @@ false | The subscription failed
 bool UnsubscribeFromWorldFrameQuaternion();
 ```
 
-> UnsubscribeFromWorldFrameQuaternion attempts to unsubscribe from the device world frame quaternion data, returns true if successful.
+> Attempts to unsubscribe from the device world frame quaternion data, returns true if successful.
 
 ```csharp
 bool unsubscriptionSuccessful = gripablePlay.UnsubscribeFromWorldFrameQuaternion();
 ```
 
-UnsubscribeFromWorldFrameQuaternion attempts to unsubscribe from the device world frame quaternion data. It returns true if the unsubscription was successful.
+Attempts to unsubscribe from the device world frame quaternion data. It returns true if the unsubscription was successful.
 
 ### Return Values
 
 Returns | Description
 ------- | -----------
-true | The unsubscription was successful
-false | The unsubscription failed
+<code>true</code> | The unsubscription was successful
+<code>false</code> | The unsubscription failed
 
 ## IsSubscribedToWorldFrameQuaternion()
 
@@ -437,20 +438,20 @@ false | The unsubscription failed
 bool IsSubscribedToWorldFrameQuaternion();
 ```
 
-> IsSubscribedToWorldFrameQuaternion returns true or false whether the device is subscribed to world frame quaternion data or not.
+> Returns true or false whether the device is subscribed to world frame quaternion data or not.
 
 ```csharp
 bool isSubscribed = gripablePlay.IsSubscribedToWorldFrameQuaternion();
 ```
 
-IsSubscribedToWorldFrameQuaternion returns true or false whether the device is subscribed to world frame quaternion data or not.
+Returns true or false whether the device is subscribed to world frame quaternion data or not.
 
 ### Return Values
 
 Returns | Description
 ------- | -----------
-true | The device is subscribed to world frame Quaternion
-false | The device is not subscribed to world frame Quaternion or not initialised
+<code>true</code> | The device is subscribed to world frame Quaternion
+<code>false</code> | The device is not subscribed to world frame Quaternion or not initialised
 
 ## GetWorldFrameQuaternion()
 
@@ -458,20 +459,20 @@ false | The device is not subscribed to world frame Quaternion or not initialise
 Quaternion GetWorldFrameQuaternion();
 ```
 
-> GetWorldFrameQuaternion returns a Quaternion object representing the orientation of the device in the world frame.
+> Returns a Quaternion object representing the orientation of the device in the world frame.
 
 ```csharp
 Quaternion deviceQuaternion = gripablePlay.GetWorldFrameQuaternion();
 ```
 
-GetWorldFrameQuaternion returns a [Quaternion](https://docs.unity3d.com/ScriptReference/Quaternion.html) object representing the orientation of the device in the world frame.
+Returns a [Quaternion](https://docs.unity3d.com/ScriptReference/Quaternion.html) object representing the orientation of the device in the world frame.
 
 ### Return Values
 
 Returns | Description
 ------- | -----------
-deviceQuaternion | The device orientation in the world frame expressed through a [Quaternion](https://docs.unity3d.com/ScriptReference/Quaternion.html) object
-[Quaternion.identity](https://docs.unity3d.com/ScriptReference/Quaternion-identity.html) | Returns the identity [Quaternion](https://docs.unity3d.com/ScriptReference/Quaternion.html) (x,y,z=0, w=1) if the device is not subscribed or not initialised
+<code>deviceQuaternion</code> | The device orientation in the world frame expressed through a [Quaternion](https://docs.unity3d.com/ScriptReference/Quaternion.html) object
+<code>[Quaternion.identity](https://docs.unity3d.com/ScriptReference/Quaternion-identity.html)</code> | Returns the identity [Quaternion](https://docs.unity3d.com/ScriptReference/Quaternion.html) (x,y,z=0, w=1) if the device is not subscribed or not initialised
 
 # Sensor Frame RPY
 
@@ -483,20 +484,20 @@ Sensor frame Roll, Pitch and Yaw contain the sensor information about the orient
 bool SubscribeToSensorFrameRPY();
 ```
 
-> SubscribeToSensorFrameRPY attempts to subscribe to the device sensor frame RPY data, returns true if successful.
+> Attempts to subscribe to the device sensor frame RPY data, returns true if successful.
 
 ```csharp
 bool subscriptionSuccessful = gripablePlay.SubscribeToSensorFrameRPY());
 ```
 
-SubscribeToSensorFrameRPY attempts to subscribe to the device sensor frame RPY data. It returns true if the subscription was successful.
+Attempts to subscribe to the device sensor frame RPY data. It returns true if the subscription was successful.
 
 ### Return Values
 
 Returns | Description
 ------- | -----------
-true | The subscription was successful
-false | The subscription failed
+<code>true</code> | The subscription was successful
+<code>false</code> | The subscription failed
 
 ## UnsubscribeFromSensorFrameRPY()
 
@@ -504,20 +505,20 @@ false | The subscription failed
 bool UnsubscribeFromSensorFrameRPY();
 ```
 
-> UnsubscribeFromSensorFrameRPY attempts to unsubscribe from the device sensor frame RPY data, returns true if successful.
+> Attempts to unsubscribe from the device sensor frame RPY data, returns true if successful.
 
 ```csharp
 bool unsubscriptionSuccessful = gripablePlay.UnsubscribeFromSensorFrameRPY();
 ```
 
-UnsubscribeFromSensorFrameRPY attempts to unsubscribe from the device sensor frame RPY data. It returns true if the unsubscription was successful.
+Attempts to unsubscribe from the device sensor frame RPY data. It returns true if the unsubscription was successful.
 
 ### Return Values
 
 Returns | Description
 ------- | -----------
-true | The unsubscription was successful
-false | The unsubscription failed
+<code>true</code> | The unsubscription was successful
+<code>false</code> | The unsubscription failed
 
 ## IsSubscribedToSensorFrameRPY()
 
@@ -525,20 +526,20 @@ false | The unsubscription failed
 bool IsSubscribedToSensorFrameRPY();
 ```
 
-> IsSubscribedToSensorFrameRPY returns true or false whether the device is subscribed to sensor frame RPY data or not.
+> Returns true or false whether the device is subscribed to sensor frame RPY data or not.
 
 ```csharp
 bool isSubscribed = gripablePlay.IsSubscribedToSensorFrameRPY();
 ```
 
-IsSubscribedToSensorFrameRPY returns true or false whether the device is subscribed to world sensor frame RPY data or not.
+Returns true or false whether the device is subscribed to world sensor frame RPY data or not.
 
 ### Return Values
 
 Returns | Description
 ------- | -----------
-true | The device is subscribed to sensor frame RPY
-false | The device is not subscribed to sensor frame RPY or not initialised
+<code>true</code> | The device is subscribed to sensor frame RPY
+<code>false</code> | The device is not subscribed to sensor frame RPY or not initialized
 
 ## GetSensorFrameRpy()
 
@@ -546,20 +547,20 @@ false | The device is not subscribed to sensor frame RPY or not initialised
 Vector3 GetSensorFrameRpy();
 ```
 
-> GetSensorFrameRpy returns a Vector3 object representing the RPY of the device.
+> Returns a <code>Vector3</code> object representing the RPY of the device.
 
 ```csharp
 Vector3 rollPitchYaw = gripablePlay.GetSensorFrameRpy();
 ```
 
-GetSensorFrameRpy returns a [Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html) object representing the current Roll, Pitch and Yaw of the device.
+Returns a <code>[Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html)</code> object representing the current Roll, Pitch and Yaw of the device.
 
 ### Return Values
 
 Returns | Description
 ------- | -----------
-rollPitchYaw | The device roll, pitch and yaw expressed through a [Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html) object
-[Vector3.zero](https://docs.unity3d.com/ScriptReference/Vector3-zero.html) | Returns a zeroed [Vector3] (https://docs.unity3d.com/ScriptReference/Vector3.html) if the device is not subscribed or not initialised
+<code>rollPitchYaw</code> | The device roll, pitch and yaw expressed through a <code>[Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html)</code> object
+<code>[Vector3.zero](https://docs.unity3d.com/ScriptReference/Vector3-zero.html)</code> | Returns a zeroed <code>[Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html)</code> if the device is not subscribed or not initialised
 
 # Motion Data
 
@@ -571,20 +572,20 @@ Motion Data contains the sensor information about the movements of the device, c
 bool SubscribeToMotionData();
 ```
 
-> SubscribeToMotionData attempts to subscribe to the device motion data, returns true if successful.
+> Attempts to subscribe to the device motion data, returns true if successful.
 
 ```csharp
 bool subscriptionSuccessful = gripablePlay.SubscribeToMotionData();
 ```
 
-SubscribeToMotionData attempts to subscribe to the device motion data. It returns true if the subscription was successful.
+Attempts to subscribe to the device motion data. It returns true if the subscription was successful.
 
 ### Return Values
 
 Returns | Description
 ------- | -----------
-true | The subscription was successful
-false | The subscription failed
+<code>true</code> | The subscription was successful
+<code>false</code> | The subscription failed
 
 ## UnsubscribeFromMotionData()
 
@@ -592,20 +593,20 @@ false | The subscription failed
 bool UnsubscribeFromMotionData();
 ```
 
-> UnsubscribeFromMotionData attempts to unsubscribe from the device motion data, returns true if successful.
+> Attempts to unsubscribe from the device motion data, returns true if successful.
 
 ```csharp
 bool unsubscriptionSuccessful = gripablePlay.UnsubscribeFromMotionData();
 ```
 
-UnsubscribeFromMotionData attempts to unsubscribe from the device motion data. It returns true if the unsubscription was successful.
+Attempts to unsubscribe from the device motion data. It returns true if the unsubscription was successful.
 
 ### Return Values
 
 Returns | Description
 ------- | -----------
-true | The unsubscription was successful
-false | The unsubscription failed
+<code>true</code> | The unsubscription was successful
+<code>false | The unsubscription failed
 
 ## IsSubscribedToMotionData()
 
@@ -613,20 +614,20 @@ false | The unsubscription failed
 bool IsSubscribedToMotionData();
 ```
 
-> IsSubscribedToMotionData returns true or false whether the device is subscribed to motion data or not.
+> Returns true or false whether the device is subscribed to motion data or not.
 
 ```csharp
 bool isSubscribed = gripablePlay.IsSubscribedToMotionData();
 ```
 
-IsSubscribedToMotionData returns true or false whether the device is subscribed to motion data or not.
+Returns true or false whether the device is subscribed to motion data or not.
 
 ### Return Values
 
 Returns | Description
 ------- | -----------
-true | The device is subscribed to Motion Data
-false | The device is not subscribed to Motion Data or not initialised
+<code>true</code> | The device is subscribed to Motion Data
+<code>false</code> | The device is not subscribed to Motion Data or not initialised
 
 ## GetLinearAcceleration()
 
@@ -634,20 +635,20 @@ false | The device is not subscribed to Motion Data or not initialised
 Vector3 GetLinearAcceleration();
 ```
 
-> GetLinearAcceleration returns a Vector3 object representing the linear acceleration of the device.
+> Returns a <code>Vector3</code> object representing the linear acceleration of the device.
 
 ```csharp
 Vector3 linearAcceleration = gripablePlay.GetLinearAcceleration();
 ```
 
-GetLinearAcceleration returns a [Vector3] (https://docs.unity3d.com/ScriptReference/Vector3.html) object representing the linear acceleration of the device alongside its axes, expressed in G.
+Returns a <code>[Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html)</code> object representing the linear acceleration of the device alongside its axes, expressed in G.
 
 ### Return Values
 
 Returns | Min (per axis) | Max (per axis) | Description
 ------- | -------------- | -------------- | -----------
-linearAcceleration | -16f | 16f | A [Vector3] (https://docs.unity3d.com/ScriptReference/Vector3.html) representing the linear acceleration of the device, expressed in G
-[Vector3.zero] (https://docs.unity3d.com/ScriptReference/Vector3-zero.html) | | | Returns a zeroed [Vector3] (https://docs.unity3d.com/ScriptReference/Vector3.html) if the device is not subscribed or not initialised
+<code>linearAcceleration</code> | <code>-16f</code> | <code>16f</code> | A <code>[Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html)</code> representing the linear acceleration of the device, expressed in G
+<code>[Vector3.zero](https://docs.unity3d.com/ScriptReference/Vector3-zero.html)</code> | | | Returns a zeroed <code>[Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html)</code> if the device is not subscribed or not initialised
 
 ## GetAngularVelocity()
 
@@ -655,20 +656,21 @@ linearAcceleration | -16f | 16f | A [Vector3] (https://docs.unity3d.com/ScriptRe
 Vector3 GetAngularVelocity();
 ```
 
-> GetAngularVelocity returns a Vector3 object representing the angular velocity of the device.
+> Returns a <code>Vector3</code> object representing the angular velocity of the device.
 
 ```csharp
 Vector3 angularVelocity = gripablePlay.GetAngularVelocity();
 ```
 
-GetAngularVelocity returns a [Vector3] (https://docs.unity3d.com/ScriptReference/Vector3.html) object representing the angular velocity of the device alongside its axes, expressed in degrees/sec.
+Returns a <code>[Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html)</code> object representing the angular velocity of the device alongside its axes, expressed in degrees/sec.
 
 ### Return Values
 
 Returns | Min (per axis) | Max (per axis) | Description
 ------- | -------------- | -------------- | -----------
-angularVelocity | -200f | 200f | A [Vector3] (https://docs.unity3d.com/ScriptReference/Vector3.html) representing the angular velocity of the device, expressed in degrees/sec
-[Vector3.zero] (https://docs.unity3d.com/ScriptReference/Vector3-zero.html) | | | Returns a zeroed [Vector3] (https://docs.unity3d.com/ScriptReference/Vector3.html) if the device is not subscribed or not initialised
+<code>angularVelocity</code> | <code>-200f</code> | <code>200f</code> | A <code>[Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html)</code> representing the angular velocity of the device, expressed in degrees/sec
+<code>[Vector3.zero](https://docs.unity3d.com/ScriptReference/Vector3-zero.html)</code> | | | Returns a zeroed <code>[Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html)</code> if the device is not subscribed or not initialized
+
 
 ## GetMagneticHeading()
 
@@ -676,20 +678,20 @@ angularVelocity | -200f | 200f | A [Vector3] (https://docs.unity3d.com/ScriptRef
 Vector3 GetMagneticHeading();
 ```
 
-> GetMagneticHeading returns a Vector3 object representing the magnetic heading of the device.
+> Returns a <code>Vector3</code> object representing the magnetic heading of the device.
 
 ```csharp
 Vector3 magneticHeading = gripablePlay.GetMagneticHeading();
 ```
 
-GetMagneticHeading returns a [Vector3] (https://docs.unity3d.com/ScriptReference/Vector3.html) object representing the magnetic heading of the device alongside its axes, expressed in microteslas.
+Returns a <code>[Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html)</code> object representing the magnetic heading of the device alongside its axes, expressed in microteslas.
 
 ### Return Values
 
 Returns | Min (per axis) | Max (per axis) | Description
 ------- | -------------- | -------------- | -----------
-magneticHeading | -4912f | 4912f | A [Vector3] (https://docs.unity3d.com/ScriptReference/Vector3.html) representing the magnetic heading of the device, expressed in microteslas
-[Vector3.zero] (https://docs.unity3d.com/ScriptReference/Vector3-zero.html) | | | Returns a zeroed [Vector3] (https://docs.unity3d.com/ScriptReference/Vector3.html) if the device is not subscribed or not initialised
+<code>magneticHeading</code> | <code>-4912f</code> | <code>4912f</code> | A <code>[Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html) representing the magnetic heading of the device, expressed in microteslas
+<code>[Vector3.zero](https://docs.unity3d.com/ScriptReference/Vector3-zero.html)</code> | | | Returns a zeroed <code>[Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html)</code> if the device is not subscribed or not initialised
 
 # Connection Events
 
