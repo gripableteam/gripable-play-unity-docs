@@ -53,7 +53,7 @@ GripablePlay secondGripablePlay = Gripable.Play2;
 UdpClientManager udpManager = Gripable.UdpManager;
 ```
 
-Returns a reference to the [UDP Client Manager](#using-udpclientmanager), used to send serialised data from the connected Gripable Plays to a machine through UDP.
+Returns a reference to the [UDP Client Manager](#using-udpclientmanager), used to send serialised data from the connected Gripable Play devices to a machine through UDP.
 
 # Connecting and Disconnecting
 
@@ -98,7 +98,7 @@ bool Connect();
 bool connectionInitiated = gripablePlay.Connect();
 ```
 
-Initiates a connection attempt. Bluetooth connection is asynchronous and requires a listener for the [OnConnected](#connection-events) callback or call to the synchronous [IsConnected](#isconnected) function to check whether the connection attempt was successful.
+Initiates a connection attempt. Bluetooth connection is asynchronous and requires a listener for the <code>[OnConnected](#connection-events)</code> callback or call to the synchronous <code>[IsConnected](#isconnected)</code> function to check whether the connection attempt was successful.
 
 ### Return Values
 
@@ -120,7 +120,7 @@ bool Disconnect();
 bool disconnectionInitiated = gripablePlay.Disconnect();
 ```
 
-Initiates a disconnection attempt. Bluetooth connection is asynchronous and requires a listener for the [OnDisconnected](#disconnection-events) callback or call to the synchronous [IsDisconnected](#isdisconnected) function to check whether the connection attempt was successful.
+Initiates a disconnection attempt. Bluetooth connection is asynchronous and requires a listener for the <code>[OnDisconnected](#disconnection-events)</code> callback or call to the synchronous <code>[IsDisconnected](#isdisconnected)</code> function to check whether the connection attempt was successful.
 
 ### Return Values
 
@@ -137,7 +137,7 @@ Returns | Description
 bool IsInitialized();
 ```
 
-> Returns true if the <code>GripablePlay</code> object has been initialized with a Bluetooth Device.
+> Returns <code>true</code> if the <code>GripablePlay</code> object has been initialized with a Bluetooth Device.
 
 ```csharp
 bool gripableIsInitialized = gripablePlay.IsInitialized();
@@ -200,8 +200,8 @@ Returns the associated MAC address of the currently set Bluetooth Device.
 
 Returns | Description
 ------- | -----------
-macAddress | String containing the MAC address of the current Bluetooth Device
-null | The device is not initialized
+<code>macAddress</code> | String containing the MAC address of the current Bluetooth Device
+<code>null</code> | The device is not initialized
 
 ## GetConnectionStatus()
 
@@ -215,7 +215,7 @@ ConnectionStatus GetConnectionStatus();
 ConnectionStatus status = gripablePlay.GetConnectionStatus();
 ```
 
-Returns an enum that represents the current connection status of the device as one of the following values: <code>CONNECTED</code>, <code>CONNECTING</code>, <code>DISCONNECTED</code> and <code>DISCONNECTING</code>.
+Returns an <code>enum</code> that represents the current connection status of the device as one of the following values: <code>CONNECTED</code>, <code>CONNECTING</code>, <code>DISCONNECTED</code> and <code>DISCONNECTING</code>.
 
 ### Return Values
 
@@ -232,20 +232,20 @@ Returns | Description
 bool IsConnected();
 ```
 
-> Returns true if the device is connected.
+> Returns <code>true</code> if the device is connected.
 
 ```csharp
 bool isConnected = gripablePlay.IsConnected();
 ```
 
-Returns a <code>bool</code> that represents the device's current connected state. This is equivalent to checking if the [ConnectionStatus](#getconnectionstatus) is <code>CONNECTED</code>.
+Returns a <code>bool</code> that represents the device's current connected state. This is equivalent to checking if the <code>[ConnectionStatus](#getconnectionstatus)</code> is <code>CONNECTED</code>.
 
 ### Return Values
 
 Returns | Description
 ------- | -----------
-true | The device is connected
-false | The device is connecting, disconnecting, disconected or not initialised
+<code>true</code> | The device is connected
+<code>false</code> | The device is connecting, disconnecting, disconected or not initialised
 
 ## IsDisconnected()
 
@@ -253,7 +253,7 @@ false | The device is connecting, disconnecting, disconected or not initialised
 bool IsDisconnected();
 ```
 
-> Returns true if the device is disconnected.
+> Returns <code>true</code> if the device is disconnected.
 
 ```csharp
 bool isDisconnected = gripablePlay.IsDisconnected();
@@ -278,13 +278,13 @@ Returns | Description
 bool SubscribeToGripData();
 ```
 
-> Attempts to subscribe to the device grip data, returns true if successful.
+> Attempts to subscribe to the device grip data, returns <code>true</code> if successful.
 
 ```csharp
 bool subscriptionSuccessful = gripablePlay.SubscribeToGripData();
 ```
 
-Attempts to subscribe to the device grip data. It returns true if the subscription was successful.
+Attempts to subscribe to the device grip data. It returns <code>true</code> if the subscription was successful.
 
 ### Return Values
 
@@ -299,13 +299,13 @@ Returns | Description
 bool UnsubscribeFromGripData();
 ```
 
-> Attempts to unsubscribe from the device grip data, returns true if successful.
+> Attempts to unsubscribe from the device grip data, returns <code>true</code> if successful.
 
 ```csharp
 bool unsubscriptionSuccessful = gripablePlay.UnsubscribeFromGripData();
 ```
 
-Attempts to unsubscribe from the device grip data. It returns true if the unsubscription was successful.
+Attempts to unsubscribe from the device grip data. It returns <code>true</code> if the unsubscription was successful.
 
 ### Return Values
 
@@ -320,7 +320,7 @@ Returns | Description
 bool IsSubscribedToGripData();
 ```
 
-> Returns true if the device is subscribed to grip data.
+> Returns <code>true</code> if the device is subscribed to grip data.
 
 ```csharp
 bool isSubscribed = gripablePlay.IsSubscribedToGripData();
@@ -371,7 +371,7 @@ empty </code>GripData</code> | Empty GripData object if not subscribed or not in
 float GetGripForce();
 ```
 
-> Returns a float value for Grip Force in Kg.
+> Returns a <code>float</code> value for Grip Force in Kg.
 
 ```csharp
 float gripForce = gripablePlay.GetGripForce();
@@ -396,13 +396,13 @@ World Frame Quaternion data contains the sensor information about the orientatio
 bool SubscribeToWorldFrameQuaternion();
 ```
 
-> Attempts to subscribe to the device world frame quaternion data, returns true if successful.
+> Attempts to subscribe to the device world frame quaternion data, returns <code>true</code> if successful.
 
 ```csharp
 bool subscriptionSuccessful = gripablePlay.SubscribeToWorldFrameQuaternion();
 ```
 
-Attempts to subscribe to the device world frame quaternion data. It returns true if the subscription was successful.
+Attempts to subscribe to the device world frame quaternion data. It returns <code>true</code> if the subscription was successful.
 
 ### Return Values
 
@@ -417,13 +417,13 @@ Returns | Description
 bool UnsubscribeFromWorldFrameQuaternion();
 ```
 
-> Attempts to unsubscribe from the device world frame quaternion data, returns true if successful.
+> Attempts to unsubscribe from the device world frame quaternion data, returns <code>true</code> if successful.
 
 ```csharp
 bool unsubscriptionSuccessful = gripablePlay.UnsubscribeFromWorldFrameQuaternion();
 ```
 
-Attempts to unsubscribe from the device world frame quaternion data. It returns true if the unsubscription was successful.
+Attempts to unsubscribe from the device world frame quaternion data. It returns <code>true</code> if the unsubscription was successful.
 
 ### Return Values
 
@@ -438,13 +438,13 @@ Returns | Description
 bool IsSubscribedToWorldFrameQuaternion();
 ```
 
-> Returns true or false whether the device is subscribed to world frame quaternion data or not.
+> Returns <code>true</code> if the device is subscribed to world frame quaternion data.
 
 ```csharp
 bool isSubscribed = gripablePlay.IsSubscribedToWorldFrameQuaternion();
 ```
 
-Returns true or false whether the device is subscribed to world frame quaternion data or not.
+Returns a <code>bool</code> that represents if the device is subscribed to world frame quaternion data.
 
 ### Return Values
 
@@ -459,24 +459,24 @@ Returns | Description
 Quaternion GetWorldFrameQuaternion();
 ```
 
-> Returns a Quaternion object representing the orientation of the device in the world frame.
+> Returns a <code>Quaternion</code> object representing the orientation of the device in the world frame.
 
 ```csharp
 Quaternion deviceQuaternion = gripablePlay.GetWorldFrameQuaternion();
 ```
 
-Returns a [Quaternion](https://docs.unity3d.com/ScriptReference/Quaternion.html) object representing the orientation of the device in the world frame.
+Returns a <code>[Quaternion](https://docs.unity3d.com/ScriptReference/Quaternion.html)</code> object representing the orientation of the device in the world frame.
 
 ### Return Values
 
 Returns | Description
 ------- | -----------
 <code>deviceQuaternion</code> | The device orientation in the world frame expressed through a [Quaternion](https://docs.unity3d.com/ScriptReference/Quaternion.html) object
-<code>[Quaternion.identity](https://docs.unity3d.com/ScriptReference/Quaternion-identity.html)</code> | Returns the identity [Quaternion](https://docs.unity3d.com/ScriptReference/Quaternion.html) (x,y,z=0, w=1) if the device is not subscribed or not initialised
+<code>[Quaternion.identity](https://docs.unity3d.com/ScriptReference/Quaternion-identity.html)</code> | Returns the identity <code>[Quaternion](https://docs.unity3d.com/ScriptReference/Quaternion.html) (x,y,z=0, w=1)</code> if the device is not subscribed or not initialised
 
 # Sensor Frame RPY
 
-Sensor frame Roll, Pitch and Yaw contain the sensor information about the orientation of the device relative to the sensors frame. [Roll, Pitch and Yaw](https://en.wikipedia.org/wiki/Aircraft_principal_axes) represent, respectively, rotations of the device around its X, Y and Z axis, as shown in this [picture](#sensor-frame).
+Sensor frame Roll, Pitch and Yaw contain the sensor information about the orientation of the device relative to the sensors frame. [Roll, Pitch and Yaw](https://en.wikipedia.org/wiki/Aircraft_principal_axes) represent rotations of the device around its X, Y and Z axis, respectively, as shown in this [picture](#sensor-frame).
 
 ## SubscribeToSensorFrameRPY()
 
@@ -484,13 +484,13 @@ Sensor frame Roll, Pitch and Yaw contain the sensor information about the orient
 bool SubscribeToSensorFrameRPY();
 ```
 
-> Attempts to subscribe to the device sensor frame RPY data, returns true if successful.
+> Attempts to subscribe to the device sensor frame RPY data, returns <code>true</code> if successful.
 
 ```csharp
 bool subscriptionSuccessful = gripablePlay.SubscribeToSensorFrameRPY());
 ```
 
-Attempts to subscribe to the device sensor frame RPY data. It returns true if the subscription was successful.
+Attempts to subscribe to the device sensor frame RPY data. It returns <code>true</code> if the subscription was successful.
 
 ### Return Values
 
@@ -505,13 +505,13 @@ Returns | Description
 bool UnsubscribeFromSensorFrameRPY();
 ```
 
-> Attempts to unsubscribe from the device sensor frame RPY data, returns true if successful.
+> Attempts to unsubscribe from the device sensor frame RPY data, returns <code>true</code> if successful.
 
 ```csharp
 bool unsubscriptionSuccessful = gripablePlay.UnsubscribeFromSensorFrameRPY();
 ```
 
-Attempts to unsubscribe from the device sensor frame RPY data. It returns true if the unsubscription was successful.
+Attempts to unsubscribe from the device sensor frame RPY data. It returns <code>true</code> if the unsubscription was successful.
 
 ### Return Values
 
@@ -526,13 +526,13 @@ Returns | Description
 bool IsSubscribedToSensorFrameRPY();
 ```
 
-> Returns true or false whether the device is subscribed to sensor frame RPY data or not.
+> Returns <code>true</code> if the device is subscribed to sensor frame RPY data.
 
 ```csharp
 bool isSubscribed = gripablePlay.IsSubscribedToSensorFrameRPY();
 ```
 
-Returns true or false whether the device is subscribed to world sensor frame RPY data or not.
+Returns a <code>bool</code> that represents if the device is subscribed to world sensor frame RPY data.
 
 ### Return Values
 
@@ -572,13 +572,13 @@ Motion Data contains the sensor information about the movements of the device, c
 bool SubscribeToMotionData();
 ```
 
-> Attempts to subscribe to the device motion data, returns true if successful.
+> Attempts to subscribe to the device motion data, returns <code>true</code> if successful.
 
 ```csharp
 bool subscriptionSuccessful = gripablePlay.SubscribeToMotionData();
 ```
 
-Attempts to subscribe to the device motion data. It returns true if the subscription was successful.
+Attempts to subscribe to the device motion data. It returns <code>true</code> if the subscription was successful.
 
 ### Return Values
 
@@ -593,20 +593,20 @@ Returns | Description
 bool UnsubscribeFromMotionData();
 ```
 
-> Attempts to unsubscribe from the device motion data, returns true if successful.
+> Attempts to unsubscribe from the device motion data, returns <code>true</code> if successful.
 
 ```csharp
 bool unsubscriptionSuccessful = gripablePlay.UnsubscribeFromMotionData();
 ```
 
-Attempts to unsubscribe from the device motion data. It returns true if the unsubscription was successful.
+Attempts to unsubscribe from the device motion data. It returns <code>true</code> if the unsubscription was successful.
 
 ### Return Values
 
 Returns | Description
 ------- | -----------
 <code>true</code> | The unsubscription was successful
-<code>false | The unsubscription failed
+<code>false</code> | The unsubscription failed
 
 ## IsSubscribedToMotionData()
 
@@ -614,13 +614,13 @@ Returns | Description
 bool IsSubscribedToMotionData();
 ```
 
-> Returns true or false whether the device is subscribed to motion data or not.
+> Returns <code>true</code> if the device is subscribed to motion data.
 
 ```csharp
 bool isSubscribed = gripablePlay.IsSubscribedToMotionData();
 ```
 
-Returns true or false whether the device is subscribed to motion data or not.
+Returns a <code>bool</code> that represents if the device is subscribed to motion data.
 
 ### Return Values
 
@@ -695,7 +695,7 @@ Returns | Min (per axis) | Max (per axis) | Description
 
 # Connection Events
 
-> To subscribe a handler to an event, assign a function without arguments that returns void to it
+> To subscribe a handler to an event, assign a reference to an encapsulated method which has no parameters and no return value.
 
 ```csharp
 class MyView : MonoBehaviour {
@@ -714,21 +714,20 @@ class MyView : MonoBehaviour {
 
 ```
 
-Gripable Play has a series of [Action Delegate](https://docs.microsoft.com/en-us/dotnet/api/system.action?view=netframework-4.7.2) connection events, which are fired at different stages of the connection process.
+ <code>GripablePlay</code> has a series of [Action Delegate](https://docs.microsoft.com/en-us/dotnet/api/system.action?view=netframework-4.7.2) connection events, which are fired at different stages of the connection process.
 
 
 Callback Name | Triggered
 --------- | -------
-OnConnected | Device has been successfully connected and is ready.
-OnDisconnect | Device has been fully disconnected.
-OnConnecting | Device is attempting to connect.
-OnDisconnecting | Device is attempting to disconnect. 
+<code>OnConnected</code> | Device has been successfully connected and is ready.
+<code>OnDisconnect</code> | Device has been fully disconnected.
+<code>OnConnecting</code> | Device is attempting to connect.
+<code>OnDisconnecting</code> | Device is attempting to disconnect. 
 
 
 # Gestures
 
-> To subscribe a handler to an event, assign a function without arguments that returns void to it
-
+> To subscribe a handler to an event, assign a reference to an encapsulated method which has no parameters and no return value.
 ```csharp
 class MyView : MonoBehaviour {
 
@@ -751,32 +750,32 @@ class MyView : MonoBehaviour {
 
 ```
 
-Gripable Play has a series of [Action Delegate](https://docs.microsoft.com/en-us/dotnet/api/system.action?view=netframework-4.7.2) gesture events, which are triggered when the Gripable detects specific, predefined movements. In particular, these gesture events divide into Force Gestures and Rotational Gestures.
+ <code>GripablePlay</code> has a series of [Action Delegate](https://docs.microsoft.com/en-us/dotnet/api/system.action?view=netframework-4.7.2) gesture events, which are triggered when the Gripable detects specific, predefined movements. In particular, these gesture events divide into Force Gestures and Rotational Gestures.
 
 ## Force Gestures Callbacks
 
-Force Gestures are triggered when interacting with the fingerbar on the Gripable Play, for example when squeezing or releasing the fingerbar.
+Force Gestures are triggered when interacting with the finger bar on the Gripable Play, for example when squeezing or releasing the finger bar.
 
 Callback Name | Triggered
 --------- | -------
-OnSqueeze | When the device is squeezed, more specifically when the Grip Force reading goes from a MIN_THRESHOLD to a MAX_THRESHOLD within a given time period.
-OnRelease | When the device is released, more specifically when the Grip Force reading goes from a MAX_THRESHOLD to a MIN_THRESHOLD within a given time period.
+<code>OnSqueeze</code> | When the device is squeezed, more specifically when the Grip Force reading goes from a <code>MIN_THRESHOLD</code> to a <code>MAX_THRESHOLD</code> within a given time period.
+<code>OnRelease</code> | When the device is released, more specifically when the Grip Force reading goes from a <code>MAX_THRESHOLD</code> to a <code>MIN_THRESHOLD</code> within a given time period.
 
 ## Rotation Gestures Callbacks
 
-Rotation Gestures are triggered when the user rotates the Gripable Play between two specific angular regions within a specific time threshold. Currently all regions are defined by specifying two angles around a specific axis in the [sensor frame](#sensor-frame).
+Rotation Gestures are triggered when the user rotates the Gripable Play device through two specified angular regions within a specified time threshold. Currently, all regions are defined by two angles around a specific axis in the [sensor frame](#sensor-frame).
 
 Callback Name | Triggered
 --------- | -------
-OnSupination | When the device is rotated around the X axis in the positive direction. 
-OnPronation | When the device is rotated around the X axis in the negative direction. 
-OnUlnar | When the device is rotated around the Y axis in the positive direction. 
-OnRadial | When the device is rotated around the Y axis in the negative direction. 
-OnExtension | When the device is rotated around the Z axis in the positive direction. 
-OnFlexion | When the device is rotated around the Z axis in the negative direction.
-OnNeutralRoll | When the device's X rotation has returned to its starting position.
-OnNeutralPitch | When the device's Y rotation has returned to its starting position.
-OnNeutralYaw | When the device's Z rotation has returned to its starting position.
+<code>OnSupination</code> | When the device is rotated around the X axis in the positive direction. 
+<code>OnPronation</code> | When the device is rotated around the X axis in the negative direction. 
+<code>OnUlnar</code> | When the device is rotated around the Y axis in the positive direction. 
+<code>OnRadial</code> | When the device is rotated around the Y axis in the negative direction. 
+<code>OnExtension</code> | When the device is rotated around the Z axis in the positive direction. 
+<code>OnFlexion</code> | When the device is rotated around the Z axis in the negative direction.
+<code>OnNeutralRoll</code> | When the device's X rotation has returned to its starting position.
+<code>OnNeutralPitch</code> | When the device's Y rotation has returned to its starting position.
+<code>OnNeutralYaw</code> | When the device's Z rotation has returned to its starting position.
 
 ## Gesture Types
 
@@ -797,7 +796,7 @@ enum GestureType
 }
 ```
 
-In order to configure gestures you need to speficy the gesture type you want to configure first. The list of available gestures is defined by the GestureType enum, as shown here on the side.
+To configure gestures, the desired gesture type must be specified. The list of available gestures is defined by the <code>GestureType enum</code>.
 
 ## ConfigureForceGesture()
 
@@ -810,7 +809,7 @@ bool ConfigureForceGesture(
 );
 ```
 
-> ConfigureForceGesture configures the force and time thresholds for the specified force gesture.
+> Configures the force and time thresholds for the specified force gesture.
 
 ```csharp
 GripablePlay gp = Gripable.Play1;
@@ -826,14 +825,14 @@ gp.ConfigureForceGesture(
 );
 ```
 
-ConfigureForceGesture configures the force and time thresholds for the specified force gesture. In the example shown on the side, we can see how a squeeze gesture can be configured to be triggered when going from 0.5 Kg to at least 1 Kg of pressure force on the fingerbar within 5 seconds.
+Configures the force and time thresholds for the specified force gesture. In the example, the squeeze gesture is configured to trigger when 0.5 Kg to at least 1 Kg of pressure force is detected on the finger bar, within 5 seconds.
 
 ### Query Parameters and Return Values
 
 Parameter | Returns | Description
 --------- | ------- | -----------
-gestureType, releaseThreshold, squeezeThreshold, timeThreshold | true | Configures the gesture with the specified gestureType (GestureType) with the specified release and squeeze force thresholds (floats) and time threshold (int), returns true if the configuration succeded
-gestureType, releaseThreshold, squeezeThreshold, timeThreshold | false | Configures the gesture with the specified gestureType (GestureType) with the specified release and squeeze force thresholds (floats) and time threshold (int), returns false if the configuration was incorrect
+<code>gestureType</code>, <code>releaseThreshold</code>, <code>squeezeThreshold</code>, <code>timeThreshold</code> | <code>true</code> | Configures the gesture with the specified <code>GestureType</code> with the specified release and squeeze force thresholds (<code>float</code>) and time threshold (<code>int</code>), returns <code>true</code> if the configuration succeeded
+<code>gestureType</code>, <code>releaseThreshold</code>, <code>squeezeThreshold</code>, <code>timeThreshold</code> | <code>false</code> | Configures the gesture with the specified <code>GestureType</code> with the specified release and squeeze force thresholds (<code>float</code>) and time threshold (<code>int</code>), returns <code>false</code> if the configuration was incorrect
 
 ## ConfigureRotationGesture()
 
@@ -846,7 +845,7 @@ bool ConfigureRotationGesture(
 );
 ```
 
-> ConfigureRotationGesture configures the regions and the time threshold for the specified rotation gesture.
+> Configures the regions and the time threshold for the specified rotation gesture.
 
 ```csharp
 GripablePlay gp = Gripable.Play1;
@@ -862,17 +861,17 @@ gp.ConfigureRotationGesture(
 );
 ```
 
-In order to configure a specific gesture with ConfigureRotationGesture you need 3 things. A start region an end region and a timeThreshold. 
-The region are defined by specifying a start and an end angle of rotation. A third angle is considered to be "in the region" if it is between the start angle and the end one, in anti-clockwise direction.
+Configuring a gesture with ConfigureRotationGesture requires a start region, end region and timeThreshold. 
+Each region is defined by a start and end angle. An angle is considered in the region if it exists between the start and end angle, traced anti-clockwise around a circle.
 
-In the example shown on the side, we are configuring the extention gesture. The start region, i.e. the neutral position in this case, is defined from 350 and 10 degrees (i.e. including 0 degrees), while the end region, i.e. the extended position, is defined from 60 to 90 degrees. With this configuration, if the Gripable Play's pitch changes from a value inside the start region to a value within the end region in less than 5 second (the time threshold), then the OnExtension calback is invoked.
+In the example, the extension gesture is configured such that the start region (neutral position in this case) is set from 350 and 10 degrees (including 0 degrees), and the end region (extended position) is set from 60 to 90 degrees. If the Gripable Play device's pitch changes from a value within the start region to a value in the end region in less than the time threshold, the OnExtension event is triggered and any attached handlers are called.
 
 ### Query Parameters and Return Values
 
 Parameter | Returns | Description
 --------- | ------- | -----------
-gestureType, regionA, regionB, timeThreshold | true | Configures the gesture with the specified gestureType (GestureType) with the specified start and end regions (Regions) and time threshold (int), returns true if the configuration succeded
-gestureType, regionA, regionB, timeThreshold | false | Configures the gesture with the specified gestureType (GestureType) with the specified start and end regions (Regions) and time threshold (int), returns false if the configuration was incorrect
+ <code>gestureType</code>, <code>regionA</code>, <code>regionB</code>, <code>timeThreshold</code> | <code>true</code> | Configures the gesture with the specified <code>GestureType</code> with the specified start and end regions (<code>Region</code>) and time threshold (<code>int</code>), returns <code>true</code> if the configuration succeeds
+ <code>gestureType</code>, <code>regionA</code>, <code>regionB</code>, <code>timeThreshold</code> | <code>false</code> | Configures the gesture with the specified <code>GestureType</code> with the specified start and end regions (<code>Regions</code>) and time threshold (<code>int</code>), returns <code>false</code> if the configuration was incorrect
 
 # Frames of Reference
 
@@ -882,15 +881,18 @@ Two different frames of reference can be used when working with the deice positi
 
 The world frame of reference is the static frame of reference, independent of the device orientation, of the world space where the device is located.
 
+![alt text](potato-world-frame.gif)
+
 ## Sensor Frame
 
 The sensor frame is the frame relative to the device itself.
 
+![alt text](potato-local-frame.gif)
 ![alt text](xyz.png)
 
 # Using UdpClientManager
 
-The UdpClientManager class can be very useful to sen serialised data of the connected Gripable Plays to a machine through UDP. The UdpClientManager can be accessed via the [UdpManager static attribute](#udpmanager) of the Gripable plugin.
+The <code>UdpClientManager</code> class sends serialised data from the connected Gripable Play device to a machine via UDP. It is accessed via the <code>[UdpManager](#udpmanager)</code> static attribute of the Gripable plugin.
 
 ## StartClient(ipAddress, port)
 
@@ -898,7 +900,7 @@ The UdpClientManager class can be very useful to sen serialised data of the conn
 void StartClient(string ipAddress, int port);
 ```
 
-> Starts sending udp packets to the specified IP address and port.
+> Starts sending UDP packets to the specified IP address and port.
 
 ```csharp
 string ipAddress = "10.0.145.3";
@@ -906,13 +908,13 @@ int port = 8088;
 udpManager.StartClient(ipAddress, port);
 ```
 
-StartClient starts sending udp packets of serialised data of all the connected gripable plays to the specified IP address and port through UDP.
+Starts sending packets of serialised data from all the connected Gripable Play devices to the specified IP address and port via UDP.
 
 ### Query Parameters
 
 Parameters | Description
 --------- | -----------
-ipAddress, port | Starts the client with the specified IP address (string) and port (integer)
+ <code>ipAddress</code>, <code>port</code> | Starts the client with the specified IP address (<code>string</code>) and port (<code>int</code>)
 
 ## StopClient()
 
@@ -920,19 +922,19 @@ ipAddress, port | Starts the client with the specified IP address (string) and p
 void StopClient();
 ```
 
-> Stops sending udp packets.
+> Stops sending UDP packets.
 
 ```csharp
 udpManager.StopClient();
 ```
 
-StopClient stops sending udp packets to whatever IP address and port the UdpClientManager was sending before, if started. otherwise does nothing.
+Stops sending UDP packets to the IP address and port specified in the <code>UdpClientManager</code>, if started.
 
 ### Query Parameters
 
 Parameters | Description
 --------- | -----------
-none | Stops the Udp Client
+<code>none</code> | Stops the UDP Client
 
 ## IsStarted()
 
@@ -940,17 +942,17 @@ none | Stops the Udp Client
 bool IsStarted();
 ```
 
-> Returns true or false whether the Udp Client is currently sending packets.
+> Returns <code>true</code> if the UDP Client is currently sending packets.
 
 ```csharp
 bool udpStarted = udpManager.IsStarted();
 ```
 
-IsStarted returns true or false whether the Udp Client is currently sending packets.
+Returns a <code>bool</code> that represents if the UDP Client is currently sending packets.
 
 ### Return Values
 
 Returns | Description
 ------- | -----------
-true | The Udp Client is currently sending packets
-false | The Udp Client is currently stopped
+<code>true</code> | The UDP Client is currently sending packets
+<code>false</code> | The UDP Client is currently stopped
