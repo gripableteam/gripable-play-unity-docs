@@ -225,7 +225,7 @@
             <a href="#setup" class="toc-h1 toc-link" data-title="Setup">Setup</a>
           </li>
           <li>
-            <a href="#accessing-the-gripable-plugin" class="toc-h1 toc-link" data-title="Accessing the Gripable plugin">Accessing the Gripable plugin</a>
+            <a href="#accessing-the-gripable-plugin" class="toc-h1 toc-link" data-title="Accessing the Gripable Plugin">Accessing the Gripable Plugin</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#play1" class="toc-h2 toc-link" data-title="Play1">Play1</a>
@@ -359,15 +359,6 @@
             <a href="#gestures" class="toc-h1 toc-link" data-title="Gestures">Gestures</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#force-gestures-callbacks" class="toc-h2 toc-link" data-title="Force Gestures Callbacks">Force Gestures Callbacks</a>
-                  </li>
-                  <li>
-                    <a href="#rotation-gestures-callbacks" class="toc-h2 toc-link" data-title="Rotation Gestures Callbacks">Rotation Gestures Callbacks</a>
-                  </li>
-                  <li>
-                    <a href="#gesture-types" class="toc-h2 toc-link" data-title="Gesture Types">Gesture Types</a>
-                  </li>
-                  <li>
                     <a href="#configureforcegesture" class="toc-h2 toc-link" data-title="ConfigureForceGesture()">ConfigureForceGesture()</a>
                   </li>
                   <li>
@@ -410,34 +401,35 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>API for communicating with a Gripable Play device over Bluetooth</p>
+<p>API for communicating with a Gripable Play device over Bluetooth.</p>
 <h1 id='setup'>Setup</h1>
-<p>To get started with Gripable Play Unity follow the steps <a href="https://bitbucket.org/gripable/gripable-play-unity/src/master/README.md">here</a></p>
-<h1 id='accessing-the-gripable-plugin'>Accessing the Gripable plugin</h1>
-<p>The Gripable plugin can easily be accessed in a static fashion in order to retrieve the main ojects needed to interface with the Gripable Play. At the moment the Gripable plugin allows you to retrieve the two available Gripable Plays and the UDP Client Manager. the Gripable plugin does not need any setup and can be called in a static fashion whenever needed.</p>
+<p>To get started with Gripable Play Unity, follow the steps <a href="https://bitbucket.org/gripable/gripable-play-unity/src/master/README.md">here</a>.</p>
+<h1 id='accessing-the-gripable-plugin'>Accessing the Gripable Plugin</h1>
+<p>The Gripable Plugin is statically accessed to retrieve the main ojects needed to interface with the Gripable Play device. At the moment the Gripable Plugin allows you to retrieve up to two available Gripable Play devices and the UDP Client Manager. The Gripable Plugin does not need any setup and can be called statically when needed.</p>
 <h2 id='play1'>Play1</h2>
 <blockquote>
-<p>Play1 returns a reference to the first Gripable Play.</p>
+<p>Play1 returns a reference to the first Gripable Play device.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="n">GripablePlay</span> <span class="n">gripablePlay</span> <span class="p">=</span> <span class="n">Gripable</span><span class="p">.</span><span class="n">Play1</span><span class="p">;</span>
 </code></pre>
-<p>The first Gripable Play can be accessed through the static attribute Play1, which returns a GripablePlay object.</p>
+<p>The first Gripable Play device is accessed via the static attribute Play1, which returns a <code>GripablePlay</code> object.</p>
 <h2 id='play2'>Play2</h2>
-<p>The second Gripable Play can be accessed through the static attribute Play2, which returns a GripablePlay object.</p>
+<p>The second Gripable Play device is accessed via the static attribute Play2, which returns a <code>GripablePlay</code> object.</p>
 
 <blockquote>
-<p>Play2 returns a reference to the second Gripable Play.</p>
+<p>Play2 returns a reference to the second Gripable Play device.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="n">GripablePlay</span> <span class="n">secondGripablePlay</span> <span class="p">=</span> <span class="n">Gripable</span><span class="p">.</span><span class="n">Play2</span><span class="p">;</span>
 </code></pre><h2 id='udpmanager'>UdpManager</h2>
 <blockquote>
-<p>UdpManager returns a reference to the UDP Client Manager.</p>
+<p>Returns a reference to the UDP Client Manager.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="n">UdpClientManager</span> <span class="n">udpManager</span> <span class="p">=</span> <span class="n">Gripable</span><span class="p">.</span><span class="n">UdpManager</span><span class="p">;</span>
 </code></pre>
-<p>UdpManager returns a reference to the <a href="#using-udpclientmanager">UDP Client Manager</a>, used to send serialised data from the connected Gripable Plays to a machine through UDP.</p>
+<p>Returns a reference to the <a href="#using-udpclientmanager">UDP Client Manager</a>, used to send serialised data from the connected Gripable Play devices to a machine through UDP.</p>
 <h1 id='connecting-and-disconnecting'>Connecting and Disconnecting</h1>
-<p>Gripable Play provides a wrapper around the underlying <a href="https://developer.android.com/guide/topics/connectivity/bluetooth-le">Android BLE stack</a>. In order to connect to a Gripable Play, it must first be discovered by the Android device. This is achieved by turning on the Gripable Play and using the Android OS to scan for Bluetooth devices.</p>
+<p>In order to connect to a Gripable Play device, it must first be discovered by the Android device. This is achieved by turning on the Gripable Play and using the Android OS to scan for Bluetooth devices.
+The <code>GripablePlay</code> object provides a wrapper around the underlying <a href="https://developer.android.com/guide/topics/connectivity/bluetooth-le">Android BLE stack</a>. </p>
 
 <aside class="notice">
 In the future, Bluetooth devices will be scanned automatically without the Android OS.
@@ -445,13 +437,13 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 <h2 id='setbluetoothdevice'>SetBluetoothDevice()</h2><pre class="highlight csharp tab-csharp"><code><span class="k">void</span> <span class="nf">SetBluetoothDevice</span><span class="p">(</span><span class="n">BluetoothDeviceAndroid</span> <span class="n">bluetoothDevice</span><span class="p">);</span>
 </code></pre>
 <blockquote>
-<p>SetBluetoothDevice sets a Bluetooth Device to the Gripable Play.</p>
+<p>Sets a Bluetooth Device to the <code>GripablePlay</code> object.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="kt">string</span> <span class="n">macAdress</span> <span class="p">=</span> <span class="s">"F3:FC:A9:B1:36:BD"</span><span class="p">;</span>
 <span class="n">BluetoothDeviceAndroid</span> <span class="n">bluetoothDevice</span> <span class="p">=</span> <span class="n">AndroidHelper</span><span class="p">.</span><span class="nf">GetBluetoothDevice</span><span class="p">(</span><span class="n">macAddress</span><span class="p">);</span>
 <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">SetBluetoothDevice</span><span class="p">(</span><span class="n">bluetoothDevice</span><span class="p">);</span>
 </code></pre>
-<p>SetBluetoothDevice sets a Bluetooth Device, with a specified MAC address, to the Gripable Play. Setting a Bluetooth Device for the first time flags the Gripable Play as initialised. Resetting the Bluetooth Device additional times is used to connect the Gripable Play to a different physical Gripable Play device (i.e. with a different MAC adress).</p>
+<p>Setting a Bluetooth Device, with a specified MAC address, to the <code>GripablePlay</code> object. Setting a Bluetooth Device for the first time flags the <code>GripablePlay</code> as initialized. Resetting the Bluetooth Device additional times is used to connect the <code>GripablePlay</code> object to a different Gripable Play device (i.e. with a different MAC adress).</p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -460,18 +452,18 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </tr>
 </thead><tbody>
 <tr>
-<td>bluetoothDevice</td>
-<td>Sets bluetoothDevice as the Bluetooth Device</td>
+<td><code>bluetoothDevice</code></td>
+<td>Sets <code>BluetoothDeviceAndroid</code> as the Bluetooth Device</td>
 </tr>
 </tbody></table>
 <h2 id='connect'>Connect()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">Connect</span><span class="p">();</span>
 </code></pre>
 <blockquote>
-<p>Connect returns true or false depending of whether a connection attempt has been successfully initiated.</p>
+<p>Returns <code>bool</code> that represents if a connection attempt has been successfully initiated.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">connectionInitiated</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">Connect</span><span class="p">();</span>
 </code></pre>
-<p>Calling Connect will initiate a connection attempt. Bluetooth connection is asynchronous and requires a listener for the <a href="#connection-events">OnConnected</a> callback or call to the synchronous <a href="#isconnected">IsConnected</a> function to check whether the connection attempt was successful.</p>
+<p>Initiates a connection attempt. Bluetooth connection is asynchronous and requires a listener for the <code><a href="#connection-events">OnConnected</a></code> callback or call to the synchronous <code><a href="#isconnected">IsConnected</a></code> function to check whether the connection attempt was successful.</p>
 <h3 id='return-values'>Return Values</h3>
 <table><thead>
 <tr>
@@ -480,22 +472,22 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </tr>
 </thead><tbody>
 <tr>
-<td>true</td>
+<td><code>true</code></td>
 <td>Successfully triggered connection attempt</td>
 </tr>
 <tr>
-<td>false</td>
+<td><code>false</code></td>
 <td>Failed to trigger connection attempt</td>
 </tr>
 </tbody></table>
 <h2 id='disconnect'>Disconnect()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">Disconnect</span><span class="p">();</span>
 </code></pre>
 <blockquote>
-<p>Disconnect returns true or false depending of whether a disconnection attempt has been successfully initiated.</p>
+<p>Returns a <code>bool</code> that represents if a disconnection attempt has been successfully initiated.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">disconnectionInitiated</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">Disconnect</span><span class="p">();</span>
 </code></pre>
-<p>Calling Disconnect will initiate a disconnection attempt. Bluetooth connection is asynchronous and requires a listener for the <a href="#disconnection-events">OnDisconnected</a> callback or call to the synchronous <a href="#isdisconnected">IsDisconnected</a> function to check whether the connection attempt was successful.</p>
+<p>Initiates a disconnection attempt. Bluetooth connection is asynchronous and requires a listener for the <code><a href="#disconnection-events">OnDisconnected</a></code> callback or call to the synchronous <code><a href="#isdisconnected">IsDisconnected</a></code> function to check whether the connection attempt was successful.</p>
 <h3 id='return-values-2'>Return Values</h3>
 <table><thead>
 <tr>
@@ -504,22 +496,22 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </tr>
 </thead><tbody>
 <tr>
-<td>true</td>
+<td><code>true</code></td>
 <td>Successfully triggered disconnection attempt</td>
 </tr>
 <tr>
-<td>false</td>
+<td></code>false</code></td>
 <td>Failed to trigger disconnection attempt</td>
 </tr>
 </tbody></table>
 <h1 id='device-info'>Device Info</h1><h2 id='isinitialized'>IsInitialized()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">IsInitialized</span><span class="p">();</span>
 </code></pre>
 <blockquote>
-<p>IsInitialized returns true or false whether a Bluetooth Device have been set or not.</p>
+<p>Returns <code>true</code> if the <code>GripablePlay</code> object has been initialized with a Bluetooth Device.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">gripableIsInitialized</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">IsInitialized</span><span class="p">();</span>
 </code></pre>
-<p>IsInitialized returns true or false whether a the Gripable Play has been initialised with a Bluetooth Device or not, which can be done through the <a href="#setbluetoothdevice">SetBluetoothDevice</a> function. This can often be useful as most of the operations on the Gripale Play can only be executed while the Gripable Play is correctly initialised.</p>
+<p>Returns a <code>bool</code> that represents if the <code>GripablePlay</code> object has been initialized with a Bluetooth Device.</p>
 <h3 id='return-values-3'>Return Values</h3>
 <table><thead>
 <tr>
@@ -528,11 +520,11 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </tr>
 </thead><tbody>
 <tr>
-<td>true</td>
+<td><code>true</code></td>
 <td>The device is initialised</td>
 </tr>
 <tr>
-<td>false</td>
+<td><code>false</code></td>
 <td>The device is not initialised</td>
 </tr>
 </tbody></table>
@@ -548,11 +540,11 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 <span class="p">}</span>
 </code></pre>
 <blockquote>
-<p>GetDeviceInfo returns an object containing all the device information.</p>
+<p>Returns an object containing all the device information.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="n">DeviceInfo</span> <span class="n">deviceInfo</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">GetDeviceInfo</span><span class="p">();</span>
 </code></pre>
-<p>GetDeviceInfo returns a DeviceInfo object, which contains useful information about the connected device, such as manufacturer, device model or firmware version.</p>
+<p>Returns a <code>DeviceInfo</code> object, which contains useful information about the connected device, such as manufacturer, device model or firmware version.</p>
 <h3 id='return-values-4'>Return Values</h3>
 <table><thead>
 <tr>
@@ -561,22 +553,22 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </tr>
 </thead><tbody>
 <tr>
-<td>deviceInfo</td>
-<td>Returns an object containing the device information</td>
+<td><code>DeviceInfo</code></td>
+<td>Object containing the device information</td>
 </tr>
 <tr>
-<td>empty DeviceInfo</td>
-<td>Returns an empty object if the device is not initialised</td>
+<td>empty <code>DeviceInfo</code></td>
+<td>Empty object if the device is not initialized</td>
 </tr>
 </tbody></table>
 <h2 id='getmacaddress'>GetMacAddress()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">string</span> <span class="nf">GetMacAddress</span><span class="p">();</span>
 </code></pre>
 <blockquote>
-<p>GetMacAddress returns the MAC address of Bluetooth Device.</p>
+<p>Returns the MAC address of Bluetooth Device.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="kt">string</span> <span class="n">macAddress</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">GetMacAddress</span><span class="p">();</span>
 </code></pre>
-<p>GetMacAddress returns the associated MAC address of the currently set Bluetooth Device.</p>
+<p>Returns the associated MAC address of the currently set Bluetooth Device.</p>
 <h3 id='return-values-5'>Return Values</h3>
 <table><thead>
 <tr>
@@ -585,22 +577,22 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </tr>
 </thead><tbody>
 <tr>
-<td>macAddress</td>
-<td>Returns a string containing the MAC address of the current Bluetooth Device</td>
+<td><code>macAddress</code></td>
+<td>String containing the MAC address of the current Bluetooth Device</td>
 </tr>
 <tr>
-<td>null</td>
-<td>Returns null if the device is not initialised</td>
+<td><code>null</code></td>
+<td>The device is not initialized</td>
 </tr>
 </tbody></table>
 <h2 id='getconnectionstatus'>GetConnectionStatus()</h2><pre class="highlight csharp tab-csharp"><code><span class="n">ConnectionStatus</span> <span class="nf">GetConnectionStatus</span><span class="p">();</span>
 </code></pre>
 <blockquote>
-<p>GetConnectionStatus returns the current connection status of the device.</p>
+<p>Returns the current connection status of the device.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="n">ConnectionStatus</span> <span class="n">status</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">GetConnectionStatus</span><span class="p">();</span>
 </code></pre>
-<p>GetConnectionStatus returns an enum that represents the current connection status of the device. This can be one of the following values: CONNECTING, CONNECTED, DISCONNECTING or DISCONECTED.</p>
+<p>Returns an <code>enum</code> that represents the current connection status of the device as one of the following values: <code>CONNECTED</code>, <code>CONNECTING</code>, <code>DISCONNECTED</code> and <code>DISCONNECTING</code>.</p>
 <h3 id='return-values-6'>Return Values</h3>
 <table><thead>
 <tr>
@@ -609,30 +601,30 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </tr>
 </thead><tbody>
 <tr>
-<td>ConnectionStatus.CONNECTING</td>
+<td><code>ConnectionStatus.CONNECTING</code></td>
 <td>The device is in the middle of a connection attempt</td>
 </tr>
 <tr>
-<td>ConnectionStatus.CONNECTED</td>
+<td><code>ConnectionStatus.CONNECTED</code></td>
 <td>The device is connected</td>
 </tr>
 <tr>
-<td>ConnectionStatus.DISCONNECTING</td>
+<td><code>ConnectionStatus.DISCONNECTING</code></td>
 <td>The device is in the middle of a disconnection attempt</td>
 </tr>
 <tr>
-<td>ConnectionStatus.DISCONNECTED</td>
+<td><code>ConnectionStatus.DISCONNECTED</code></td>
 <td>The device is disconnected or not initialised</td>
 </tr>
 </tbody></table>
 <h2 id='isconnected'>IsConnected()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">IsConnected</span><span class="p">();</span>
 </code></pre>
 <blockquote>
-<p>IsConnected returns true or false whether the device is connected or not.</p>
+<p>Returns <code>true</code> if the device is connected.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">isConnected</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">IsConnected</span><span class="p">();</span>
 </code></pre>
-<p>IsConnected returns true or false whether the device is connected or not. This is equivalent of checking if the <a href="#getconnectionstatus">connection status</a> is CONNECTED.</p>
+<p>Returns a <code>bool</code> that represents the device&#39;s current connected state. This is equivalent to checking if the <code><a href="#getconnectionstatus">ConnectionStatus</a></code> is <code>CONNECTED</code>.</p>
 <h3 id='return-values-7'>Return Values</h3>
 <table><thead>
 <tr>
@@ -641,22 +633,22 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </tr>
 </thead><tbody>
 <tr>
-<td>true</td>
+<td><code>true</code></td>
 <td>The device is connected</td>
 </tr>
 <tr>
-<td>false</td>
+<td><code>false</code></td>
 <td>The device is connecting, disconnecting, disconected or not initialised</td>
 </tr>
 </tbody></table>
 <h2 id='isdisconnected'>IsDisconnected()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">IsDisconnected</span><span class="p">();</span>
 </code></pre>
 <blockquote>
-<p>IsDisconnected returns true or false whether the device is disconnected or not.</p>
+<p>Returns <code>true</code> if the device is disconnected.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">isDisconnected</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">IsDisconnected</span><span class="p">();</span>
 </code></pre>
-<p>IsDisconnected returns true or false whether the device is disconnected or not. This is equivalent of checking if the <a href="#getconnectionstatus">connection status</a> is DISCONNECTED.</p>
+<p>Returns a <code>bool</code> that represents the device&#39;s current disconnected state. This is equivalent to checking if the <a href="#getconnectionstatus">ConnectionStatus</a> is <code>DISCONECTED</code>.</p>
 <h3 id='return-values-8'>Return Values</h3>
 <table><thead>
 <tr>
@@ -665,24 +657,24 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </tr>
 </thead><tbody>
 <tr>
-<td>true</td>
+<td><code>true</code></td>
 <td>The device is disconnected or not initialised</td>
 </tr>
 <tr>
-<td>false</td>
+<td><code>false</code></td>
 <td>The device is connecting, connected or disconnecting</td>
 </tr>
 </tbody></table>
 <h1 id='grip-data'>Grip Data</h1>
-<p>Grip Data contains the sensor information from squeezing the Gripable Play.</p>
+<p><code>GripData</code> contains the sensor information from squeezing the Gripable Play device.</p>
 <h2 id='subscribetogripdata'>SubscribeToGripData()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">SubscribeToGripData</span><span class="p">();</span>
 </code></pre>
 <blockquote>
-<p>SubscribeToGripData attempts to subscribe to the device grip data, returns true if successful.</p>
+<p>Attempts to subscribe to the device grip data, returns <code>true</code> if successful.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">subscriptionSuccessful</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">SubscribeToGripData</span><span class="p">();</span>
 </code></pre>
-<p>SubscribeToGripData attempts to subscribe to the device grip data. It returns true if the subscription was successful.</p>
+<p>Attempts to subscribe to the device grip data. It returns <code>true</code> if the subscription was successful.</p>
 <h3 id='return-values-9'>Return Values</h3>
 <table><thead>
 <tr>
@@ -691,22 +683,22 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </tr>
 </thead><tbody>
 <tr>
-<td>true</td>
+<td><code>true</code></td>
 <td>The subscription was successful</td>
 </tr>
 <tr>
-<td>false</td>
+<td><code>false</code></td>
 <td>The subscription failed</td>
 </tr>
 </tbody></table>
 <h2 id='unsubscribefromgripdata'>UnsubscribeFromGripData()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">UnsubscribeFromGripData</span><span class="p">();</span>
 </code></pre>
 <blockquote>
-<p>UnsubscribeFromGripData attempts to unsubscribe from the device grip data, returns true if successful.</p>
+<p>Attempts to unsubscribe from the device grip data, returns <code>true</code> if successful.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">unsubscriptionSuccessful</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">UnsubscribeFromGripData</span><span class="p">();</span>
 </code></pre>
-<p>UnsubscribeFromGripData attempts to unsubscribe from the device grip data. It returns true if the unsubscription was successful.</p>
+<p>Attempts to unsubscribe from the device grip data. It returns <code>true</code> if the unsubscription was successful.</p>
 <h3 id='return-values-10'>Return Values</h3>
 <table><thead>
 <tr>
@@ -715,22 +707,22 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </tr>
 </thead><tbody>
 <tr>
-<td>true</td>
+<td><code>true</code></td>
 <td>The unsubscription was successful</td>
 </tr>
 <tr>
-<td>false</td>
+<td><code>false</code></td>
 <td>The unsubscription failed</td>
 </tr>
 </tbody></table>
 <h2 id='issubscribedtogripdata'>IsSubscribedToGripData()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">IsSubscribedToGripData</span><span class="p">();</span>
 </code></pre>
 <blockquote>
-<p>IsSubscribedToGripData returns true or false whether the device is subscribed to grip data or not.</p>
+<p>Returns <code>true</code> if the device is subscribed to grip data.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">isSubscribed</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">IsSubscribedToGripData</span><span class="p">();</span>
 </code></pre>
-<p>IsSubscribedToGripData returns true or false whether the device is subscribed to grip data or not.</p>
+<p>Returns a <code>bool</code> that represents if the device is subscribed to grip data.</p>
 <h3 id='return-values-11'>Return Values</h3>
 <table><thead>
 <tr>
@@ -739,11 +731,11 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </tr>
 </thead><tbody>
 <tr>
-<td>true</td>
+<td><code>true</code></td>
 <td>The device is subscribed to Grip Data</td>
 </tr>
 <tr>
-<td>false</td>
+<td><code>false</code></td>
 <td>The device is not subscribed to Grip Data or not initialised</td>
 </tr>
 </tbody></table>
@@ -757,11 +749,11 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 <span class="p">}</span>
 </code></pre>
 <blockquote>
-<p>GetGripData returns an object containing data from the grip sensor.</p>
+<p>Returns an object containing data from the grip sensor.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="n">GripData</span> <span class="n">gripData</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">GetGripData</span><span class="p">();</span>
 </code></pre>
-<p>GetGripData returns a GripData object containing data from the grip sensor, including the grip force and a timestamp.</p>
+<p>Returns a <code>GripData</code> object containing data from the grip sensor, including the grip force and timestamp.</p>
 <h3 id='return-values-12'>Return Values</h3>
 <table><thead>
 <tr>
@@ -770,12 +762,12 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </tr>
 </thead><tbody>
 <tr>
-<td>gripData</td>
-<td>Returns an object containg the grip data</td>
+<td><code>GripData</code></td>
+<td>Object containing the grip data</td>
 </tr>
 <tr>
-<td>empty GripData</td>
-<td>Returns an empty GripData object if not subscribed or not initialised</td>
+<td>empty </code>GripData</code></td>
+<td>Empty GripData object if not subscribed or not initialised</td>
 </tr>
 </tbody></table>
 
@@ -783,11 +775,11 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 <h2 id='getgripforce'>GetGripForce()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">float</span> <span class="nf">GetGripForce</span><span class="p">();</span>
 </code></pre>
 <blockquote>
-<p>GetGripForce returns a float value for Grip Force in Kg.</p>
+<p>Returns a <code>float</code> value for Grip Force in Kg.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="kt">float</span> <span class="n">gripForce</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">GetGripForce</span><span class="p">();</span>
 </code></pre>
-<p>GetGripForce returns the force in Kg that is currently being applied to the Gripable. This is equivalent to retrieving the force attribute from a <a href="#getgripdata">GripData</a> object. It is sampled at 50Hz.</p>
+<p>Returns the force in Kg that is currently being applied to the Gripable Play device. This is equivalent to retrieving the force attribute from a <code><a href="#getgripdata">GripData</a></code> object. It is sampled at 50Hz.</p>
 <h3 id='return-values-13'>Return Values</h3>
 <table><thead>
 <tr>
@@ -798,28 +790,28 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </tr>
 </thead><tbody>
 <tr>
-<td>gripForce</td>
-<td>-129f</td>
-<td>128f</td>
+<td><code>gripForce</code></td>
+<td><code>-129f</code></td>
+<td><code>128f</code></td>
 <td>Returns the Grip Force in Kg as a float</td>
 </tr>
 <tr>
-<td>0f</td>
+<td><code>0f</code></td>
 <td></td>
 <td></td>
 <td>Returns 0 if the device is not subscribed or not initialised</td>
 </tr>
 </tbody></table>
 <h1 id='world-frame-quaternion'>World Frame Quaternion</h1>
-<p>World frame Quaternion data contains the sensor information about the orientation of the device in 3D space.</p>
+<p>World Frame Quaternion data contains the sensor information about the orientation of the device in 3D space.</p>
 <h2 id='subscribetoworldframequaternion'>SubscribeToWorldFrameQuaternion()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">SubscribeToWorldFrameQuaternion</span><span class="p">();</span>
 </code></pre>
 <blockquote>
-<p>SubscribeToWorldFrameQuaternion attempts to subscribe to the device world frame quaternion data, returns true if successful.</p>
+<p>Attempts to subscribe to the device world frame quaternion data, returns <code>true</code> if successful.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">subscriptionSuccessful</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">SubscribeToWorldFrameQuaternion</span><span class="p">();</span>
 </code></pre>
-<p>SubscribeToWorldFrameQuaternion attempts to subscribe to the device world frame quaternion data. It returns true if the subscription was successful.</p>
+<p>Attempts to subscribe to the device world frame quaternion data. It returns <code>true</code> if the subscription was successful.</p>
 <h3 id='return-values-14'>Return Values</h3>
 <table><thead>
 <tr>
@@ -828,22 +820,22 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </tr>
 </thead><tbody>
 <tr>
-<td>true</td>
+<td><code>true</code></td>
 <td>The subscription was successful</td>
 </tr>
 <tr>
-<td>false</td>
+<td><code>false</code></td>
 <td>The subscription failed</td>
 </tr>
 </tbody></table>
 <h2 id='unsubscribefromworldframequaternion'>UnsubscribeFromWorldFrameQuaternion()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">UnsubscribeFromWorldFrameQuaternion</span><span class="p">();</span>
 </code></pre>
 <blockquote>
-<p>UnsubscribeFromWorldFrameQuaternion attempts to unsubscribe from the device world frame quaternion data, returns true if successful.</p>
+<p>Attempts to unsubscribe from the device world frame quaternion data, returns <code>true</code> if successful.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">unsubscriptionSuccessful</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">UnsubscribeFromWorldFrameQuaternion</span><span class="p">();</span>
 </code></pre>
-<p>UnsubscribeFromWorldFrameQuaternion attempts to unsubscribe from the device world frame quaternion data. It returns true if the unsubscription was successful.</p>
+<p>Attempts to unsubscribe from the device world frame quaternion data. It returns <code>true</code> if the unsubscription was successful.</p>
 <h3 id='return-values-15'>Return Values</h3>
 <table><thead>
 <tr>
@@ -852,22 +844,22 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </tr>
 </thead><tbody>
 <tr>
-<td>true</td>
+<td><code>true</code></td>
 <td>The unsubscription was successful</td>
 </tr>
 <tr>
-<td>false</td>
+<td><code>false</code></td>
 <td>The unsubscription failed</td>
 </tr>
 </tbody></table>
 <h2 id='issubscribedtoworldframequaternion'>IsSubscribedToWorldFrameQuaternion()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">IsSubscribedToWorldFrameQuaternion</span><span class="p">();</span>
 </code></pre>
 <blockquote>
-<p>IsSubscribedToWorldFrameQuaternion returns true or false whether the device is subscribed to world frame quaternion data or not.</p>
+<p>Returns <code>true</code> if the device is subscribed to world frame quaternion data.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">isSubscribed</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">IsSubscribedToWorldFrameQuaternion</span><span class="p">();</span>
 </code></pre>
-<p>IsSubscribedToWorldFrameQuaternion returns true or false whether the device is subscribed to world frame quaternion data or not.</p>
+<p>Returns a <code>bool</code> that represents if the device is subscribed to world frame quaternion data.</p>
 <h3 id='return-values-16'>Return Values</h3>
 <table><thead>
 <tr>
@@ -876,22 +868,22 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </tr>
 </thead><tbody>
 <tr>
-<td>true</td>
+<td><code>true</code></td>
 <td>The device is subscribed to world frame Quaternion</td>
 </tr>
 <tr>
-<td>false</td>
+<td><code>false</code></td>
 <td>The device is not subscribed to world frame Quaternion or not initialised</td>
 </tr>
 </tbody></table>
 <h2 id='getworldframequaternion'>GetWorldFrameQuaternion()</h2><pre class="highlight csharp tab-csharp"><code><span class="n">Quaternion</span> <span class="nf">GetWorldFrameQuaternion</span><span class="p">();</span>
 </code></pre>
 <blockquote>
-<p>GetWorldFrameQuaternion returns a Quaternion object representing the orientation of the device in the world frame.</p>
+<p>Returns a <code>Quaternion</code> object representing the orientation of the device in the world frame.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="n">Quaternion</span> <span class="n">deviceQuaternion</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">GetWorldFrameQuaternion</span><span class="p">();</span>
 </code></pre>
-<p>GetWorldFrameQuaternion returns a <a href="https://docs.unity3d.com/ScriptReference/Quaternion.html">Quaternion</a> object representing the orientation of the device in the world frame.</p>
+<p>Returns a <code><a href="https://docs.unity3d.com/ScriptReference/Quaternion.html">Quaternion</a></code> object representing the orientation of the device in the world frame.</p>
 <h3 id='return-values-17'>Return Values</h3>
 <table><thead>
 <tr>
@@ -900,24 +892,24 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </tr>
 </thead><tbody>
 <tr>
-<td>deviceQuaternion</td>
+<td><code>deviceQuaternion</code></td>
 <td>The device orientation in the world frame expressed through a <a href="https://docs.unity3d.com/ScriptReference/Quaternion.html">Quaternion</a> object</td>
 </tr>
 <tr>
-<td><a href="https://docs.unity3d.com/ScriptReference/Quaternion-identity.html">Quaternion.identity</a></td>
-<td>Returns the identity <a href="https://docs.unity3d.com/ScriptReference/Quaternion.html">Quaternion</a> (x,y,z=0, w=1) if the device is not subscribed or not initialised</td>
+<td><code><a href="https://docs.unity3d.com/ScriptReference/Quaternion-identity.html">Quaternion.identity</a></code></td>
+<td>Returns the identity <code><a href="https://docs.unity3d.com/ScriptReference/Quaternion.html">Quaternion</a> (x,y,z=0, w=1)</code> if the device is not subscribed or not initialised</td>
 </tr>
 </tbody></table>
 <h1 id='sensor-frame-rpy'>Sensor Frame RPY</h1>
-<p>Sensor frame Roll, Pitch and Yaw contain the sensor information about the orientation of the device relative to the sensors frame. <a href="https://en.wikipedia.org/wiki/Aircraft_principal_axes">Roll, Pitch and Yaw</a> represent, respectively, rotations of the device around its X, Y and Z axis, as shown in this <a href="#sensor-frame">picture</a>.</p>
+<p>Sensor frame Roll, Pitch and Yaw contain the sensor information about the orientation of the device relative to the sensors frame. <a href="https://en.wikipedia.org/wiki/Aircraft_principal_axes">Roll, Pitch and Yaw</a> represent rotations of the device around its X, Y and Z axis, respectively, as shown in this <a href="#sensor-frame">picture</a>.</p>
 <h2 id='subscribetosensorframerpy'>SubscribeToSensorFrameRPY()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">SubscribeToSensorFrameRPY</span><span class="p">();</span>
 </code></pre>
 <blockquote>
-<p>SubscribeToSensorFrameRPY attempts to subscribe to the device sensor frame RPY data, returns true if successful.</p>
+<p>Attempts to subscribe to the device sensor frame RPY data, returns <code>true</code> if successful.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">subscriptionSuccessful</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">SubscribeToSensorFrameRPY</span><span class="p">());</span>
 </code></pre>
-<p>SubscribeToSensorFrameRPY attempts to subscribe to the device sensor frame RPY data. It returns true if the subscription was successful.</p>
+<p>Attempts to subscribe to the device sensor frame RPY data. It returns <code>true</code> if the subscription was successful.</p>
 <h3 id='return-values-18'>Return Values</h3>
 <table><thead>
 <tr>
@@ -926,22 +918,22 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </tr>
 </thead><tbody>
 <tr>
-<td>true</td>
+<td><code>true</code></td>
 <td>The subscription was successful</td>
 </tr>
 <tr>
-<td>false</td>
+<td><code>false</code></td>
 <td>The subscription failed</td>
 </tr>
 </tbody></table>
 <h2 id='unsubscribefromsensorframerpy'>UnsubscribeFromSensorFrameRPY()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">UnsubscribeFromSensorFrameRPY</span><span class="p">();</span>
 </code></pre>
 <blockquote>
-<p>UnsubscribeFromSensorFrameRPY attempts to unsubscribe from the device sensor frame RPY data, returns true if successful.</p>
+<p>Attempts to unsubscribe from the device sensor frame RPY data, returns <code>true</code> if successful.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">unsubscriptionSuccessful</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">UnsubscribeFromSensorFrameRPY</span><span class="p">();</span>
 </code></pre>
-<p>UnsubscribeFromSensorFrameRPY attempts to unsubscribe from the device sensor frame RPY data. It returns true if the unsubscription was successful.</p>
+<p>Attempts to unsubscribe from the device sensor frame RPY data. It returns <code>true</code> if the unsubscription was successful.</p>
 <h3 id='return-values-19'>Return Values</h3>
 <table><thead>
 <tr>
@@ -950,22 +942,22 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </tr>
 </thead><tbody>
 <tr>
-<td>true</td>
+<td><code>true</code></td>
 <td>The unsubscription was successful</td>
 </tr>
 <tr>
-<td>false</td>
+<td><code>false</code></td>
 <td>The unsubscription failed</td>
 </tr>
 </tbody></table>
 <h2 id='issubscribedtosensorframerpy'>IsSubscribedToSensorFrameRPY()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">IsSubscribedToSensorFrameRPY</span><span class="p">();</span>
 </code></pre>
 <blockquote>
-<p>IsSubscribedToSensorFrameRPY returns true or false whether the device is subscribed to sensor frame RPY data or not.</p>
+<p>Returns <code>true</code> if the device is subscribed to sensor frame RPY data.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">isSubscribed</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">IsSubscribedToSensorFrameRPY</span><span class="p">();</span>
 </code></pre>
-<p>IsSubscribedToSensorFrameRPY returns true or false whether the device is subscribed to world sensor frame RPY data or not.</p>
+<p>Returns a <code>bool</code> that represents if the device is subscribed to world sensor frame RPY data.</p>
 <h3 id='return-values-20'>Return Values</h3>
 <table><thead>
 <tr>
@@ -974,22 +966,22 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </tr>
 </thead><tbody>
 <tr>
-<td>true</td>
+<td><code>true</code></td>
 <td>The device is subscribed to sensor frame RPY</td>
 </tr>
 <tr>
-<td>false</td>
-<td>The device is not subscribed to sensor frame RPY or not initialised</td>
+<td><code>false</code></td>
+<td>The device is not subscribed to sensor frame RPY or not initialized</td>
 </tr>
 </tbody></table>
 <h2 id='getsensorframerpy'>GetSensorFrameRpy()</h2><pre class="highlight csharp tab-csharp"><code><span class="n">Vector3</span> <span class="nf">GetSensorFrameRpy</span><span class="p">();</span>
 </code></pre>
 <blockquote>
-<p>GetSensorFrameRpy returns a Vector3 object representing the RPY of the device.</p>
+<p>Returns a <code>Vector3</code> object representing the RPY of the device.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="n">Vector3</span> <span class="n">rollPitchYaw</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">GetSensorFrameRpy</span><span class="p">();</span>
 </code></pre>
-<p>GetSensorFrameRpy returns a <a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a> object representing the current Roll, Pitch and Yaw of the device.</p>
+<p>Returns a <code><a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a></code> object representing the current Roll, Pitch and Yaw of the device.</p>
 <h3 id='return-values-21'>Return Values</h3>
 <table><thead>
 <tr>
@@ -998,12 +990,12 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </tr>
 </thead><tbody>
 <tr>
-<td>rollPitchYaw</td>
-<td>The device roll, pitch and yaw expressed through a <a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a> object</td>
+<td><code>rollPitchYaw</code></td>
+<td>The device roll, pitch and yaw expressed through a <code><a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a></code> object</td>
 </tr>
 <tr>
-<td><a href="https://docs.unity3d.com/ScriptReference/Vector3-zero.html">Vector3.zero</a></td>
-<td>Returns a zeroed <a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a> if the device is not subscribed or not initialised</td>
+<td><code><a href="https://docs.unity3d.com/ScriptReference/Vector3-zero.html">Vector3.zero</a></code></td>
+<td>Returns a zeroed <code><a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a></code> if the device is not subscribed or not initialised</td>
 </tr>
 </tbody></table>
 <h1 id='motion-data'>Motion Data</h1>
@@ -1011,11 +1003,11 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 <h2 id='subscribetomotiondata'>SubscribeToMotionData()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">SubscribeToMotionData</span><span class="p">();</span>
 </code></pre>
 <blockquote>
-<p>SubscribeToMotionData attempts to subscribe to the device motion data, returns true if successful.</p>
+<p>Attempts to subscribe to the device motion data, returns <code>true</code> if successful.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">subscriptionSuccessful</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">SubscribeToMotionData</span><span class="p">();</span>
 </code></pre>
-<p>SubscribeToMotionData attempts to subscribe to the device motion data. It returns true if the subscription was successful.</p>
+<p>Attempts to subscribe to the device motion data. It returns <code>true</code> if the subscription was successful.</p>
 <h3 id='return-values-22'>Return Values</h3>
 <table><thead>
 <tr>
@@ -1024,22 +1016,22 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </tr>
 </thead><tbody>
 <tr>
-<td>true</td>
+<td><code>true</code></td>
 <td>The subscription was successful</td>
 </tr>
 <tr>
-<td>false</td>
+<td><code>false</code></td>
 <td>The subscription failed</td>
 </tr>
 </tbody></table>
 <h2 id='unsubscribefrommotiondata'>UnsubscribeFromMotionData()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">UnsubscribeFromMotionData</span><span class="p">();</span>
 </code></pre>
 <blockquote>
-<p>UnsubscribeFromMotionData attempts to unsubscribe from the device motion data, returns true if successful.</p>
+<p>Attempts to unsubscribe from the device motion data, returns <code>true</code> if successful.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">unsubscriptionSuccessful</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">UnsubscribeFromMotionData</span><span class="p">();</span>
 </code></pre>
-<p>UnsubscribeFromMotionData attempts to unsubscribe from the device motion data. It returns true if the unsubscription was successful.</p>
+<p>Attempts to unsubscribe from the device motion data. It returns <code>true</code> if the unsubscription was successful.</p>
 <h3 id='return-values-23'>Return Values</h3>
 <table><thead>
 <tr>
@@ -1048,22 +1040,22 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </tr>
 </thead><tbody>
 <tr>
-<td>true</td>
+<td><code>true</code></td>
 <td>The unsubscription was successful</td>
 </tr>
 <tr>
-<td>false</td>
+<td><code>false</code></td>
 <td>The unsubscription failed</td>
 </tr>
 </tbody></table>
 <h2 id='issubscribedtomotiondata'>IsSubscribedToMotionData()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">IsSubscribedToMotionData</span><span class="p">();</span>
 </code></pre>
 <blockquote>
-<p>IsSubscribedToMotionData returns true or false whether the device is subscribed to motion data or not.</p>
+<p>Returns <code>true</code> if the device is subscribed to motion data.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">isSubscribed</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">IsSubscribedToMotionData</span><span class="p">();</span>
 </code></pre>
-<p>IsSubscribedToMotionData returns true or false whether the device is subscribed to motion data or not.</p>
+<p>Returns a <code>bool</code> that represents if the device is subscribed to motion data.</p>
 <h3 id='return-values-24'>Return Values</h3>
 <table><thead>
 <tr>
@@ -1072,22 +1064,22 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </tr>
 </thead><tbody>
 <tr>
-<td>true</td>
+<td><code>true</code></td>
 <td>The device is subscribed to Motion Data</td>
 </tr>
 <tr>
-<td>false</td>
+<td><code>false</code></td>
 <td>The device is not subscribed to Motion Data or not initialised</td>
 </tr>
 </tbody></table>
 <h2 id='getlinearacceleration'>GetLinearAcceleration()</h2><pre class="highlight csharp tab-csharp"><code><span class="n">Vector3</span> <span class="nf">GetLinearAcceleration</span><span class="p">();</span>
 </code></pre>
 <blockquote>
-<p>GetLinearAcceleration returns a Vector3 object representing the linear acceleration of the device.</p>
+<p>Returns a <code>Vector3</code> object representing the linear acceleration of the device.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="n">Vector3</span> <span class="n">linearAcceleration</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">GetLinearAcceleration</span><span class="p">();</span>
 </code></pre>
-<p>GetLinearAcceleration returns a <a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a> object representing the linear acceleration of the device alongside its axes, expressed in G.</p>
+<p>Returns a <code><a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a></code> object representing the linear acceleration of the device alongside its axes, expressed in G.</p>
 <h3 id='return-values-25'>Return Values</h3>
 <table><thead>
 <tr>
@@ -1098,26 +1090,26 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </tr>
 </thead><tbody>
 <tr>
-<td>linearAcceleration</td>
-<td>-16f</td>
-<td>16f</td>
-<td>A <a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a> representing the linear acceleration of the device, expressed in G</td>
+<td><code>linearAcceleration</code></td>
+<td><code>-16f</code></td>
+<td><code>16f</code></td>
+<td>A <code><a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a></code> representing the linear acceleration of the device, expressed in G</td>
 </tr>
 <tr>
-<td><a href="https://docs.unity3d.com/ScriptReference/Vector3-zero.html">Vector3.zero</a></td>
+<td><code><a href="https://docs.unity3d.com/ScriptReference/Vector3-zero.html">Vector3.zero</a></code></td>
 <td></td>
 <td></td>
-<td>Returns a zeroed <a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a> if the device is not subscribed or not initialised</td>
+<td>Returns a zeroed <code><a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a></code> if the device is not subscribed or not initialised</td>
 </tr>
 </tbody></table>
 <h2 id='getangularvelocity'>GetAngularVelocity()</h2><pre class="highlight csharp tab-csharp"><code><span class="n">Vector3</span> <span class="nf">GetAngularVelocity</span><span class="p">();</span>
 </code></pre>
 <blockquote>
-<p>GetAngularVelocity returns a Vector3 object representing the angular velocity of the device.</p>
+<p>Returns a <code>Vector3</code> object representing the angular velocity of the device.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="n">Vector3</span> <span class="n">angularVelocity</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">GetAngularVelocity</span><span class="p">();</span>
 </code></pre>
-<p>GetAngularVelocity returns a <a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a> object representing the angular velocity of the device alongside its axes, expressed in degrees/sec.</p>
+<p>Returns a <code><a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a></code> object representing the angular velocity of the device alongside its axes, expressed in degrees/sec.</p>
 <h3 id='return-values-26'>Return Values</h3>
 <table><thead>
 <tr>
@@ -1128,26 +1120,26 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </tr>
 </thead><tbody>
 <tr>
-<td>angularVelocity</td>
-<td>-200f</td>
-<td>200f</td>
-<td>A <a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a> representing the angular velocity of the device, expressed in degrees/sec</td>
+<td><code>angularVelocity</code></td>
+<td><code>-200f</code></td>
+<td><code>200f</code></td>
+<td>A <code><a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a></code> representing the angular velocity of the device, expressed in degrees/sec</td>
 </tr>
 <tr>
-<td><a href="https://docs.unity3d.com/ScriptReference/Vector3-zero.html">Vector3.zero</a></td>
+<td><code><a href="https://docs.unity3d.com/ScriptReference/Vector3-zero.html">Vector3.zero</a></code></td>
 <td></td>
 <td></td>
-<td>Returns a zeroed <a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a> if the device is not subscribed or not initialised</td>
+<td>Returns a zeroed <code><a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a></code> if the device is not subscribed or not initialized</td>
 </tr>
 </tbody></table>
 <h2 id='getmagneticheading'>GetMagneticHeading()</h2><pre class="highlight csharp tab-csharp"><code><span class="n">Vector3</span> <span class="nf">GetMagneticHeading</span><span class="p">();</span>
 </code></pre>
 <blockquote>
-<p>GetMagneticHeading returns a Vector3 object representing the magnetic heading of the device.</p>
+<p>Returns a <code>Vector3</code> object representing the magnetic heading of the device.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="n">Vector3</span> <span class="n">magneticHeading</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">GetMagneticHeading</span><span class="p">();</span>
 </code></pre>
-<p>GetMagneticHeading returns a <a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a> object representing the magnetic heading of the device alongside its axes, expressed in microteslas.</p>
+<p>Returns a <code><a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a></code> object representing the magnetic heading of the device alongside its axes, expressed in microteslas.</p>
 <h3 id='return-values-27'>Return Values</h3>
 <table><thead>
 <tr>
@@ -1158,21 +1150,21 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </tr>
 </thead><tbody>
 <tr>
-<td>magneticHeading</td>
-<td>-4912f</td>
-<td>4912f</td>
-<td>A <a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a> representing the magnetic heading of the device, expressed in microteslas</td>
+<td><code>magneticHeading</code></td>
+<td><code>-4912f</code></td>
+<td><code>4912f</code></td>
+<td>A <code><a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a> representing the magnetic heading of the device, expressed in microteslas</td>
 </tr>
 <tr>
-<td><a href="https://docs.unity3d.com/ScriptReference/Vector3-zero.html">Vector3.zero</a></td>
+<td><code><a href="https://docs.unity3d.com/ScriptReference/Vector3-zero.html">Vector3.zero</a></code></td>
 <td></td>
 <td></td>
-<td>Returns a zeroed <a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a> if the device is not subscribed or not initialised</td>
+<td>Returns a zeroed <code><a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a></code> if the device is not subscribed or not initialised</td>
 </tr>
 </tbody></table>
 <h1 id='connection-events'>Connection Events</h1>
 <blockquote>
-<p>To subscribe a handler to an event, assign a function without arguments that returns void to it</p>
+<p>To subscribe a handler to an event, assign a reference to an encapsulated method which has no parameters and no return value.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="k">class</span> <span class="nc">MyView</span> <span class="p">:</span> <span class="n">MonoBehaviour</span> <span class="p">{</span>
 
@@ -1189,7 +1181,7 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 <span class="p">}</span>
 
 </code></pre>
-<p>Gripable Play has a series of <a href="https://docs.microsoft.com/en-us/dotnet/api/system.action?view=netframework-4.7.2">Action Delegate</a> connection events, which are fired at different stages of the connection process.</p>
+<p><code>GripablePlay</code> has a series of <a href="https://docs.microsoft.com/en-us/dotnet/api/system.action?view=netframework-4.7.2">Action Delegate</a> connection events, which are fired at different stages of the connection process.</p>
 
 <table><thead>
 <tr>
@@ -1198,127 +1190,92 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </tr>
 </thead><tbody>
 <tr>
-<td>OnConnected</td>
+<td><code>OnConnected</code></td>
 <td>Device has been successfully connected and is ready.</td>
 </tr>
 <tr>
-<td>OnDisconnect</td>
+<td><code>OnDisconnect</code></td>
 <td>Device has been fully disconnected.</td>
 </tr>
 <tr>
-<td>OnConnecting</td>
+<td><code>OnConnecting</code></td>
 <td>Device is attempting to connect.</td>
 </tr>
 <tr>
-<td>OnDisconnecting</td>
+<td><code>OnDisconnecting</code></td>
 <td>Device is attempting to disconnect.</td>
 </tr>
 </tbody></table>
 <h1 id='gestures'>Gestures</h1>
 <blockquote>
-<p>To subscribe a handler to an event, assign a function without arguments that returns void to it</p>
+<p>To subscribe a handler to an event, assign a reference to an encapsulated method which has no parameters and no return value.
+```csharp
+class MyView : MonoBehaviour {</p>
 </blockquote>
-<pre class="highlight csharp tab-csharp"><code><span class="k">class</span> <span class="nc">MyView</span> <span class="p">:</span> <span class="n">MonoBehaviour</span> <span class="p">{</span>
 
-  <span class="k">private</span> <span class="n">GripablePlay</span> <span class="n">_gripablePlay</span><span class="p">;</span>
+<p>private GripablePlay _gripablePlay;</p>
 
-  <span class="nf">Awake</span><span class="p">(){</span>
-    <span class="c1">// make sure you have a reference to your Gripable Play before trying to assign to it</span>
-    <span class="n">_gripablePlay</span><span class="p">.</span><span class="n">OnSqueeze</span> <span class="p">+=</span> <span class="n">DoSomethingWhenTheGripableIsSqueezed</span>  
-    <span class="n">_gripablePlay</span><span class="p">.</span><span class="n">OnRelease</span> <span class="p">+=</span> <span class="n">DoSomethingWhenTheGripableIsReleased</span>  
-  <span class="p">}</span>
+<p>Awake(){
+    // make sure you have a reference to your Gripable Play before trying to assign to it
+    _gripablePlay.OnSqueeze += DoSomethingWhenTheGripableIsSqueezed<br>
+    _gripablePlay.OnRelease += DoSomethingWhenTheGripableIsReleased<br>
+  }</p>
 
-  <span class="k">public</span> <span class="k">void</span> <span class="nf">DoSomethingWhenTheGripableIsSqueezed</span><span class="p">(){</span>
-    <span class="n">Debug</span><span class="p">.</span><span class="nf">Log</span><span class="p">(</span><span class="s">"YAY, the Gripable has been squeezed"</span><span class="p">)</span>
-  <span class="p">}</span>
+<p>public void DoSomethingWhenTheGripableIsSqueezed(){
+    Debug.Log(&quot;YAY, the Gripable has been squeezed&quot;)
+  }</p>
 
-  <span class="k">public</span> <span class="k">void</span> <span class="nf">DoSomethingWhenTheGripableIsReleased</span><span class="p">(){</span>
-    <span class="n">Debug</span><span class="p">.</span><span class="nf">Log</span><span class="p">(</span><span class="s">"YAY, the Gripable has been squeezed"</span><span class="p">)</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<p>public void DoSomethingWhenTheGripableIsReleased(){
+    Debug.Log(&quot;YAY, the Gripable has been squeezed&quot;)
+  }
+}</p>
+<pre class="highlight plaintext"><code>
+ &lt;code&gt;GripablePlay&lt;/code&gt; has a series of [Action Delegate](https://docs.microsoft.com/en-us/dotnet/api/system.action?view=netframework-4.7.2) gesture events, which are triggered when the Gripable detects specific, predefined movements. In particular, these gesture events divide into Force Gestures and Rotational Gestures.
 
+## Force Gestures Callbacks
+
+Force Gestures are triggered when interacting with the finger bar on the Gripable Play, for example when squeezing or releasing the finger bar.
+
+Callback Name | Triggered
+--------- | -------
+&lt;code&gt;OnSqueeze&lt;/code&gt; | When the device is squeezed, more specifically when the Grip Force reading goes from a &lt;code&gt;MIN_THRESHOLD&lt;/code&gt; to a &lt;code&gt;MAX_THRESHOLD&lt;/code&gt; within a given time period.
+&lt;code&gt;OnRelease&lt;/code&gt; | When the device is released, more specifically when the Grip Force reading goes from a &lt;code&gt;MAX_THRESHOLD&lt;/code&gt; to a &lt;code&gt;MIN_THRESHOLD&lt;/code&gt; within a given time period.
+
+## Rotation Gestures Callbacks
+
+Rotation Gestures are triggered when the user rotates the Gripable Play device through two specified angular regions within a specified time threshold. Currently, all regions are defined by two angles around a specific axis in the [sensor frame](#sensor-frame).
+
+Callback Name | Triggered
+--------- | -------
+&lt;code&gt;OnSupination&lt;/code&gt; | When the device is rotated around the X axis in the positive direction. 
+&lt;code&gt;OnPronation&lt;/code&gt; | When the device is rotated around the X axis in the negative direction. 
+&lt;code&gt;OnUlnar&lt;/code&gt; | When the device is rotated around the Y axis in the positive direction. 
+&lt;code&gt;OnRadial&lt;/code&gt; | When the device is rotated around the Y axis in the negative direction. 
+&lt;code&gt;OnExtension&lt;/code&gt; | When the device is rotated around the Z axis in the positive direction. 
+&lt;code&gt;OnFlexion&lt;/code&gt; | When the device is rotated around the Z axis in the negative direction.
+&lt;code&gt;OnNeutralRoll&lt;/code&gt; | When the device's X rotation has returned to its starting position.
+&lt;code&gt;OnNeutralPitch&lt;/code&gt; | When the device's Y rotation has returned to its starting position.
+&lt;code&gt;OnNeutralYaw&lt;/code&gt; | When the device's Z rotation has returned to its starting position.
+
+## Gesture Types
+
+```csharp
+enum GestureType
+{
+    SQUEEZE,
+    RELEASE,
+    FLEXION,
+    EXTENSION,
+    PRONATION,
+    SUPINATION,
+    ULNAR,
+    RADIAL,
+    NEUTRAL_YAW,
+    NEUTRAL_ROLL,
+    NEUTRAL_PITCH
+}
 </code></pre>
-<p>Gripable Play has a series of <a href="https://docs.microsoft.com/en-us/dotnet/api/system.action?view=netframework-4.7.2">Action Delegate</a> gesture events, which are triggered when the Gripable detects specific, predefined movements. In particular, these gesture events divide into Force Gestures and Rotational Gestures.</p>
-<h2 id='force-gestures-callbacks'>Force Gestures Callbacks</h2>
-<p>Force Gestures are triggered when interacting with the fingerbar on the Gripable Play, for example when squeezing or releasing the fingerbar.</p>
-
-<table><thead>
-<tr>
-<th>Callback Name</th>
-<th>Triggered</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>OnSqueeze</td>
-<td>When the device is squeezed, more specifically when the Grip Force reading goes from a MIN_THRESHOLD to a MAX_THRESHOLD within a given time period.</td>
-</tr>
-<tr>
-<td>OnRelease</td>
-<td>When the device is released, more specifically when the Grip Force reading goes from a MAX_THRESHOLD to a MIN_THRESHOLD within a given time period.</td>
-</tr>
-</tbody></table>
-<h2 id='rotation-gestures-callbacks'>Rotation Gestures Callbacks</h2>
-<p>Rotation Gestures are triggered when the user rotates the Gripable Play between two specific angular regions within a specific time threshold. Currently all regions are defined by specifying two angles around a specific axis in the <a href="#sensor-frame">sensor frame</a>.</p>
-
-<table><thead>
-<tr>
-<th>Callback Name</th>
-<th>Triggered</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>OnSupination</td>
-<td>When the device is rotated around the X axis in the positive direction.</td>
-</tr>
-<tr>
-<td>OnPronation</td>
-<td>When the device is rotated around the X axis in the negative direction.</td>
-</tr>
-<tr>
-<td>OnUlnar</td>
-<td>When the device is rotated around the Y axis in the positive direction.</td>
-</tr>
-<tr>
-<td>OnRadial</td>
-<td>When the device is rotated around the Y axis in the negative direction.</td>
-</tr>
-<tr>
-<td>OnExtension</td>
-<td>When the device is rotated around the Z axis in the positive direction.</td>
-</tr>
-<tr>
-<td>OnFlexion</td>
-<td>When the device is rotated around the Z axis in the negative direction.</td>
-</tr>
-<tr>
-<td>OnNeutralRoll</td>
-<td>When the device&#39;s X rotation has returned to its starting position.</td>
-</tr>
-<tr>
-<td>OnNeutralPitch</td>
-<td>When the device&#39;s Y rotation has returned to its starting position.</td>
-</tr>
-<tr>
-<td>OnNeutralYaw</td>
-<td>When the device&#39;s Z rotation has returned to its starting position.</td>
-</tr>
-</tbody></table>
-<h2 id='gesture-types'>Gesture Types</h2><pre class="highlight csharp tab-csharp"><code><span class="k">enum</span> <span class="n">GestureType</span>
-<span class="p">{</span>
-    <span class="n">SQUEEZE</span><span class="p">,</span>
-    <span class="n">RELEASE</span><span class="p">,</span>
-    <span class="n">FLEXION</span><span class="p">,</span>
-    <span class="n">EXTENSION</span><span class="p">,</span>
-    <span class="n">PRONATION</span><span class="p">,</span>
-    <span class="n">SUPINATION</span><span class="p">,</span>
-    <span class="n">ULNAR</span><span class="p">,</span>
-    <span class="n">RADIAL</span><span class="p">,</span>
-    <span class="n">NEUTRAL_YAW</span><span class="p">,</span>
-    <span class="n">NEUTRAL_ROLL</span><span class="p">,</span>
-    <span class="n">NEUTRAL_PITCH</span>
-<span class="p">}</span>
-</code></pre>
-<p>In order to configure gestures you need to speficy the gesture type you want to configure first. The list of available gestures is defined by the GestureType enum, as shown here on the side.</p>
+<p>To configure gestures, the desired gesture type must be specified. The list of available gestures is defined by the <code>GestureType enum</code>.</p>
 <h2 id='configureforcegesture'>ConfigureForceGesture()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">ConfigureForceGesture</span><span class="p">(</span>
   <span class="n">GestureType</span> <span class="n">gestureType</span><span class="p">,</span>
   <span class="kt">float</span> <span class="n">releaseThreshold</span><span class="p">,</span>
@@ -1327,7 +1284,7 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 <span class="p">);</span>
 </code></pre>
 <blockquote>
-<p>ConfigureForceGesture configures the force and time thresholds for the specified force gesture.</p>
+<p>Configures the force and time thresholds for the specified force gesture.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="n">GripablePlay</span> <span class="n">gp</span> <span class="p">=</span> <span class="n">Gripable</span><span class="p">.</span><span class="n">Play1</span><span class="p">;</span>
 <span class="kt">float</span> <span class="n">releaseForce</span> <span class="p">=</span> <span class="m">0.5f</span><span class="p">;</span>
@@ -1341,7 +1298,7 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
   <span class="n">timeThreshold</span>
 <span class="p">);</span>
 </code></pre>
-<p>ConfigureForceGesture configures the force and time thresholds for the specified force gesture. In the example shown on the side, we can see how a squeeze gesture can be configured to be triggered when going from 0.5 Kg to at least 1 Kg of pressure force on the fingerbar within 5 seconds.</p>
+<p>Configures the force and time thresholds for the specified force gesture. In the example, the squeeze gesture is configured to trigger when 0.5 Kg to at least 1 Kg of pressure force is detected on the finger bar, within 5 seconds.</p>
 <h3 id='query-parameters-and-return-values'>Query Parameters and Return Values</h3>
 <table><thead>
 <tr>
@@ -1351,14 +1308,14 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </tr>
 </thead><tbody>
 <tr>
-<td>gestureType, releaseThreshold, squeezeThreshold, timeThreshold</td>
-<td>true</td>
-<td>Configures the gesture with the specified gestureType (GestureType) with the specified release and squeeze force thresholds (floats) and time threshold (int), returns true if the configuration succeded</td>
+<td><code>gestureType</code>, <code>releaseThreshold</code>, <code>squeezeThreshold</code>, <code>timeThreshold</code></td>
+<td><code>true</code></td>
+<td>Configures the gesture with the specified <code>GestureType</code> with the specified release and squeeze force thresholds (<code>float</code>) and time threshold (<code>int</code>), returns <code>true</code> if the configuration succeeded</td>
 </tr>
 <tr>
-<td>gestureType, releaseThreshold, squeezeThreshold, timeThreshold</td>
-<td>false</td>
-<td>Configures the gesture with the specified gestureType (GestureType) with the specified release and squeeze force thresholds (floats) and time threshold (int), returns false if the configuration was incorrect</td>
+<td><code>gestureType</code>, <code>releaseThreshold</code>, <code>squeezeThreshold</code>, <code>timeThreshold</code></td>
+<td><code>false</code></td>
+<td>Configures the gesture with the specified <code>GestureType</code> with the specified release and squeeze force thresholds (<code>float</code>) and time threshold (<code>int</code>), returns <code>false</code> if the configuration was incorrect</td>
 </tr>
 </tbody></table>
 <h2 id='configurerotationgesture'>ConfigureRotationGesture()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">ConfigureRotationGesture</span><span class="p">(</span>
@@ -1369,7 +1326,7 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 <span class="p">);</span>
 </code></pre>
 <blockquote>
-<p>ConfigureRotationGesture configures the regions and the time threshold for the specified rotation gesture.</p>
+<p>Configures the regions and the time threshold for the specified rotation gesture.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="n">GripablePlay</span> <span class="n">gp</span> <span class="p">=</span> <span class="n">Gripable</span><span class="p">.</span><span class="n">Play1</span><span class="p">;</span>
 <span class="n">Region</span> <span class="n">regionA</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Region</span><span class="p">(</span><span class="m">350</span><span class="p">,</span> <span class="m">10</span><span class="p">);</span>
@@ -1383,10 +1340,10 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
     <span class="n">timeThreshold</span>
 <span class="p">);</span>
 </code></pre>
-<p>In order to configure a specific gesture with ConfigureRotationGesture you need 3 things. A start region an end region and a timeThreshold. 
-The region are defined by specifying a start and an end angle of rotation. A third angle is considered to be &quot;in the region&quot; if it is between the start angle and the end one, in anti-clockwise direction.</p>
+<p>Configuring a gesture with ConfigureRotationGesture requires a start region, end region and timeThreshold. 
+Each region is defined by a start and end angle. An angle is considered in the region if it exists between the start and end angle, traced anti-clockwise around a circle.</p>
 
-<p>In the example shown on the side, we are configuring the extention gesture. The start region, i.e. the neutral position in this case, is defined from 350 and 10 degrees (i.e. including 0 degrees), while the end region, i.e. the extended position, is defined from 60 to 90 degrees. With this configuration, if the Gripable Play&#39;s pitch changes from a value inside the start region to a value within the end region in less than 5 second (the time threshold), then the OnExtension calback is invoked.</p>
+<p>In the example, the extension gesture is configured such that the start region (neutral position in this case) is set from 350 and 10 degrees (including 0 degrees), and the end region (extended position) is set from 60 to 90 degrees. If the Gripable Play device&#39;s pitch changes from a value within the start region to a value in the end region in less than the time threshold, the OnExtension event is triggered and any attached handlers are called.</p>
 <h3 id='query-parameters-and-return-values-2'>Query Parameters and Return Values</h3>
 <table><thead>
 <tr>
@@ -1396,36 +1353,39 @@ The region are defined by specifying a start and an end angle of rotation. A thi
 </tr>
 </thead><tbody>
 <tr>
-<td>gestureType, regionA, regionB, timeThreshold</td>
-<td>true</td>
-<td>Configures the gesture with the specified gestureType (GestureType) with the specified start and end regions (Regions) and time threshold (int), returns true if the configuration succeded</td>
+<td><code>gestureType</code>, <code>regionA</code>, <code>regionB</code>, <code>timeThreshold</code></td>
+<td><code>true</code></td>
+<td>Configures the gesture with the specified <code>GestureType</code> with the specified start and end regions (<code>Region</code>) and time threshold (<code>int</code>), returns <code>true</code> if the configuration succeeds</td>
 </tr>
 <tr>
-<td>gestureType, regionA, regionB, timeThreshold</td>
-<td>false</td>
-<td>Configures the gesture with the specified gestureType (GestureType) with the specified start and end regions (Regions) and time threshold (int), returns false if the configuration was incorrect</td>
+<td><code>gestureType</code>, <code>regionA</code>, <code>regionB</code>, <code>timeThreshold</code></td>
+<td><code>false</code></td>
+<td>Configures the gesture with the specified <code>GestureType</code> with the specified start and end regions (<code>Regions</code>) and time threshold (<code>int</code>), returns <code>false</code> if the configuration was incorrect</td>
 </tr>
 </tbody></table>
 <h1 id='frames-of-reference'>Frames of Reference</h1>
 <p>Two different frames of reference can be used when working with the deice position and orientation: world frame and sensor frame.</p>
 <h2 id='world-frame'>World Frame</h2>
 <p>The world frame of reference is the static frame of reference, independent of the device orientation, of the world space where the device is located.</p>
+
+<p><img src="images/potato-world-frame.gif" alt="alt text" /></p>
 <h2 id='sensor-frame'>Sensor Frame</h2>
 <p>The sensor frame is the frame relative to the device itself.</p>
 
-<p><img src="images/xyz.png" alt="alt text" /></p>
+<p><img src="images/potato-local-frame.gif" alt="alt text" />
+<img src="images/xyz.png" alt="alt text" /></p>
 <h1 id='using-udpclientmanager'>Using UdpClientManager</h1>
-<p>The UdpClientManager class can be very useful to sen serialised data of the connected Gripable Plays to a machine through UDP. The UdpClientManager can be accessed via the <a href="#udpmanager">UdpManager static attribute</a> of the Gripable plugin.</p>
+<p>The <code>UdpClientManager</code> class sends serialised data from the connected Gripable Play device to a machine via UDP. It is accessed via the <code><a href="#udpmanager">UdpManager</a></code> static attribute of the Gripable plugin.</p>
 <h2 id='startclient-ipaddress-port'>StartClient(ipAddress, port)</h2><pre class="highlight csharp tab-csharp"><code><span class="k">void</span> <span class="nf">StartClient</span><span class="p">(</span><span class="kt">string</span> <span class="n">ipAddress</span><span class="p">,</span> <span class="kt">int</span> <span class="n">port</span><span class="p">);</span>
 </code></pre>
 <blockquote>
-<p>Starts sending udp packets to the specified IP address and port.</p>
+<p>Starts sending UDP packets to the specified IP address and port.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="kt">string</span> <span class="n">ipAddress</span> <span class="p">=</span> <span class="s">"10.0.145.3"</span><span class="p">;</span>
 <span class="kt">int</span> <span class="n">port</span> <span class="p">=</span> <span class="m">8088</span><span class="p">;</span>
 <span class="n">udpManager</span><span class="p">.</span><span class="nf">StartClient</span><span class="p">(</span><span class="n">ipAddress</span><span class="p">,</span> <span class="n">port</span><span class="p">);</span>
 </code></pre>
-<p>StartClient starts sending udp packets of serialised data of all the connected gripable plays to the specified IP address and port through UDP.</p>
+<p>Starts sending packets of serialised data from all the connected Gripable Play devices to the specified IP address and port via UDP.</p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -1434,18 +1394,18 @@ The region are defined by specifying a start and an end angle of rotation. A thi
 </tr>
 </thead><tbody>
 <tr>
-<td>ipAddress, port</td>
-<td>Starts the client with the specified IP address (string) and port (integer)</td>
+<td><code>ipAddress</code>, <code>port</code></td>
+<td>Starts the client with the specified IP address (<code>string</code>) and port (<code>int</code>)</td>
 </tr>
 </tbody></table>
 <h2 id='stopclient'>StopClient()</h2><pre class="highlight csharp tab-csharp"><code><span class="k">void</span> <span class="nf">StopClient</span><span class="p">();</span>
 </code></pre>
 <blockquote>
-<p>Stops sending udp packets.</p>
+<p>Stops sending UDP packets.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="n">udpManager</span><span class="p">.</span><span class="nf">StopClient</span><span class="p">();</span>
 </code></pre>
-<p>StopClient stops sending udp packets to whatever IP address and port the UdpClientManager was sending before, if started. otherwise does nothing.</p>
+<p>Stops sending UDP packets to the IP address and port specified in the <code>UdpClientManager</code>, if started.</p>
 <h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -1454,18 +1414,18 @@ The region are defined by specifying a start and an end angle of rotation. A thi
 </tr>
 </thead><tbody>
 <tr>
-<td>none</td>
-<td>Stops the Udp Client</td>
+<td><code>none</code></td>
+<td>Stops the UDP Client</td>
 </tr>
 </tbody></table>
 <h2 id='isstarted'>IsStarted()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">IsStarted</span><span class="p">();</span>
 </code></pre>
 <blockquote>
-<p>Returns true or false whether the Udp Client is currently sending packets.</p>
+<p>Returns <code>true</code> if the UDP Client is currently sending packets.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">udpStarted</span> <span class="p">=</span> <span class="n">udpManager</span><span class="p">.</span><span class="nf">IsStarted</span><span class="p">();</span>
 </code></pre>
-<p>IsStarted returns true or false whether the Udp Client is currently sending packets.</p>
+<p>Returns a <code>bool</code> that represents if the UDP Client is currently sending packets.</p>
 <h3 id='return-values-28'>Return Values</h3>
 <table><thead>
 <tr>
@@ -1474,12 +1434,12 @@ The region are defined by specifying a start and an end angle of rotation. A thi
 </tr>
 </thead><tbody>
 <tr>
-<td>true</td>
-<td>The Udp Client is currently sending packets</td>
+<td><code>true</code></td>
+<td>The UDP Client is currently sending packets</td>
 </tr>
 <tr>
-<td>false</td>
-<td>The Udp Client is currently stopped</td>
+<td><code>false</code></td>
+<td>The UDP Client is currently stopped</td>
 </tr>
 </tbody></table>
 
