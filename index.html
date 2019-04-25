@@ -391,6 +391,14 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#the-test-view" class="toc-h1 toc-link" data-title="The Test View">The Test View</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#the-components" class="toc-h2 toc-link" data-title="The Components">The Components</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='#'>Sign Up for a Developer Key</a></li>
@@ -401,7 +409,8 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>API for communicating with a Gripable Play device over Bluetooth.</p>
+<p>Gripable Play Unity is a Unity Package developed by gripAble Ltd. 
+It exposes the Gripable API through Unity, allowing developers with access to a GripAble Play device &amp; Android tablet to start developing games.</p>
 <h1 id='setup'>Setup</h1>
 <p>To get started with Gripable Play Unity, follow the steps <a href="https://bitbucket.org/gripable/gripable-play-unity/src/master/README.md">here</a>.</p>
 <h1 id='accessing-the-gripable-plugin'>Accessing the Gripable Plugin</h1>
@@ -1442,6 +1451,62 @@ Each region is defined by a start and end angle. An angle is considered in the r
 <td>The UDP Client is currently stopped</td>
 </tr>
 </tbody></table>
+<h1 id='the-test-view'>The Test View</h1>
+<p>The Test View is a suite of optional components used to easily visualize all the data coming from each connected Gripable Play, as well as perfoming basic actions with them.</p>
+
+<p>The Test View can be used just for testing purposes or be integrated in a projects UI, to quickly make use of one of more of its functionalities. It can also be used as it is, with the default configuration, or customized, being modular with each of its components independent from the others.</p>
+
+<p>The Test View is responsive to ifferent screen layout and resolutions and updates automatically every time the screen orientation changes (landscape/portrait mode).</p>
+<h2 id='the-components'>The Components</h2>
+<p>The general structure of the Test View is as follows:</p>
+
+<ul>
+<li>TestView
+
+<ul>
+<li>PlayView 1
+
+<ul>
+<li>TabView 1
+
+<ul>
+<li>Row 1
+
+<ul>
+<li>Panel 1</li>
+<li>Panel 2</li>
+</ul></li>
+<li>Row 2
+
+<ul>
+<li>...</li>
+</ul></li>
+</ul></li>
+<li>TabView 2
+
+<ul>
+<li>...</li>
+</ul></li>
+</ul></li>
+<li>PlayView 2
+
+<ul>
+<li>...</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>The main components are then <em>TestView</em>, <em>PlayView</em>(s), <em>TabView</em>(s) and <em>PanelView</em>(s). Each row of a TabView is not considered a component itself as they&#39;re just empty <code>GameObjects</code> used for grouping panels into different rows for each tab.</p>
+
+<p>A <strong>TestView</strong> is made of one or more PlayViews and it&#39;s used to navigate between them through buttons located on the left (on landscape mode) or on the top (on portrait mode) of the screen. While it is possible to have more than two PlayViews inside a TestView, it is at the moment not useful, as at most two Gripable Plays can be connected at the same time.</p>
+
+<p>A <strong>PlayView</strong> is made of one or more TabViews and it&#39;s used to navigate between them through buttons on the right (landscape mode) or bottom (portrait mode) of the screen. Each PlayView corresponds to one Gripable Play and is used to group all the data and actions relative to that Gripable Play.</p>
+
+<p>A <strong>TabView</strong> is made of several PanelViews, organized into rows. Each TabView groups together similar data and functionalities, for a better organization of the panels. There can be any number of rows in each tab and the rows can contain any number of panels, not necessarily the same between rows, altough having too many rows in a tab or panels in a row can comprimise the usability of the Test View.</p>
+
+<p>A <strong>PanelView</strong> is the basic element of the Test View and contains the logic to show Gripable Play data, expose actions or both.</p>
+
+<p><img src="images/testview-components.png" alt="alt text" /></p>
 
       </div>
       <div class="dark-box">
