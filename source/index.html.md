@@ -957,3 +957,40 @@ Returns | Description
 ------- | -----------
 <code>true</code> | The UDP Client is currently sending packets
 <code>false</code> | The UDP Client is currently stopped
+
+# The Test View
+
+The Test View is a suite of optional components used to easily visualize all the data coming from each connected Gripable Play, as well as perfoming basic actions with them.
+
+The Test View can be used just for testing purposes or be integrated in a projects UI, to quickly make use of one of more of its functionalities. It can also be used as it is, with the default configuration, or customized, being modular with each of its components independent from the others.
+
+The Test View is responsive to ifferent screen layout and resolutions and updates automatically every time the screen orientation changes (landscape/portrait mode).
+
+## The Components
+
+The general structure of the Test View is as follows:
+
+* TestView
+    * PlayView 1
+        * TabView 1
+            * Row 1
+                * Panel 1
+                * Panel 2
+            * Row 2
+                * ...
+        * TabView 2
+            * ...
+    * PlayView 2
+        * ...
+
+The main components are then *TestView*, *PlayView*(s), *TabView*(s) and *PanelView*(s). Each row of a TabView is not considered a component itself as they're just empty <code>GameObjects</code> used for grouping panels into different rows for each tab.
+
+A **TestView** is made of one or more PlayViews and it's used to navigate between them through buttons located on the left (on landscape mode) or on the top (on portrait mode) of the screen. While it is possible to have more than two PlayViews inside a TestView, it is at the moment not useful, as at most two Gripable Plays can be connected at the same time.
+
+A **PlayView** is made of one or more TabViews and it's used to navigate between them through buttons on the right (landscape mode) or bottom (portrait mode) of the screen. Each PlayView corresponds to one Gripable Play and is used to group all the data and actions relative to that Gripable Play.
+
+A **TabView** is made of several PanelViews, organized into rows. Each TabView groups together similar data and functionalities, for a better organization of the panels. There can be any number of rows in each tab and the rows can contain any number of panels, not necessarily the same between rows, altough having too many rows in a tab or panels in a row can comprimise the usability of the Test View.
+
+A **PanelView** is the basic element of the Test View and contains the logic to show Gripable Play data, expose actions or both.
+
+![alt text](testview-components.png)
