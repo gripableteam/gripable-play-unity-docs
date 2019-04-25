@@ -15,7 +15,8 @@ search: true
 
 # Introduction
 
-API for communicating with a Gripable Play device over Bluetooth.
+Gripable Play Unity is a Unity Package developed by gripAble Ltd. 
+It exposes the Gripable API through Unity, allowing developers with access to a GripAble Play device & Android tablet to start developing games.
 
 # Setup
 
