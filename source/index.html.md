@@ -967,7 +967,7 @@ The Test View shows data and allows actions to be performed on two Gripable Play
 
 For each of the connected Gripable Plays, several tabs are available in the Test View, grouping together data and actions of similar nature.
 
-In order to open the Test View for one of the two Gripable Plays, the corresponing button on the left (top on portrait mode) should be selected. Similarly, tabs for a specific Gripable Play can be navigated through the buttons on the left (bottom on portrait mode), as shown in the picture below:
+In order to open the Test View for one of the two Gripable Plays, the corresponing button on the left (top on portrait mode) must be selected. Similarly, tabs for a specific Gripable Play can be navigated through the buttons on the left (bottom on portrait mode), as shown in the picture below:
 
 ![alt text](testview-buttons.png)
 
@@ -985,6 +985,9 @@ The tabs available in the Test View are as follows:
 
 In order to use the Test View into a project, the <code>TestView</code> prefab (found inside <code>GripablePlayResources/TestView/</code>) must be dragged inside the scene.
 
-This will open up the Test View UI at runtime. The Test View can be closed through the X button on the top left and re-opened by touching anywhere on the screen with at least three fingers at the same time.
+This will open up the Test View UI at runtime. The Test View can be closed through the X button on the top left and re-opened by touching anywhere on the screen with at least three fingers at the same time. Once a Gripable Play is connected through the *Connection panel* in the *General tab*, all other panels can be used for that Gripable Play.
 
-The **Connection panel** and the **UDP Client panel** in the *General tab* can be configured from the inspector in order to have a default MAC address and IP address and port, respectively. This can be done by expanding the hierarchy of the <code>TestView</code> GameObject in the scene until the GameObjects <code>ConnectionPanel</code> and <code>UdpClientPanel</code> (under <code>GeneralTab</code> and in the first and second rows, respectively), for each <code>PlayView</code> GameObject.
+The **Connection panel** and the **UDP Client panel** in the *General tab* can be configured from the inspector in order to have a default MAC address and IP address and port, respectively. This can be done by expanding the hierarchy of the <code>TestView</code> GameObject in the scene until the GameObjects <code>ConnectionPanel</code> and <code>UdpClientPanel</code> (under <code>GeneralTab</code> and in the first and second rows, respectively), for each <code>PlayView</code> GameObject, as shown in the pictures below.
+
+![alt text](testview-default-mac-address.png)
+![alt text](testview-default-ip-address-and-port.png)
