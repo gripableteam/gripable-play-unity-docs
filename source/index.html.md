@@ -473,11 +473,11 @@ Returns a <code>[Quaternion](https://docs.unity3d.com/ScriptReference/Quaternion
 Returns | Description
 ------- | -----------
 <code>deviceQuaternion</code> | The device orientation in the world frame expressed through a [Quaternion](https://docs.unity3d.com/ScriptReference/Quaternion.html) object
-<code>[Quaternion.identity](https://docs.unity3d.com/ScriptReference/Quaternion-identity.html)</code> | Returns the identity <code>[Quaternion](https://docs.unity3d.com/ScriptReference/Quaternion.html) (x,y,z=0, w=1)</code> if the device is not subscribed or not initialised
+<code>[Quaternion.identity](https://docs.unity3d.com/ScriptReference/Quaternion-identity.html)</code> | Returns the identity <code>[Quaternion](https://docs.unity3d.com/ScriptReference/Quaternion.html) (x=0 , y=0 , z=0, w=1)</code> if the device is not subscribed or not initialised
 
 # Sensor Frame RPY
 
-Sensor frame Roll, Pitch and Yaw contain the sensor information about the orientation of the device relative to the sensors frame. [Roll, Pitch and Yaw](https://en.wikipedia.org/wiki/Aircraft_principal_axes) represent rotations of the device around its X, Y and Z axis, respectively, as shown in this [picture](#sensor-frame).
+Sensor frame Roll, Pitch and Yaw contain the sensor information about the orientation of the device relative to the sensors frame. [Roll, Pitch and Yaw](https://en.wikipedia.org/wiki/Aircraft_principal_axes) represent rotations of the device around its X, Y and Z axis, respectively, as shown in this [picture](#sensor-frame) (not to be mistaken with [Euler angles](https://en.wikipedia.org/wiki/Euler_angles)).
 
 ## SubscribeToSensorFrameRPY()
 
@@ -558,10 +558,10 @@ Returns a <code>[Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html)
 
 ### Return Values
 
-Returns | Description
-------- | -----------
-<code>rollPitchYaw</code> | The device roll, pitch and yaw expressed through a <code>[Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html)</code> object
-<code>[Vector3.zero](https://docs.unity3d.com/ScriptReference/Vector3-zero.html)</code> | Returns a zeroed <code>[Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html)</code> if the device is not subscribed or not initialised
+Returns | Min (per axis) | Max (per axis) | Description
+------- | -------------- | -------------- | -----------
+<code>rollPitchYaw</code> | 0 | 360 | The device roll, pitch and yaw expressed through a <code>[Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html)</code> object
+<code>[Vector3.zero](https://docs.unity3d.com/ScriptReference/Vector3-zero.html)</code> | | | Returns a zeroed <code>[Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html)</code> if the device is not subscribed or not initialised
 
 # Motion Data
 
@@ -685,7 +685,7 @@ Vector3 GetMagneticHeading();
 Vector3 magneticHeading = gripablePlay.GetMagneticHeading();
 ```
 
-Returns a <code>[Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html)</code> object representing the magnetic heading of the device alongside its axes, expressed in microteslas.
+Returns a <code>[Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html)</code> object representing the magnetic heading of the device alongside its axes, expressed in microtesla.
 
 ### Return Values
 
@@ -879,7 +879,7 @@ Two different frames of reference can be used when working with the deice positi
 
 ## World Frame
 
-The world frame of reference is the static frame of reference, independent of the device orientation, of the world space where the device is located.
+The world frame of reference is the static frame of reference, independent of the device orientation.
 
 ![alt text](potato-world-frame.gif)
 
