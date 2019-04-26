@@ -978,8 +978,8 @@ The tabs available in the Test View are as follows:
 * **World Frame Data tab** shows orientation data in the world frame, as well as allowing subscription.
 * **Sensor Frame Data tab** shows orientation data in the sensor frame, as well as allowing subscription.
 * **Motion Data tab** shows all motion data coming from the sensors (accelerometer, gyroscope and magnetometer), as well as allowing subscription.
-* **Force Gestures tab** shows a trigger count for the force gestures, as well as allowing their threshol configuration.
-* **Roll Gestures tab**, **Pitch Gestures tab** and **Yaw Gestures tab** show a trigger count for the rotation gestures on the three axes, as well as allowing their threshol configuration.
+* **Force Gestures tab** shows a trigger count for the force gestures, as well as allowing their threshold configuration.
+* **Roll Gestures tab**, **Pitch Gestures tab** and **Yaw Gestures tab** show a trigger count for the rotation gestures on the three axes, as well as allowing their threshold configuration.
 
 ## Usage
 
