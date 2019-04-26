@@ -918,11 +918,11 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </tr>
 <tr>
 <td><code><a href="https://docs.unity3d.com/ScriptReference/Quaternion-identity.html">Quaternion.identity</a></code></td>
-<td>Returns the identity <code><a href="https://docs.unity3d.com/ScriptReference/Quaternion.html">Quaternion</a> (x,y,z=0, w=1)</code> if the device is not subscribed or not initialised</td>
+<td>Returns the identity <code><a href="https://docs.unity3d.com/ScriptReference/Quaternion.html">Quaternion</a> (x=0 , y=0 , z=0, w=1)</code> if the device is not subscribed or not initialised</td>
 </tr>
 </tbody></table>
 <h1 id='sensor-frame-rpy'>Sensor Frame RPY</h1>
-<p>Sensor frame Roll, Pitch and Yaw contain the sensor information about the orientation of the device relative to the sensors frame. <a href="https://en.wikipedia.org/wiki/Aircraft_principal_axes">Roll, Pitch and Yaw</a> represent rotations of the device around its X, Y and Z axis, respectively, as shown in this <a href="#sensor-frame">picture</a>.</p>
+<p>Sensor frame Roll, Pitch and Yaw contain the sensor information about the orientation of the device relative to the sensors frame. <a href="https://en.wikipedia.org/wiki/Aircraft_principal_axes">Roll, Pitch and Yaw</a> represent rotations of the device around its X, Y and Z axis, respectively, as shown in this <a href="#sensor-frame">picture</a> (not to be mistaken with <a href="https://en.wikipedia.org/wiki/Euler_angles">Euler angles</a>).</p>
 <h2 id='subscribetosensorframerpy'>SubscribeToSensorFrameRPY()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">SubscribeToSensorFrameRPY</span><span class="p">();</span>
 </code></pre>
 <blockquote>
@@ -1007,15 +1007,21 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 <table><thead>
 <tr>
 <th>Returns</th>
+<th>Min (per axis)</th>
+<th>Max (per axis)</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>rollPitchYaw</code></td>
+<td>0</td>
+<td>360</td>
 <td>The device roll, pitch and yaw expressed through a <code><a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a></code> object</td>
 </tr>
 <tr>
 <td><code><a href="https://docs.unity3d.com/ScriptReference/Vector3-zero.html">Vector3.zero</a></code></td>
+<td></td>
+<td></td>
 <td>Returns a zeroed <code><a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a></code> if the device is not subscribed or not initialised</td>
 </tr>
 </tbody></table>
@@ -1160,7 +1166,7 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="n">Vector3</span> <span class="n">magneticHeading</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">GetMagneticHeading</span><span class="p">();</span>
 </code></pre>
-<p>Returns a <code><a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a></code> object representing the magnetic heading of the device alongside its axes, expressed in microteslas.</p>
+<p>Returns a <code><a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a></code> object representing the magnetic heading of the device alongside its axes, expressed in microtesla.</p>
 <h3 id='return-values-27'>Return Values</h3>
 <table><thead>
 <tr>
@@ -1420,7 +1426,7 @@ Each region is defined by a start and end angle. An angle is considered in the r
 <h1 id='frames-of-reference'>Frames of Reference</h1>
 <p>Two different frames of reference can be used when working with the deice position and orientation: world frame and sensor frame.</p>
 <h2 id='world-frame'>World Frame</h2>
-<p>The world frame of reference is the static frame of reference, independent of the device orientation, of the world space where the device is located.</p>
+<p>The world frame of reference is the static frame of reference, independent of the device orientation.</p>
 
 <p><img src="images/potato-world-frame.gif" alt="alt text" /></p>
 <h2 id='sensor-frame'>Sensor Frame</h2>
