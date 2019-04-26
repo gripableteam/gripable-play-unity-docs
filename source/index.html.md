@@ -712,7 +712,6 @@ class MyView : MonoBehaviour {
     Debug.Log("YAY, the Gripable has connected")
   }
 }
-
 ```
 
  <code>GripablePlay</code> has a series of [Action Delegate](https://docs.microsoft.com/en-us/dotnet/api/system.action?view=netframework-4.7.2) connection events, which are fired at different stages of the connection process.
@@ -729,6 +728,7 @@ Callback Name | Triggered
 # Gestures
 
 > To subscribe a handler to an event, assign a reference to an encapsulated method which has no parameters and no return value.
+
 ```csharp
 class MyView : MonoBehaviour {
 
@@ -748,7 +748,6 @@ class MyView : MonoBehaviour {
     Debug.Log("YAY, the Gripable has been squeezed")
   }
 }
-
 ```
 
  <code>GripablePlay</code> has a series of [Action Delegate](https://docs.microsoft.com/en-us/dotnet/api/system.action?view=netframework-4.7.2) gesture events, which are triggered when the Gripable detects specific, predefined movements. In particular, these gesture events divide into Force Gestures and Rotational Gestures.
@@ -960,37 +959,32 @@ Returns | Description
 
 # The Test View
 
-The Test View is a suite of optional components used to easily visualize all the data coming from each connected Gripable Play, as well as perfoming basic actions with them.
+The Test View is an optional UI tool used to show the data coming from each connected Gripable Play, as well as allowing basic actions to be performed on them. It is responsive to different screen layouts and resolutions and updates automatically every time the screen orientation changes (landscape/portrait mode).
 
-The Test View can be used just for testing purposes or be integrated in a projects UI, to quickly make use of one of more of its functionalities. It can also be used as it is, with the default configuration, or customized, being modular with each of its components independent from the others.
+## Structure
 
-The Test View is responsive to ifferent screen layout and resolutions and updates automatically every time the screen orientation changes (landscape/portrait mode).
+The Test View shows data and allows actions to be performed on two Gripable Plays at the same time, corresponing to the <code>Gripable.Play1</code> and <code>Gripable.Play2</code> objects.
 
-## The Components
+For each of the connected Gripable Plays, several tabs are available in the Test View, grouping together data and actions of similar nature.
 
-The general structure of the Test View is as follows:
+In order to open the Test View for one of the two Gripable Plays, the corresponing button on the left (top on portrait mode) should be selected. Similarly, tabs for a specific Gripable Play can be navigated through the buttons on the left (bottom on portrait mode), as shown in the picture below:
 
-* TestView
-    * PlayView 1
-        * TabView 1
-            * Row 1
-                * Panel 1
-                * Panel 2
-            * Row 2
-                * ...
-        * TabView 2
-            * ...
-    * PlayView 2
-        * ...
+![alt text](testview-buttons.png)
 
-The main components are then *TestView*, *PlayView*(s), *TabView*(s) and *PanelView*(s). Each row of a TabView is not considered a component itself as they're just empty <code>GameObjects</code> used for grouping panels into different rows for each tab.
+The tabs available in the Test View are as follows:
 
-A **TestView** is made of one or more PlayViews and it's used to navigate between them through buttons located on the left (on landscape mode) or on the top (on portrait mode) of the screen. While it is possible to have more than two PlayViews inside a TestView, it is at the moment not useful, as at most two Gripable Plays can be connected at the same time.
+* **General tab** shows the basic device info, allows for the connection/disconnection of the Gripable Play and to start/stop the UDP Client.
+* **Grip Data tab** shows data from the grip sensor, as well as allowing subscription.
+* **World Frame Data tab** shows orientation data in the world frame, as well as allowing subscription.
+* **Sensor Frame Data tab** shows orientation data in the sensor frame, as well as allowing subscription.
+* **Motion Data tab** shows all motion data coming from the sensors (accelerometer, gyroscope and magnetometer), as well as allowing subscription.
+* **Force Gestures tab** shows a trigger count for the force gestures, as well as allowing their threshol configuration.
+* **Roll Gestures tab**, **Pitch Gestures tab** and **Yaw Gestures tab** show a trigger count for the rotation gestures on the three axes, as well as allowing their threshol configuration.
 
-A **PlayView** is made of one or more TabViews and it's used to navigate between them through buttons on the right (landscape mode) or bottom (portrait mode) of the screen. Each PlayView corresponds to one Gripable Play and is used to group all the data and actions relative to that Gripable Play.
+## Usage
 
-A **TabView** is made of several PanelViews, organized into rows. Each TabView groups together similar data and functionalities, for a better organization of the panels. There can be any number of rows in each tab and the rows can contain any number of panels, not necessarily the same between rows, altough having too many rows in a tab or panels in a row can comprimise the usability of the Test View.
+In order to use the Test View into a project, the <code>TestView</code> prefab (found inside <code>GripablePlayResources/TestView/</code>) must be dragged inside the scene.
 
-A **PanelView** is the basic element of the Test View and contains the logic to show Gripable Play data, expose actions or both.
+This will open up the Test View UI at runtime. The Test View can be closed through the X button on the top left and re-opened by touching anywhere on the screen with at least three fingers at the same time.
 
-![alt text](testview-components.png)
+The **Connection panel** and the **UDP Client panel** in the *General tab* can be configured from the inspector in order to have a default MAC address and IP address and port, respectively. This can be done by expanding the hierarchy of the <code>TestView</code> GameObject in the scene until the GameObjects <code>ConnectionPanel</code> and <code>UdpClientPanel</code> (under <code>GeneralTab</code> and in the first and second rows, respectively), for each <code>PlayView</code> GameObject.
