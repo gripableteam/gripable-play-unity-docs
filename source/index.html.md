@@ -28,7 +28,7 @@ Check out from these links the documentation for the released versions of Gripab
 
 <aside class="warning">This documentation is for features still in development! Check out the documentation for the latest released version from the links below.</aside>
 
-## Releases
+### Releases
 
 * [1.0.0](https://gripableteam.github.io/gripable-play-unity-docs-1.0.0)
 
