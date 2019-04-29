@@ -1428,12 +1428,12 @@ Each region is defined by a start and end angle. An angle is considered in the r
 <h2 id='world-frame'>World Frame</h2>
 <p>The world frame of reference is the static frame of reference, independent of the device orientation.</p>
 
-<p><img src="images/potato-world-frame.gif" alt="alt text" /></p>
+<p><img src="images/potato-world-frame.gif" alt="World frame animated" /></p>
 <h2 id='sensor-frame'>Sensor Frame</h2>
 <p>The sensor frame is the frame relative to the device itself.</p>
 
-<p><img src="images/potato-local-frame.gif" alt="alt text" />
-<img src="images/xyz.png" alt="alt text" /></p>
+<p><img src="images/potato-local-frame.gif" alt="Sensor frame animated" />
+<img src="images/xyz.png" alt="Sensor frame with hand" /></p>
 <h1 id='using-udpclientmanager'>Using UdpClientManager</h1>
 <p>The <code>UdpClientManager</code> class sends serialised data from the connected Gripable Play device to a machine via UDP. It is accessed via the <code><a href="#udpmanager">UdpManager</a></code> static attribute of the Gripable plugin.</p>
 <h2 id='startclient-ipaddress-port'>StartClient(ipAddress, port)</h2><pre class="highlight csharp tab-csharp"><code><span class="k">void</span> <span class="nf">StartClient</span><span class="p">(</span><span class="kt">string</span> <span class="n">ipAddress</span><span class="p">,</span> <span class="kt">int</span> <span class="n">port</span><span class="p">);</span>
@@ -1511,7 +1511,7 @@ Each region is defined by a start and end angle. An angle is considered in the r
 
 <p>In order to open the Test View for one of the two Gripable Plays, the corresponing button on the left (top on portrait mode) must be selected. Similarly, tabs for a specific Gripable Play can be navigated through the buttons on the left (bottom on portrait mode), as shown in the picture below:</p>
 
-<p><img src="images/testview-buttons.png" alt="alt text" /></p>
+<p><img src="images/testview-buttons.png" alt="Test View buttons" /></p>
 
 <p>The tabs available in the Test View are as follows:</p>
 
@@ -1529,10 +1529,14 @@ Each region is defined by a start and end angle. An angle is considered in the r
 
 <p>This will open up the Test View UI at runtime. The Test View can be closed through the X button on the top left and re-opened by touching anywhere on the screen with at least three fingers at the same time. Once a Gripable Play is connected through the <em>Connection panel</em> in the <em>General tab</em>, all other panels can be used for that Gripable Play.</p>
 
+<p>If the project makes use of just one Gripable Play and does not need the Test View for both Gripable Plays, a Test View for just one Gripable Play can be used instead. In order to do so, instead of the <code>TestView</code> prefab, the <code>PlayView</code> prefab must be dragged into the scene. In this scenario, the <code>PlayView</code> GameObject must also be flagged as the root Test View and the Gripable Play source (<code>Gripable.Play1</code> or <code>Gripable.Play2</code>) must be specified from the inspector (both options can be found under the <em>TestView settings</em> section). In the picture below, a Play View for <code>Gripable.Play1</code> is set in the scene:</p>
+
+<p><img src="images/testview-playview-settings.png" alt="Test View settings for a single Gripable Play" /></p>
+
 <p>The <strong>Connection panel</strong> and the <strong>UDP Client panel</strong> in the <em>General tab</em> can be configured from the inspector in order to have a default MAC address and IP address and port, respectively. This can be done by expanding the hierarchy of the <code>TestView</code> GameObject in the scene until the GameObjects <code>ConnectionPanel</code> and <code>UdpClientPanel</code> (under <code>GeneralTab</code> and in the first and second rows, respectively), for each <code>PlayView</code> GameObject, as shown in the pictures below.</p>
 
-<p><img src="images/testview-default-mac-address.png" alt="alt text" />
-<img src="images/testview-default-ip-address-and-port.png" alt="alt text" /></p>
+<p><img src="images/testview-default-mac-address.png" alt="Test View default MAC address" />
+<img src="images/testview-default-ip-address-and-port.png" alt="Test View default IP address &amp; port" /></p>
 
       </div>
       <div class="dark-box">
