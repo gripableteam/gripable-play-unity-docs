@@ -153,7 +153,7 @@ Returns | Description
 <code>true</code> | The device is initialised
 <code>false</code> | The device is not initialised
 
-## GetDevicenfo()
+## GetDeviceInfo()
 
 ```csharp
 DeviceInfo GetDeviceInfo();
