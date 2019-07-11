@@ -351,28 +351,29 @@ Returns | Description
 ```csharp
 GripData GetGripData();
 
-public struct GripData
+public sealed partial class GripData : pb::IMessage<GripData>
 {
     public int Timestamp;
     public float Force;
     public float CenterOfPressure;
+    ...
 }
 ```
 
-> Returns an object containing data from the grip sensor.
+> Returns a protobuf containing data from the grip sensor.
 
 ```csharp
 GripData gripData = gripablePlay.GetGripData();
 ```
 
-Returns a <code>GripData</code> object containing data from the grip sensor, including the grip force and timestamp.
+Returns a <code>GripData</code> protobuf containing data from the grip sensor, including the grip force and timestamp.
 
 ### Return Values
 
 Returns | Description
 ------- | -----------
-<code>GripData</code> | Object containing the grip data
-empty </code>GripData</code> | Empty GripData object if not subscribed or not initialised
+<code>GripData</code> | Protobuf containing the grip data
+empty </code>GripData</code> | Empty GripData protobuf if not subscribed or not initialised
 
 <aside class="warning">The <code>CenterOfPressure</code> attribute of <code>GripData</code> is currently not used and will be implemented in future releases.</aside>
 
@@ -470,7 +471,7 @@ Returns | Description
 Quaternion GetQuaternion();
 ```
 
-> Returns a <code>Quaternion</code> object representing the orientation of the device in the world frame.
+> Returns a <code>Quaternion</code> struct representing the orientation of the device in the world frame.
 
 ```csharp
 Quaternion deviceQuaternion = gripablePlay.GetQuaternion();
@@ -485,92 +486,60 @@ Returns | Description
 <code>deviceQuaternion</code> | The device orientation in the world frame expressed through a [Quaternion](https://docs.unity3d.com/ScriptReference/Quaternion.html) object
 <code>[Quaternion.identity](https://docs.unity3d.com/ScriptReference/Quaternion-identity.html)</code> | Returns the identity <code>[Quaternion](https://docs.unity3d.com/ScriptReference/Quaternion.html) (x=0 , y=0 , z=0, w=1)</code> if the device is not subscribed or not initialised
 
-# Sensor Frame RPY
+# Wrist RPY
 
-Sensor frame Roll, Pitch and Yaw contain the sensor information about the orientation of the device relative to the sensors frame. [Roll, Pitch and Yaw](https://en.wikipedia.org/wiki/Aircraft_principal_axes) represent rotations of the device around its X, Y and Z axis, respectively, as shown in this [picture](#sensor-frame) (not to be mistaken with [Euler angles](https://en.wikipedia.org/wiki/Euler_angles)).
+Wrist RPY (Roll, Pitch, Yaw) contains information about the orientation of the device relative to the user's wrist. [Roll, Pitch and Yaw](https://en.wikipedia.org/wiki/Aircraft_principal_axes) represent rotations of the device around its X, Y and Z axis, respectively, as shown in this [picture](#sensor-frame) (not to be mistaken with [Euler angles](https://en.wikipedia.org/wiki/Euler_angles)).
 
-## SubscribeToSensorFrameRPY()
-
-```csharp
-bool SubscribeToSensorFrameRPY();
-```
-
-> Attempts to subscribe to the device sensor frame RPY data, returns <code>true</code> if successful.
+## GetWristRpy()
 
 ```csharp
-bool subscriptionSuccessful = gripablePlay.SubscribeToSensorFrameRPY());
+WristRpyData GetWristRpy();
+
+public sealed partial class WristRpyData : pb::IMessage<WristRpyData>
+{
+    public float Roll;
+    public float Pitch;
+    public float Yaw;
+    ...
+}
 ```
 
-Attempts to subscribe to the device sensor frame RPY data. It returns <code>true</code> if the subscription was successful.
+> Returns a protobuf containing RPY orientation data.
+
+```csharp
+WristRpyData rpyData = gripablePlay.GetWristRpyData();
+```
+
+Returns a <code>WristRpyData</code> protobuf representing the device's current orientation as Roll, Pitch and Yaw values.
 
 ### Return Values
 
 Returns | Description
 ------- | -----------
-<code>true</code> | The subscription was successful
-<code>false</code> | The subscription failed
+<code>WristRpyData</code> | Protobuf containing the Wrist RPY data
+empty </code>WristRpyData</code> | Empty WristRpyData protobuf if not subscribed or not initialised
 
-## UnsubscribeFromSensorFrameRPY()
+
+## GetWristRpyAsVector3()
 
 ```csharp
-bool UnsubscribeFromSensorFrameRPY();
+Vector3 GetWristRpyAsVector3();
 ```
 
-> Attempts to unsubscribe from the device sensor frame RPY data, returns <code>true</code> if successful.
+> Returns a <code>Vector3</code> object representing the orientation of the device as RPY.
 
 ```csharp
-bool unsubscriptionSuccessful = gripablePlay.UnsubscribeFromSensorFrameRPY();
-```
-
-Attempts to unsubscribe from the device sensor frame RPY data. It returns <code>true</code> if the unsubscription was successful.
-
-### Return Values
-
-Returns | Description
-------- | -----------
-<code>true</code> | The unsubscription was successful
-<code>false</code> | The unsubscription failed
-
-## IsSubscribedToSensorFrameRPY()
-
-```csharp
-bool IsSubscribedToSensorFrameRPY();
-```
-
-> Returns <code>true</code> if the device is subscribed to sensor frame RPY data.
-
-```csharp
-bool isSubscribed = gripablePlay.IsSubscribedToSensorFrameRPY();
-```
-
-Returns a <code>bool</code> that represents if the device is subscribed to world sensor frame RPY data.
-
-### Return Values
-
-Returns | Description
-------- | -----------
-<code>true</code> | The device is subscribed to sensor frame RPY
-<code>false</code> | The device is not subscribed to sensor frame RPY or not initialized
-
-## GetSensorFrameRpy()
-
-```csharp
-Vector3 GetSensorFrameRpy();
-```
-
-> Returns a <code>Vector3</code> object representing the RPY of the device.
-
-```csharp
-Vector3 rollPitchYaw = gripablePlay.GetSensorFrameRpy();
+Vector3 rollPitchYaw = gripablePlay.GetWristRpyAsVector3();
 ```
 
 Returns a <code>[Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html)</code> object representing the current Roll, Pitch and Yaw of the device.
+
 
 ### Return Values
 
 Returns | Min (per axis) | Max (per axis) | Description
 ------- | -------------- | -------------- | -----------
-<code>rollPitchYaw</code> | 0 | 360 | The device roll, pitch and yaw expressed through a <code>[Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html)</code> object
+<code>Roll/Pitch/Yaw</code> | 0 | 360 | The device roll, pitch and yaw expressed through a <code>[Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html)</code> object
 <code>[Vector3.zero](https://docs.unity3d.com/ScriptReference/Vector3-zero.html)</code> | | | Returns a zeroed <code>[Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html)</code> if the device is not subscribed or not initialised
 
 # Motion Data
