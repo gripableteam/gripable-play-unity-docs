@@ -398,6 +398,28 @@ Returns | Min | Max | Description
 <code>gripForce</code> | <code>-129f</code> | <code>128f</code> | Returns the Grip Force in Kg as a float
 <code>0f</code> | | | Returns 0 if the device is not subscribed or not initialised
 
+## GetNormalizeGripForce()
+
+```csharp
+float GetNormalizeGripForce();
+```
+
+> Returns a <code>float</code> value of the normalized Grip Force.
+
+```csharp 
+float normalizeGripForce = gripablePlay.GetNormalizeGripForce();
+```
+
+Returns the normalized Grip Force, based on the current [Grip Calibration Level](#setgripcalibrationlevel).
+
+### Return Values
+
+Returns | Min | Max | Description
+------- | --- | --- | -----------
+<code>normalizeGripForce</code> | <code>0f</code> | <code>1f</code> | Returns the normalized Grip Force as a float
+<code>0f</code> | | | Returns 0 if the device is not subscribed or not initialised
+
+
 # Quaternion Data
 
 Quaternion data contains the sensor information about the orientation of the device in 3D space, in the World Frame.
@@ -541,6 +563,29 @@ Returns | Min (per axis) | Max (per axis) | Description
 ------- | -------------- | -------------- | -----------
 <code>Roll/Pitch/Yaw</code> | 0 | 360 | The device roll, pitch and yaw expressed through a <code>[Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html)</code> object
 <code>[Vector3.zero](https://docs.unity3d.com/ScriptReference/Vector3-zero.html)</code> | | | Returns a zeroed <code>[Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html)</code> if the device is not subscribed or not initialised
+
+## GetNormalizeRpyAsVector3()
+
+```csharp 
+Vector3 GetNormalizeRpyAsVector3();
+```
+
+> Returns a <code>Vector3</code> object representing the normalized orientation of the device as RPY.
+
+```csharp
+Vector3 normalizedRpy = gripablePlay.GetNormalizeRpyAsVector3();
+```
+
+Returns a <code>[Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html)</code> object representing the normalized Roll, Pitch and Yaw values of the device.
+This is calculated based on the current [RPY Calibration Level](#setrpycalibrationlevel). 
+
+### Return Values
+
+Returns | Min (per axis) | Max (per axis) | Description
+------- | -------------- | -------------- | -----------
+<code>Roll/Pitch/Yaw</code> | 0 | 1 | The device's normalized roll, pitch and yaw expressed through a <code>[Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html)</code> object
+<code>[Vector3.zero](https://docs.unity3d.com/ScriptReference/Vector3-zero.html)</code> | | | Returns a zeroed <code>[Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html)</code> if the device is not subscribed or not initialised
+
 
 # Motion Data
 
@@ -734,6 +779,13 @@ gripablePlay.SetGripCalibrationLevel(CalibrationLevel.MEDIUM);
 
 Sets the calibration level of the device for normalizing Grip Force.
 
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+<code>level</code> | Sets <code>CalibrationLevel</code> for Grip Force
+
+
 ## SetRpyCalibrationLevel()
 
 ```csharp
@@ -745,6 +797,13 @@ gripablePlay.SetRpyCalibrationLevel(CalibrationLevel.MEDIUM);
 ```
 
 Sets the calibration for all RPY axes of the Gripable Play Device. Used for normalize RPY functions. Can be set separately (see below).
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+<code>level</code> | Sets the same <code>CalibrationLevel</code> for Roll, Pitch and Yaw.
+
 
 ## Individual RPY Calibration
 
@@ -761,6 +820,13 @@ gripablePlay.SetYawCalibrationLevel(CalibrationLevel.HIGH);
 ```
 
 Sets the calibration for individual RPY axes 
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+<code>level</code> | Sets the same <code>CalibrationLevel</code> for Roll/Pitch/Yaw.
+
 
 # Gestures
 
@@ -797,6 +863,8 @@ Callback Name | Triggered
 --------- | -------
 <code>OnSqueeze</code> | When the device is squeezed, more specifically when the Grip Force reading goes from a <code>MIN_THRESHOLD</code> to a <code>MAX_THRESHOLD</code> within a given time period.
 <code>OnRelease</code> | When the device is released, more specifically when the Grip Force reading goes from a <code>MAX_THRESHOLD</code> to a <code>MIN_THRESHOLD</code> within a given time period.
+<code>OnDoubleSqueeze</code> | When two squeeze events occur within a time threshold.
+<code>OnDoubleRelease</code> | When two release events occur within a time threshold.
 
 ## Rotation Gestures Callbacks
 
@@ -829,7 +897,9 @@ enum GestureType
     RADIAL,
     NEUTRAL_YAW,
     NEUTRAL_ROLL,
-    NEUTRAL_PITCH
+    NEUTRAL_PITCH,
+    DOUBLE_SQUEEZE,
+    DOUBLE_RELEASE
 }
 ```
 
@@ -909,6 +979,55 @@ Parameter | Returns | Description
 --------- | ------- | -----------
  <code>gestureType</code>, <code>regionA</code>, <code>regionB</code>, <code>timeThreshold</code> | <code>true</code> | Configures the gesture with the specified <code>GestureType</code> with the specified start and end regions (<code>Region</code>) and time threshold (<code>int</code>), returns <code>true</code> if the configuration succeeds
  <code>gestureType</code>, <code>regionA</code>, <code>regionB</code>, <code>timeThreshold</code> | <code>false</code> | Configures the gesture with the specified <code>GestureType</code> with the specified start and end regions (<code>Regions</code>) and time threshold (<code>int</code>), returns <code>false</code> if the configuration was incorrect
+
+## ConfigureForceGesturesByCalibration()
+
+```csharp
+void ConfigureForceGesturesByCalibration();
+```
+
+```csharp
+gripablePlay.ConfigureForceGesturesByCalibration();
+```
+
+Configures Squeeze, Release, Double Squeeze and Double Release gestures based on Grip Force <code>CalibrationLevel</code> preset
+
+## ConfigureRotationGesturesByCalibration()
+
+```csharp
+void ConfigureRotationGesturesByCalibration();
+```
+
+```csharp
+gripablePlay.ConfigureRotationGesturesByCalibration();
+```
+
+Configures Pronation, Supination, Radial, Ulnar, Extension and Flexion gestures based on RPY <code>CalibrationLevel</code> presets
+
+
+
+
+
+## TriggerGesture()
+
+```csharp
+void TriggerGesture(GestureType gesture)
+```
+
+> Triggers the gesture passed as a parameter
+
+```csharp
+gripablePlay.TriggerGesture(GestureType.SQUEEZE)
+```
+
+Used to test firing gesture events without using the Gripable Device. 
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+<code>gestureType</code> | Triggers the gesture with the specified <code>GestureType</code>
+
 
 # Frames of Reference
 
