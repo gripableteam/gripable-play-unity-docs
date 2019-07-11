@@ -703,6 +703,64 @@ Callback Name | Triggered
 <code>OnConnecting</code> | Device is attempting to connect.
 <code>OnDisconnecting</code> | Device is attempting to disconnect. 
 
+# Calibration
+
+> <code>CalibrationLevel</code> enum corresponds to preset calibration levels
+
+```csharp 
+public enum CalibrationLevel
+{
+    LOW = 0,
+    MEDIUM = 1,
+    HIGH = 2
+}
+```
+
+Calibration is used for calculating normalized grip and RPY functions. Force and Rotation Gestures can also be configured based on the set CalibrationLevel.
+
+<aside class="notice">
+In the future, Calibration will be calculated based on inputs from the User.
+</aside>
+
+## SetGripCalibrationLevel()
+
+```csharp
+void SetGripCalibrationLevel(CalibrationLevel level);
+```
+
+```csharp
+gripablePlay.SetGripCalibrationLevel(CalibrationLevel.MEDIUM);
+```
+
+Sets the calibration level of the device for normalizing Grip Force.
+
+## SetRpyCalibrationLevel()
+
+```csharp
+void SetRpyCalibrationLevel(CalibrationLevel level);
+```
+
+```csharp
+gripablePlay.SetRpyCalibrationLevel(CalibrationLevel.MEDIUM);
+```
+
+Sets the calibration for all RPY axes of the Gripable Play Device. Used for normalize RPY functions. Can be set separately (see below).
+
+## Individual RPY Calibration
+
+```csharp
+void SetRollCalibrationLevel(CalibrationLevel level);
+void SetPitchCalibrationLevel(CalibrationLevel level);
+void SetYawCalibrationLevel(CalibrationLevel level);
+```
+
+```csharp
+gripablePlay.SetRollCalibrationLevel(CalibrationLevel.LOW);
+gripablePlay.SetPitchCalibrationLevel(CalibrationLevel.MEDIUM);
+gripablePlay.SetYawCalibrationLevel(CalibrationLevel.HIGH);
+```
+
+Sets the calibration for individual RPY axes 
 
 # Gestures
 
