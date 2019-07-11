@@ -15,7 +15,7 @@ search: true
 
 # Introduction
 
-Gripable Play Unity is a Unity Package developed by gripAble Ltd. 
+Gripable Play Unity is a Unity Package developed by GripAble Ltd. 
 It exposes the Gripable API through Unity, allowing developers with access to a GripAble Play device & Android tablet to start developing games.
 
 # Setup
@@ -24,7 +24,7 @@ To get started with Gripable Play Unity, follow the steps [here](https://bitbuck
 
 # Releases
 
-Check out from these links the documentation for the released versions of Gripable Play Unity.
+Documentation links of specific Gripable Play Unity versions.
 
 <aside class="warning">This documentation is for features still in development! Check out the documentation for the latest released version from the links below.</aside>
 
@@ -34,7 +34,7 @@ Check out from these links the documentation for the released versions of Gripab
 
 # Accessing the Gripable Plugin
 
-The Gripable Plugin is statically accessed to retrieve the main ojects needed to interface with the Gripable Play device. At the moment the Gripable Plugin allows you to retrieve up to two available Gripable Play devices and the UDP Client Manager. The Gripable Plugin does not need any setup and can be called statically when needed.
+<code>Gripable</code> is a static class, accessed to retrieve the main ojects needed to interface with the Gripable Play device. Currently, The Gripable Plugin supports connection of up to two Play devices and the UDP Client Manager.
 
 ## Play1
 
@@ -44,11 +44,11 @@ The Gripable Plugin is statically accessed to retrieve the main ojects needed to
 GripablePlay gripablePlay = Gripable.Play1;
 ```
 
-The first Gripable Play device is accessed via the static attribute Play1, which returns a <code>GripablePlay</code> object.
+The first Gripable Play device is accessed via the static attribute <code>Play1</code>, which returns a <code>GripablePlay</code> object.
 
 ## Play2
 
-The second Gripable Play device is accessed via the static attribute Play2, which returns a <code>GripablePlay</code> object.
+The second Gripable Play device is accessed via the static attribute <code>Play2</code>, which returns a <code>GripablePlay</code> object.
 
 > Play2 returns a reference to the second Gripable Play device.
 
@@ -397,23 +397,23 @@ Returns | Min | Max | Description
 <code>gripForce</code> | <code>-129f</code> | <code>128f</code> | Returns the Grip Force in Kg as a float
 <code>0f</code> | | | Returns 0 if the device is not subscribed or not initialised
 
-# World Frame Quaternion
+# Quaternion Data
 
-World Frame Quaternion data contains the sensor information about the orientation of the device in 3D space.
+Quaternion data contains the sensor information about the orientation of the device in 3D space, in the World Frame.
 
-## SubscribeToWorldFrameQuaternion()
-
-```csharp
-bool SubscribeToWorldFrameQuaternion();
-```
-
-> Attempts to subscribe to the device world frame quaternion data, returns <code>true</code> if successful.
+## SubscribeToQuaternionData()
 
 ```csharp
-bool subscriptionSuccessful = gripablePlay.SubscribeToWorldFrameQuaternion();
+bool SubscribeToQuaternionData();
 ```
 
-Attempts to subscribe to the device world frame quaternion data. It returns <code>true</code> if the subscription was successful.
+> Attempts to subscribe the device to quaternion data, returns <code>true</code> if successful.
+
+```csharp
+bool subscriptionSuccessful = gripablePlay.SubscribeToQuaternionData();
+```
+
+Attempts to subscribe to the device quaternion data. It returns <code>true</code> if the subscription was successful.
 
 ### Return Values
 
@@ -422,19 +422,19 @@ Returns | Description
 <code>true</code> | The subscription was successful
 <code>false</code> | The subscription failed
 
-## UnsubscribeFromWorldFrameQuaternion()
+## UnsubscribeFromQuaternionData()
 
 ```csharp
-bool UnsubscribeFromWorldFrameQuaternion();
+bool UnsubscribeFromQuaternionData();
 ```
 
-> Attempts to unsubscribe from the device world frame quaternion data, returns <code>true</code> if successful.
+> Attempts to unsubscribe from the device quaternion data, returns <code>true</code> if successful.
 
 ```csharp
-bool unsubscriptionSuccessful = gripablePlay.UnsubscribeFromWorldFrameQuaternion();
+bool unsubscriptionSuccessful = gripablePlay.UnsubscribeFromQuaternionData();
 ```
 
-Attempts to unsubscribe from the device world frame quaternion data. It returns <code>true</code> if the unsubscription was successful.
+Attempts to unsubscribe from the device quaternion data. It returns <code>true</code> if the unsubscription was successful.
 
 ### Return Values
 
@@ -443,37 +443,37 @@ Returns | Description
 <code>true</code> | The unsubscription was successful
 <code>false</code> | The unsubscription failed
 
-## IsSubscribedToWorldFrameQuaternion()
+## IsSubscribedToQuaternionData()
 
 ```csharp
-bool IsSubscribedToWorldFrameQuaternion();
+bool IsSubscribedToQuaternionData();
 ```
 
-> Returns <code>true</code> if the device is subscribed to world frame quaternion data.
+> Returns <code>true</code> if the device is subscribed to quaternion data.
 
 ```csharp
-bool isSubscribed = gripablePlay.IsSubscribedToWorldFrameQuaternion();
+bool isSubscribed = gripablePlay.IsSubscribedToQuaternionData();
 ```
 
-Returns a <code>bool</code> that represents if the device is subscribed to world frame quaternion data.
+Returns a <code>bool</code> that represents if the device is subscribed to quaternion data.
 
 ### Return Values
 
 Returns | Description
 ------- | -----------
-<code>true</code> | The device is subscribed to world frame Quaternion
-<code>false</code> | The device is not subscribed to world frame Quaternion or not initialised
+<code>true</code> | The device is subscribed to Quaternion Data
+<code>false</code> | The device is not subscribed to Quaternion Data or is not initialised
 
-## GetWorldFrameQuaternion()
+## GetQuaternion()
 
 ```csharp
-Quaternion GetWorldFrameQuaternion();
+Quaternion GetQuaternion();
 ```
 
 > Returns a <code>Quaternion</code> object representing the orientation of the device in the world frame.
 
 ```csharp
-Quaternion deviceQuaternion = gripablePlay.GetWorldFrameQuaternion();
+Quaternion deviceQuaternion = gripablePlay.GetQuaternion();
 ```
 
 Returns a <code>[Quaternion](https://docs.unity3d.com/ScriptReference/Quaternion.html)</code> object representing the orientation of the device in the world frame.
