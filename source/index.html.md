@@ -718,6 +718,56 @@ Returns | Min (per axis) | Max (per axis) | Description
 <code>magneticHeading</code> | <code>-4912f</code> | <code>4912f</code> | A <code>[Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html) representing the magnetic heading of the device, expressed in microteslas
 <code>[Vector3.zero](https://docs.unity3d.com/ScriptReference/Vector3-zero.html)</code> | | | Returns a zeroed <code>[Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html)</code> if the device is not subscribed or not initialised
 
+# Zeroing
+
+It is important that a Gripable Play Device is zeroed before entering into a game. This ensures that the game is playable regardless of the orientation of the device's starting position.
+
+## ResetWristRpy()
+
+```csharp
+void ResetWristRpy();
+```
+
+> Zeroes the RPY values on the device 
+
+```csharp
+gripablePlay.ResetWristRpy();
+```
+
+Sets the Roll, Pitch and Yaw outputs of the device to zero. 
+
+
+## ResetWristRpyByGravity()
+
+```csharp 
+void ResetWristRpyByGravity();
+```
+
+> Zeroes the RPY values of the device and sets it's orientation
+
+```csharp
+gripablePlay.ResetWristRpyByGravity();
+```
+
+[Motion Data](#motiondata) must be subscribed to in order for this to function. This sets the Roll, Pitch and Yaw values of the device to zero. It also calculates the orientation of the device, inverting the axes accordingly so that inputs to the games are not reversed when the Gripable Play Device is upside-down.
+
+
+## ShowResetRpyDialogue()
+
+```csharp
+ResetRpyDialogue ShowResetRpyDialogue();
+```
+
+> Shows a reset RPY dialogue canvas prefab in the game UI and returns a <code>ResetRpyDialogue</code> script attached to that dialogue
+
+```csharp
+ResetRpyDialogue resetRpyDialogue = gripablePlay.ShowResetRpyDialogue();
+resetRpyDialogue.OnClose += DoSomethingWhenDialogueIsClosed();
+```
+
+Shows a dialogue canvas game object to the player prompting them to squeeze. This will close the dialogue and call the <code>[ResetWristRpyByGravity()](#resetwristrpybygravity)</code> function, subscribing to [Motion Data](#motiondata) in the process.
+The function returns a reference to the <code>ResetRpyDialogue</code> script that is attached to the dialogue game object. This can be used to subscribe to the <code>OnClose</code> action that's invoked when the dialogue closes.
+
 # Connection Events
 
 > To subscribe a handler to an event, assign a reference to an encapsulated method which has no parameters and no return value.
@@ -905,6 +955,92 @@ enum GestureType
 
 To configure gestures, the desired gesture type must be specified. The list of available gestures is defined by the <code>GestureType enum</code>.
 
+## GetForceGestureConfig()
+
+```csharp
+ForceConfig GetForceGestureConfig(GestureType gestureType);
+
+public sealed partial class ForceConfig : pb::IMessage<ForceConfig>
+{
+    public float ReleaseThreshold;
+    public float SqueezeThreshold;
+    public int TimeThreshold;
+    ...
+}
+```
+
+> Returns a protobuf containing the configuration of the passed force gesture.
+
+```csharp
+ForceConfig forceConfig = gripablePlay.GetForceGestureConfig(GestureType.SQUEEZE);
+```
+
+Returns a <code>ForceConfig</code> protobuf containing the configuration of the specified force gesture.
+
+### Query Parameters and Return Values
+
+Parameter | Returns | Description
+--------- | ------- | -----------
+<code>gestureType</code> | <code>ForceConfig</code> | Protobuf containing the force gesture configuration of the specified force gesture type
+
+## GetRotationGestureConfig()
+
+```csharp
+RotationConfig GetRotationGestureConfig(GestureType gestureType);
+
+public sealed partial class RotationConfig : pb::IMessage<RotationConfig>
+{
+    public RegionConfig RegionA;
+    public RegionConfig RegionB;
+    public int TimeThreshold;
+    ...
+}
+
+public sealed partial class RegionConfig : pb::IMessage<RegionConfig>
+{
+    public float Start;
+    public float End;
+    ...
+}
+```
+
+> Returns a protobuf containing the configuration of the passed rotation gesture.
+
+```csharp
+RotationConfig rotationConfig = gripablePlay.GetRotationGestureConfig(GestureType.EXTENSION);
+```
+
+Returns a <code>RotationConfig</code> protobuf containing the configuration of the specified rotation gesture.
+
+### Query Parameters and Return Values
+
+Parameter | Returns | Description
+--------- | ------- | -----------
+<code>gestureType</code> | <code>ForceConfig</code> | Protobuf containing the configuration of the specified rotation gesture
+
+## GetGestureTimeThreshold() 
+
+```csharp
+int GetGestureTimeThreshold(GestureType gestureType);
+```
+
+> Returns the time threshold of the specified gesture as an <code>int</code>.
+
+```csharp
+int timeThreshold = gripablePlay.GetTimeThreshold(GestureType.FLEXION);
+```
+
+Returns the time threshold of the specified gesture as an <code>int</code>.
+
+
+### Query Parameters and Return Values
+
+Parameter | Returns | Description
+--------- | ------- | -----------
+<code>gestureType</code> | <code>int</code> | time threshold of specified gesture
+
+
+
 ## ConfigureForceGesture()
 
 ```csharp
@@ -1005,9 +1141,6 @@ gripablePlay.ConfigureRotationGesturesByCalibration();
 Configures Pronation, Supination, Radial, Ulnar, Extension and Flexion gestures based on RPY <code>CalibrationLevel</code> presets
 
 
-
-
-
 ## TriggerGesture()
 
 ```csharp
@@ -1027,6 +1160,22 @@ Used to test firing gesture events without using the Gripable Device.
 Parameter | Description
 --------- | -----------
 <code>gestureType</code> | Triggers the gesture with the specified <code>GestureType</code>
+
+# Vibration
+
+## SendRumble() 
+
+```csharp
+bool SendRumbleCommand(VibrationEffect vibrationEffect);
+```
+
+> Sends a command to the Gripable Play Device to vibrate with a particular effect
+
+```csharp
+bool hasVibrated = gripablePlay.SendRumbleCommand(VibrationEffect.STRONG_CLICK_80);
+```
+
+Instructs the Gripable Play Device to vibrate with the specified vibration effect.
 
 
 # Frames of Reference
