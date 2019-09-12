@@ -256,7 +256,7 @@ Returns a <code>bool</code> that represents the device's current connected state
 Returns | Description
 ------- | -----------
 <code>true</code> | The device is connected
-<code>false</code> | The device is connecting, disconnecting, disconected or not initialised
+<code>false</code> | The device is connecting, disconnecting, disconnected or not initialised
 
 ## IsDisconnected()
 
@@ -279,9 +279,49 @@ Returns | Description
 <code>true</code> | The device is disconnected or not initialised
 <code>false</code> | The device is connecting, connected or disconnecting
 
-# Grip Data
+# Subscriptions
 
-<code>GripData</code> contains the sensor information from squeezing the Gripable Play device.
+Subscriptions are used to get data from the appropriate streams. 
+
+Stream | Description
+------ | -----------
+<code>GripData</code> | Provides data from the grip sensor
+<code>QuaternionData</code> | Provides the orientation of the device as a <code>[Quaternion](https://docs.unity3d.com/ScriptReference/Quaternion.html)</code> object and RPY data
+<code>MotionData</code> | Provides Linear Acceleration, Angular Velocity and Magnetic Heading 
+
+These can be subscribed to using individual methods or by passing a <code>SubscriptionConfig</code> object
+
+## ConfigureSubscriptions()
+
+```csharp
+bool ConfigureSubscriptions(SubscriptionConfig subscription);
+```
+
+> Subscribes and Unsubscribes from the streams in the passed configuration. Returns <code>true</code> if successful.
+
+```csharp
+Gripable.Play1.ConfigureSubscriptions(new DataProtos.SubscriptionConfig
+{
+    GripData = true,
+    QuaternionData = false,
+    MotionData = false
+});
+```
+
+Attempts to configure the subscriptions. Returns <code>true</code> if successful.
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+<code>subscriptionConfig</code> | DataProto containing boolean values for <code>GripData</code>, <code>QuaternionData</code> and <code>MotionData</code>
+
+
+### Return Values
+
+Returns | Description
+------- | -----------
+<code>true</code> | The subscription configuration was successful
+<code>false</code> | The subscription configuration failed
 
 ## SubscribeToGripData()
 
@@ -345,6 +385,137 @@ Returns | Description
 ------- | -----------
 <code>true</code> | The device is subscribed to Grip Data
 <code>false</code> | The device is not subscribed to Grip Data or not initialised
+
+## SubscribeToQuaternionData()
+
+```csharp
+bool SubscribeToQuaternionData();
+```
+
+> Attempts to subscribe the device to quaternion data, returns <code>true</code> if successful.
+
+```csharp
+bool subscriptionSuccessful = gripablePlay.SubscribeToQuaternionData();
+```
+
+Attempts to subscribe to the device quaternion data. It returns <code>true</code> if the subscription was successful.
+
+### Return Values
+
+Returns | Description
+------- | -----------
+<code>true</code> | The subscription was successful
+<code>false</code> | The subscription failed
+
+## UnsubscribeFromQuaternionData()
+
+```csharp
+bool UnsubscribeFromQuaternionData();
+```
+
+> Attempts to unsubscribe from the device quaternion data, returns <code>true</code> if successful.
+
+```csharp
+bool unsubscriptionSuccessful = gripablePlay.UnsubscribeFromQuaternionData();
+```
+
+Attempts to unsubscribe from the device quaternion data. It returns <code>true</code> if the unsubscription was successful.
+
+### Return Values
+
+Returns | Description
+------- | -----------
+<code>true</code> | The unsubscription was successful
+<code>false</code> | The unsubscription failed
+
+## IsSubscribedToQuaternionData()
+
+```csharp
+bool IsSubscribedToQuaternionData();
+```
+
+> Returns <code>true</code> if the device is subscribed to quaternion data.
+
+```csharp
+bool isSubscribed = gripablePlay.IsSubscribedToQuaternionData();
+```
+
+Returns a <code>bool</code> that represents if the device is subscribed to quaternion data.
+
+### Return Values
+
+Returns | Description
+------- | -----------
+<code>true</code> | The device is subscribed to Quaternion Data
+<code>false</code> | The device is not subscribed to Quaternion Data or is not initialised
+
+## SubscribeToMotionData()
+
+```csharp
+bool SubscribeToMotionData();
+```
+
+> Attempts to subscribe to the device motion data, returns <code>true</code> if successful.
+
+```csharp
+bool subscriptionSuccessful = gripablePlay.SubscribeToMotionData();
+```
+
+Attempts to subscribe to the device motion data. It returns <code>true</code> if the subscription was successful.
+
+### Return Values
+
+Returns | Description
+------- | -----------
+<code>true</code> | The subscription was successful
+<code>false</code> | The subscription failed
+
+## UnsubscribeFromMotionData()
+
+```csharp
+bool UnsubscribeFromMotionData();
+```
+
+> Attempts to unsubscribe from the device motion data, returns <code>true</code> if successful.
+
+```csharp
+bool unsubscriptionSuccessful = gripablePlay.UnsubscribeFromMotionData();
+```
+
+Attempts to unsubscribe from the device motion data. It returns <code>true</code> if the unsubscription was successful.
+
+### Return Values
+
+Returns | Description
+------- | -----------
+<code>true</code> | The unsubscription was successful
+<code>false</code> | The unsubscription failed
+
+## IsSubscribedToMotionData()
+
+```csharp
+bool IsSubscribedToMotionData();
+```
+
+> Returns <code>true</code> if the device is subscribed to motion data.
+
+```csharp
+bool isSubscribed = gripablePlay.IsSubscribedToMotionData();
+```
+
+Returns a <code>bool</code> that represents if the device is subscribed to motion data.
+
+### Return Values
+
+Returns | Description
+------- | -----------
+<code>true</code> | The device is subscribed to Motion Data
+<code>false</code> | The device is not subscribed to Motion Data or not initialised
+
+# Grip Data
+
+<code>GripData</code> contains the sensor information from squeezing the Gripable Play device.
+All of these methods require subscription to <code>GripData</code>.
 
 ## GetGripData()
 
@@ -423,69 +594,7 @@ Returns | Min | Max | Description
 # Quaternion Data
 
 Quaternion data contains the sensor information about the orientation of the device in 3D space, in the World Frame.
-
-## SubscribeToQuaternionData()
-
-```csharp
-bool SubscribeToQuaternionData();
-```
-
-> Attempts to subscribe the device to quaternion data, returns <code>true</code> if successful.
-
-```csharp
-bool subscriptionSuccessful = gripablePlay.SubscribeToQuaternionData();
-```
-
-Attempts to subscribe to the device quaternion data. It returns <code>true</code> if the subscription was successful.
-
-### Return Values
-
-Returns | Description
-------- | -----------
-<code>true</code> | The subscription was successful
-<code>false</code> | The subscription failed
-
-## UnsubscribeFromQuaternionData()
-
-```csharp
-bool UnsubscribeFromQuaternionData();
-```
-
-> Attempts to unsubscribe from the device quaternion data, returns <code>true</code> if successful.
-
-```csharp
-bool unsubscriptionSuccessful = gripablePlay.UnsubscribeFromQuaternionData();
-```
-
-Attempts to unsubscribe from the device quaternion data. It returns <code>true</code> if the unsubscription was successful.
-
-### Return Values
-
-Returns | Description
-------- | -----------
-<code>true</code> | The unsubscription was successful
-<code>false</code> | The unsubscription failed
-
-## IsSubscribedToQuaternionData()
-
-```csharp
-bool IsSubscribedToQuaternionData();
-```
-
-> Returns <code>true</code> if the device is subscribed to quaternion data.
-
-```csharp
-bool isSubscribed = gripablePlay.IsSubscribedToQuaternionData();
-```
-
-Returns a <code>bool</code> that represents if the device is subscribed to quaternion data.
-
-### Return Values
-
-Returns | Description
-------- | -----------
-<code>true</code> | The device is subscribed to Quaternion Data
-<code>false</code> | The device is not subscribed to Quaternion Data or is not initialised
+All of these methods require subscription to <code>QuaternionData</code>.
 
 ## GetQuaternion()
 
@@ -590,69 +699,7 @@ Returns | Min (per axis) | Max (per axis) | Description
 # Motion Data
 
 Motion Data contains the sensor information about the movements of the device, collected from the [gyroscope](https://en.wikipedia.org/wiki/Gyroscope), [accelerometer](https://en.wikipedia.org/wiki/Accelerometer) and [magnetometer](https://en.wikipedia.org/wiki/Magnetometer).
-
-## SubscribeToMotionData()
-
-```csharp
-bool SubscribeToMotionData();
-```
-
-> Attempts to subscribe to the device motion data, returns <code>true</code> if successful.
-
-```csharp
-bool subscriptionSuccessful = gripablePlay.SubscribeToMotionData();
-```
-
-Attempts to subscribe to the device motion data. It returns <code>true</code> if the subscription was successful.
-
-### Return Values
-
-Returns | Description
-------- | -----------
-<code>true</code> | The subscription was successful
-<code>false</code> | The subscription failed
-
-## UnsubscribeFromMotionData()
-
-```csharp
-bool UnsubscribeFromMotionData();
-```
-
-> Attempts to unsubscribe from the device motion data, returns <code>true</code> if successful.
-
-```csharp
-bool unsubscriptionSuccessful = gripablePlay.UnsubscribeFromMotionData();
-```
-
-Attempts to unsubscribe from the device motion data. It returns <code>true</code> if the unsubscription was successful.
-
-### Return Values
-
-Returns | Description
-------- | -----------
-<code>true</code> | The unsubscription was successful
-<code>false</code> | The unsubscription failed
-
-## IsSubscribedToMotionData()
-
-```csharp
-bool IsSubscribedToMotionData();
-```
-
-> Returns <code>true</code> if the device is subscribed to motion data.
-
-```csharp
-bool isSubscribed = gripablePlay.IsSubscribedToMotionData();
-```
-
-Returns a <code>bool</code> that represents if the device is subscribed to motion data.
-
-### Return Values
-
-Returns | Description
-------- | -----------
-<code>true</code> | The device is subscribed to Motion Data
-<code>false</code> | The device is not subscribed to Motion Data or not initialised
+All of these methods require subscription to <code>MoitonData</code>.
 
 ## GetLinearAcceleration()
 
