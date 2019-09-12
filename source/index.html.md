@@ -617,11 +617,9 @@ Returns | Description
 <code>deviceQuaternion</code> | The device orientation in the world frame expressed through a [Quaternion](https://docs.unity3d.com/ScriptReference/Quaternion.html) object
 <code>[Quaternion.identity](https://docs.unity3d.com/ScriptReference/Quaternion-identity.html)</code> | Returns the identity <code>[Quaternion](https://docs.unity3d.com/ScriptReference/Quaternion.html) (x=0 , y=0 , z=0, w=1)</code> if the device is not subscribed or not initialised
 
-# Wrist RPY
+## GetWristRpy()
 
 Wrist RPY (Roll, Pitch, Yaw) contains information about the orientation of the device relative to the user's wrist. [Roll, Pitch and Yaw](https://en.wikipedia.org/wiki/Aircraft_principal_axes) represent rotations of the device around its X, Y and Z axis, respectively, as shown in this [picture](#sensor-frame) (not to be mistaken with [Euler angles](https://en.wikipedia.org/wiki/Euler_angles)).
-
-## GetWristRpy()
 
 ```csharp
 WristRpyData GetWristRpy();
@@ -799,21 +797,26 @@ gripablePlay.ResetWristRpyByGravity();
 [Motion Data](#motiondata) must be subscribed to in order for this to function. This sets the Roll, Pitch and Yaw values of the device to zero. It also calculates the orientation of the device, inverting the axes accordingly so that inputs to the games are not reversed when the Gripable Play Device is upside-down.
 
 
-## ShowResetRpyDialogue()
+## ShowSqueezeToStartDialogue()
 
 ```csharp
-ResetRpyDialogue ShowResetRpyDialogue();
+SqueezeToStartDialogue ShowSqueezeToStartDialogue(bool resetWristRpy = false);
 ```
 
-> Shows a reset RPY dialogue canvas prefab in the game UI and returns a <code>ResetRpyDialogue</code> script attached to that dialogue
+> Shows a squeeze to start dialogue canvas prefab in the game UI and returns a <code>ShowSqueezeToStartDialogue</code> script attached to that dialogue
 
 ```csharp
-ResetRpyDialogue resetRpyDialogue = gripablePlay.ShowResetRpyDialogue();
-resetRpyDialogue.OnClose += DoSomethingWhenDialogueIsClosed();
+SqueezeToStartDialogue squeezeToStartDialogue = gripablePlay.ShowResetRpyDialogue();
+squeezeToStartDialogue.OnClose += DoSomethingWhenDialogueIsClosed();
 ```
 
-Shows a dialogue canvas game object to the player prompting them to squeeze. This will close the dialogue and call the <code>[ResetWristRpyByGravity()](#resetwristrpybygravity)</code> function, subscribing to [Motion Data](#motiondata) in the process.
-The function returns a reference to the <code>ResetRpyDialogue</code> script that is attached to the dialogue game object. This can be used to subscribe to the <code>OnClose</code> action that's invoked when the dialogue closes.
+Shows a dialogue canvas game object to the player prompting them to squeeze. This will close the dialogue with a callback (to start the game). If the <code>resetWristRpy</code> parameter is set to <code>true</code>, the <code>[ResetWristRpyByGravity()](#resetwristrpybygravity)</code> function is also called, subscribing to [Motion Data](#motiondata) in the process.
+The function returns a reference to the <code>SqueezeToStartDialogue</code> script that is attached to the dialogue game object. This can be used to subscribe to the <code>OnClose</code> action that's invoked when the dialogue closes.
+
+### Query Parameters
+Parameter | Description
+--------- | -----------
+<code>resetWristRpy</code> | optional <code>bool</code> which will trigger the <code>[ResetWristRpyByGravity()](#resetwristrpybygravity)</code> function when the dialogue closes
 
 # Connection Events
 
