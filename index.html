@@ -284,8 +284,11 @@
               </ul>
           </li>
           <li>
-            <a href="#grip-data" class="toc-h1 toc-link" data-title="Grip Data">Grip Data</a>
+            <a href="#subscriptions" class="toc-h1 toc-link" data-title="Subscriptions">Subscriptions</a>
               <ul class="toc-list-h2">
+                  <li>
+                    <a href="#configuresubscriptions" class="toc-h2 toc-link" data-title="ConfigureSubscriptions()">ConfigureSubscriptions()</a>
+                  </li>
                   <li>
                     <a href="#subscribetogripdata" class="toc-h2 toc-link" data-title="SubscribeToGripData()">SubscribeToGripData()</a>
                   </li>
@@ -296,50 +299,14 @@
                     <a href="#issubscribedtogripdata" class="toc-h2 toc-link" data-title="IsSubscribedToGripData()">IsSubscribedToGripData()</a>
                   </li>
                   <li>
-                    <a href="#getgripdata" class="toc-h2 toc-link" data-title="GetGripData()">GetGripData()</a>
+                    <a href="#subscribetoquaterniondata" class="toc-h2 toc-link" data-title="SubscribeToQuaternionData()">SubscribeToQuaternionData()</a>
                   </li>
                   <li>
-                    <a href="#getgripforce" class="toc-h2 toc-link" data-title="GetGripForce()">GetGripForce()</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#world-frame-quaternion" class="toc-h1 toc-link" data-title="World Frame Quaternion">World Frame Quaternion</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#subscribetoworldframequaternion" class="toc-h2 toc-link" data-title="SubscribeToWorldFrameQuaternion()">SubscribeToWorldFrameQuaternion()</a>
+                    <a href="#unsubscribefromquaterniondata" class="toc-h2 toc-link" data-title="UnsubscribeFromQuaternionData()">UnsubscribeFromQuaternionData()</a>
                   </li>
                   <li>
-                    <a href="#unsubscribefromworldframequaternion" class="toc-h2 toc-link" data-title="UnsubscribeFromWorldFrameQuaternion()">UnsubscribeFromWorldFrameQuaternion()</a>
+                    <a href="#issubscribedtoquaterniondata" class="toc-h2 toc-link" data-title="IsSubscribedToQuaternionData()">IsSubscribedToQuaternionData()</a>
                   </li>
-                  <li>
-                    <a href="#issubscribedtoworldframequaternion" class="toc-h2 toc-link" data-title="IsSubscribedToWorldFrameQuaternion()">IsSubscribedToWorldFrameQuaternion()</a>
-                  </li>
-                  <li>
-                    <a href="#getworldframequaternion" class="toc-h2 toc-link" data-title="GetWorldFrameQuaternion()">GetWorldFrameQuaternion()</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#sensor-frame-rpy" class="toc-h1 toc-link" data-title="Sensor Frame RPY">Sensor Frame RPY</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#subscribetosensorframerpy" class="toc-h2 toc-link" data-title="SubscribeToSensorFrameRPY()">SubscribeToSensorFrameRPY()</a>
-                  </li>
-                  <li>
-                    <a href="#unsubscribefromsensorframerpy" class="toc-h2 toc-link" data-title="UnsubscribeFromSensorFrameRPY()">UnsubscribeFromSensorFrameRPY()</a>
-                  </li>
-                  <li>
-                    <a href="#issubscribedtosensorframerpy" class="toc-h2 toc-link" data-title="IsSubscribedToSensorFrameRPY()">IsSubscribedToSensorFrameRPY()</a>
-                  </li>
-                  <li>
-                    <a href="#getsensorframerpy" class="toc-h2 toc-link" data-title="GetSensorFrameRpy()">GetSensorFrameRpy()</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#motion-data" class="toc-h1 toc-link" data-title="Motion Data">Motion Data</a>
-              <ul class="toc-list-h2">
                   <li>
                     <a href="#subscribetomotiondata" class="toc-h2 toc-link" data-title="SubscribeToMotionData()">SubscribeToMotionData()</a>
                   </li>
@@ -349,6 +316,42 @@
                   <li>
                     <a href="#issubscribedtomotiondata" class="toc-h2 toc-link" data-title="IsSubscribedToMotionData()">IsSubscribedToMotionData()</a>
                   </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#grip-data" class="toc-h1 toc-link" data-title="Grip Data">Grip Data</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#getgripdata" class="toc-h2 toc-link" data-title="GetGripData()">GetGripData()</a>
+                  </li>
+                  <li>
+                    <a href="#getgripforce" class="toc-h2 toc-link" data-title="GetGripForce()">GetGripForce()</a>
+                  </li>
+                  <li>
+                    <a href="#getnormalizegripforce" class="toc-h2 toc-link" data-title="GetNormalizeGripForce()">GetNormalizeGripForce()</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#quaternion-data" class="toc-h1 toc-link" data-title="Quaternion Data">Quaternion Data</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#getquaternion" class="toc-h2 toc-link" data-title="GetQuaternion()">GetQuaternion()</a>
+                  </li>
+                  <li>
+                    <a href="#getwristrpy" class="toc-h2 toc-link" data-title="GetWristRpy()">GetWristRpy()</a>
+                  </li>
+                  <li>
+                    <a href="#getwristrpyasvector3" class="toc-h2 toc-link" data-title="GetWristRpyAsVector3()">GetWristRpyAsVector3()</a>
+                  </li>
+                  <li>
+                    <a href="#getnormalizerpyasvector3" class="toc-h2 toc-link" data-title="GetNormalizeRpyAsVector3()">GetNormalizeRpyAsVector3()</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#motion-data" class="toc-h1 toc-link" data-title="Motion Data">Motion Data</a>
+              <ul class="toc-list-h2">
                   <li>
                     <a href="#getlinearacceleration" class="toc-h2 toc-link" data-title="GetLinearAcceleration()">GetLinearAcceleration()</a>
                   </li>
@@ -361,7 +364,35 @@
               </ul>
           </li>
           <li>
+            <a href="#zeroing" class="toc-h1 toc-link" data-title="Zeroing">Zeroing</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#resetwristrpy" class="toc-h2 toc-link" data-title="ResetWristRpy()">ResetWristRpy()</a>
+                  </li>
+                  <li>
+                    <a href="#resetwristrpybygravity" class="toc-h2 toc-link" data-title="ResetWristRpyByGravity()">ResetWristRpyByGravity()</a>
+                  </li>
+                  <li>
+                    <a href="#showsqueezetostartdialogue" class="toc-h2 toc-link" data-title="ShowSqueezeToStartDialogue()">ShowSqueezeToStartDialogue()</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#connection-events" class="toc-h1 toc-link" data-title="Connection Events">Connection Events</a>
+          </li>
+          <li>
+            <a href="#calibration" class="toc-h1 toc-link" data-title="Calibration">Calibration</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#setgripcalibrationlevel" class="toc-h2 toc-link" data-title="SetGripCalibrationLevel()">SetGripCalibrationLevel()</a>
+                  </li>
+                  <li>
+                    <a href="#setrpycalibrationlevel" class="toc-h2 toc-link" data-title="SetRpyCalibrationLevel()">SetRpyCalibrationLevel()</a>
+                  </li>
+                  <li>
+                    <a href="#individual-rpy-calibration" class="toc-h2 toc-link" data-title="Individual RPY Calibration">Individual RPY Calibration</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#gestures" class="toc-h1 toc-link" data-title="Gestures">Gestures</a>
@@ -376,10 +407,36 @@
                     <a href="#gesture-types" class="toc-h2 toc-link" data-title="Gesture Types">Gesture Types</a>
                   </li>
                   <li>
+                    <a href="#getforcegestureconfig" class="toc-h2 toc-link" data-title="GetForceGestureConfig()">GetForceGestureConfig()</a>
+                  </li>
+                  <li>
+                    <a href="#getrotationgestureconfig" class="toc-h2 toc-link" data-title="GetRotationGestureConfig()">GetRotationGestureConfig()</a>
+                  </li>
+                  <li>
+                    <a href="#getgesturetimethreshold" class="toc-h2 toc-link" data-title="GetGestureTimeThreshold()">GetGestureTimeThreshold()</a>
+                  </li>
+                  <li>
                     <a href="#configureforcegesture" class="toc-h2 toc-link" data-title="ConfigureForceGesture()">ConfigureForceGesture()</a>
                   </li>
                   <li>
                     <a href="#configurerotationgesture" class="toc-h2 toc-link" data-title="ConfigureRotationGesture()">ConfigureRotationGesture()</a>
+                  </li>
+                  <li>
+                    <a href="#configureforcegesturesbycalibration" class="toc-h2 toc-link" data-title="ConfigureForceGesturesByCalibration()">ConfigureForceGesturesByCalibration()</a>
+                  </li>
+                  <li>
+                    <a href="#configurerotationgesturesbycalibration" class="toc-h2 toc-link" data-title="ConfigureRotationGesturesByCalibration()">ConfigureRotationGesturesByCalibration()</a>
+                  </li>
+                  <li>
+                    <a href="#triggergesture" class="toc-h2 toc-link" data-title="TriggerGesture()">TriggerGesture()</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#vibration" class="toc-h1 toc-link" data-title="Vibration">Vibration</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#sendrumble" class="toc-h2 toc-link" data-title="SendRumble()">SendRumble()</a>
                   </li>
               </ul>
           </li>
@@ -429,12 +486,12 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Gripable Play Unity is a Unity Package developed by gripAble Ltd. 
+<p>Gripable Play Unity is a Unity Package developed by GripAble Ltd. 
 It exposes the Gripable API through Unity, allowing developers with access to a GripAble Play device &amp; Android tablet to start developing games.</p>
 <h1 id='setup'>Setup</h1>
 <p>To get started with Gripable Play Unity, follow the steps <a href="https://bitbucket.org/gripable/gripable-play-unity/src/master/README.md">here</a>.</p>
 <h1 id='releases'>Releases</h1>
-<p>Check out from these links the documentation for the released versions of Gripable Play Unity.</p>
+<p>Documentation links of specific Gripable Play Unity versions.</p>
 
 <aside class="warning">This documentation is for features still in development! Check out the documentation for the latest released version from the links below.</aside>
 <h3 id='releases-2'>Releases</h3>
@@ -442,16 +499,16 @@ It exposes the Gripable API through Unity, allowing developers with access to a 
 <li><a href="https://gripableteam.github.io/gripable-play-unity-docs-1.0.0">1.0.0</a></li>
 </ul>
 <h1 id='accessing-the-gripable-plugin'>Accessing the Gripable Plugin</h1>
-<p>The Gripable Plugin is statically accessed to retrieve the main ojects needed to interface with the Gripable Play device. At the moment the Gripable Plugin allows you to retrieve up to two available Gripable Play devices and the UDP Client Manager. The Gripable Plugin does not need any setup and can be called statically when needed.</p>
+<p><code>Gripable</code> is a static class, accessed to retrieve the main ojects needed to interface with the Gripable Play device. Currently, The Gripable Plugin supports connection of up to two Play devices and the UDP Client Manager.</p>
 <h2 id='play1'>Play1</h2>
 <blockquote>
 <p>Play1 returns a reference to the first Gripable Play device.</p>
 </blockquote>
 <pre class="highlight csharp tab-csharp"><code><span class="n">GripablePlay</span> <span class="n">gripablePlay</span> <span class="p">=</span> <span class="n">Gripable</span><span class="p">.</span><span class="n">Play1</span><span class="p">;</span>
 </code></pre>
-<p>The first Gripable Play device is accessed via the static attribute Play1, which returns a <code>GripablePlay</code> object.</p>
+<p>The first Gripable Play device is accessed via the static attribute <code>Play1</code>, which returns a <code>GripablePlay</code> object.</p>
 <h2 id='play2'>Play2</h2>
-<p>The second Gripable Play device is accessed via the static attribute Play2, which returns a <code>GripablePlay</code> object.</p>
+<p>The second Gripable Play device is accessed via the static attribute <code>Play2</code>, which returns a <code>GripablePlay</code> object.</p>
 
 <blockquote>
 <p>Play2 returns a reference to the second Gripable Play device.</p>
@@ -675,7 +732,7 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </tr>
 <tr>
 <td><code>false</code></td>
-<td>The device is connecting, disconnecting, disconected or not initialised</td>
+<td>The device is connecting, disconnecting, disconnected or not initialised</td>
 </tr>
 </tbody></table>
 <h2 id='isdisconnected'>IsDisconnected()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">IsDisconnected</span><span class="p">();</span>
@@ -702,8 +759,71 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 <td>The device is connecting, connected or disconnecting</td>
 </tr>
 </tbody></table>
-<h1 id='grip-data'>Grip Data</h1>
-<p><code>GripData</code> contains the sensor information from squeezing the Gripable Play device.</p>
+<h1 id='subscriptions'>Subscriptions</h1>
+<p>Subscriptions are used to get data from the appropriate streams. </p>
+
+<table><thead>
+<tr>
+<th>Stream</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>GripData</code></td>
+<td>Provides data from the grip sensor</td>
+</tr>
+<tr>
+<td><code>QuaternionData</code></td>
+<td>Provides the orientation of the device as a <code><a href="https://docs.unity3d.com/ScriptReference/Quaternion.html">Quaternion</a></code> object and RPY data</td>
+</tr>
+<tr>
+<td><code>MotionData</code></td>
+<td>Provides Linear Acceleration, Angular Velocity and Magnetic Heading</td>
+</tr>
+</tbody></table>
+
+<p>These can be subscribed to using individual methods or by passing a <code>SubscriptionConfig</code> object</p>
+<h2 id='configuresubscriptions'>ConfigureSubscriptions()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">ConfigureSubscriptions</span><span class="p">(</span><span class="n">SubscriptionConfig</span> <span class="n">subscription</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Subscribes and Unsubscribes from the streams in the passed configuration. Returns <code>true</code> if successful.</p>
+</blockquote>
+<pre class="highlight csharp tab-csharp"><code><span class="n">Gripable</span><span class="p">.</span><span class="n">Play1</span><span class="p">.</span><span class="nf">ConfigureSubscriptions</span><span class="p">(</span><span class="k">new</span> <span class="n">DataProtos</span><span class="p">.</span><span class="n">SubscriptionConfig</span>
+<span class="p">{</span>
+    <span class="n">GripData</span> <span class="p">=</span> <span class="k">true</span><span class="p">,</span>
+    <span class="n">QuaternionData</span> <span class="p">=</span> <span class="k">false</span><span class="p">,</span>
+    <span class="n">MotionData</span> <span class="p">=</span> <span class="k">false</span>
+<span class="p">});</span>
+</code></pre>
+<p>Attempts to configure the subscriptions. Returns <code>true</code> if successful.</p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>subscriptionConfig</code></td>
+<td>DataProto containing boolean values for <code>GripData</code>, <code>QuaternionData</code> and <code>MotionData</code></td>
+</tr>
+</tbody></table>
+<h3 id='return-values-9'>Return Values</h3>
+<table><thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>true</code></td>
+<td>The subscription configuration was successful</td>
+</tr>
+<tr>
+<td><code>false</code></td>
+<td>The subscription configuration failed</td>
+</tr>
+</tbody></table>
 <h2 id='subscribetogripdata'>SubscribeToGripData()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">SubscribeToGripData</span><span class="p">();</span>
 </code></pre>
 <blockquote>
@@ -712,7 +832,7 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 <pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">subscriptionSuccessful</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">SubscribeToGripData</span><span class="p">();</span>
 </code></pre>
 <p>Attempts to subscribe to the device grip data. It returns <code>true</code> if the subscription was successful.</p>
-<h3 id='return-values-9'>Return Values</h3>
+<h3 id='return-values-10'>Return Values</h3>
 <table><thead>
 <tr>
 <th>Returns</th>
@@ -736,7 +856,7 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 <pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">unsubscriptionSuccessful</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">UnsubscribeFromGripData</span><span class="p">();</span>
 </code></pre>
 <p>Attempts to unsubscribe from the device grip data. It returns <code>true</code> if the unsubscription was successful.</p>
-<h3 id='return-values-10'>Return Values</h3>
+<h3 id='return-values-11'>Return Values</h3>
 <table><thead>
 <tr>
 <th>Returns</th>
@@ -760,7 +880,7 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 <pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">isSubscribed</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">IsSubscribedToGripData</span><span class="p">();</span>
 </code></pre>
 <p>Returns a <code>bool</code> that represents if the device is subscribed to grip data.</p>
-<h3 id='return-values-11'>Return Values</h3>
+<h3 id='return-values-12'>Return Values</h3>
 <table><thead>
 <tr>
 <th>Returns</th>
@@ -776,79 +896,38 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 <td>The device is not subscribed to Grip Data or not initialised</td>
 </tr>
 </tbody></table>
-<h2 id='getgripdata'>GetGripData()</h2><pre class="highlight csharp tab-csharp"><code><span class="n">GripData</span> <span class="nf">GetGripData</span><span class="p">();</span>
-
-<span class="k">public</span> <span class="k">struct</span> <span class="nc">GripData</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="kt">int</span> <span class="n">Timestamp</span><span class="p">;</span>
-    <span class="k">public</span> <span class="kt">float</span> <span class="n">Force</span><span class="p">;</span>
-    <span class="k">public</span> <span class="kt">float</span> <span class="n">CenterOfPressure</span><span class="p">;</span>
-<span class="p">}</span>
+<h2 id='subscribetoquaterniondata'>SubscribeToQuaternionData()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">SubscribeToQuaternionData</span><span class="p">();</span>
 </code></pre>
 <blockquote>
-<p>Returns an object containing data from the grip sensor.</p>
+<p>Attempts to subscribe the device to quaternion data, returns <code>true</code> if successful.</p>
 </blockquote>
-<pre class="highlight csharp tab-csharp"><code><span class="n">GripData</span> <span class="n">gripData</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">GetGripData</span><span class="p">();</span>
+<pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">subscriptionSuccessful</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">SubscribeToQuaternionData</span><span class="p">();</span>
 </code></pre>
-<p>Returns a <code>GripData</code> object containing data from the grip sensor, including the grip force and timestamp.</p>
-<h3 id='return-values-12'>Return Values</h3>
-<table><thead>
-<tr>
-<th>Returns</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>GripData</code></td>
-<td>Object containing the grip data</td>
-</tr>
-<tr>
-<td>empty </code>GripData</code></td>
-<td>Empty GripData object if not subscribed or not initialised</td>
-</tr>
-</tbody></table>
-
-<aside class="warning">The <code>CenterOfPressure</code> attribute of <code>GripData</code> is currently not used and will be implemented in future releases.</aside>
-<h2 id='getgripforce'>GetGripForce()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">float</span> <span class="nf">GetGripForce</span><span class="p">();</span>
-</code></pre>
-<blockquote>
-<p>Returns a <code>float</code> value for Grip Force in Kg.</p>
-</blockquote>
-<pre class="highlight csharp tab-csharp"><code><span class="kt">float</span> <span class="n">gripForce</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">GetGripForce</span><span class="p">();</span>
-</code></pre>
-<p>Returns the force in Kg that is currently being applied to the Gripable Play device. This is equivalent to retrieving the force attribute from a <code><a href="#getgripdata">GripData</a></code> object. It is sampled at 50Hz.</p>
+<p>Attempts to subscribe to the device quaternion data. It returns <code>true</code> if the subscription was successful.</p>
 <h3 id='return-values-13'>Return Values</h3>
 <table><thead>
 <tr>
 <th>Returns</th>
-<th>Min</th>
-<th>Max</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>gripForce</code></td>
-<td><code>-129f</code></td>
-<td><code>128f</code></td>
-<td>Returns the Grip Force in Kg as a float</td>
+<td><code>true</code></td>
+<td>The subscription was successful</td>
 </tr>
 <tr>
-<td><code>0f</code></td>
-<td></td>
-<td></td>
-<td>Returns 0 if the device is not subscribed or not initialised</td>
+<td><code>false</code></td>
+<td>The subscription failed</td>
 </tr>
 </tbody></table>
-<h1 id='world-frame-quaternion'>World Frame Quaternion</h1>
-<p>World Frame Quaternion data contains the sensor information about the orientation of the device in 3D space.</p>
-<h2 id='subscribetoworldframequaternion'>SubscribeToWorldFrameQuaternion()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">SubscribeToWorldFrameQuaternion</span><span class="p">();</span>
+<h2 id='unsubscribefromquaterniondata'>UnsubscribeFromQuaternionData()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">UnsubscribeFromQuaternionData</span><span class="p">();</span>
 </code></pre>
 <blockquote>
-<p>Attempts to subscribe to the device world frame quaternion data, returns <code>true</code> if successful.</p>
+<p>Attempts to unsubscribe from the device quaternion data, returns <code>true</code> if successful.</p>
 </blockquote>
-<pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">subscriptionSuccessful</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">SubscribeToWorldFrameQuaternion</span><span class="p">();</span>
+<pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">unsubscriptionSuccessful</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">UnsubscribeFromQuaternionData</span><span class="p">();</span>
 </code></pre>
-<p>Attempts to subscribe to the device world frame quaternion data. It returns <code>true</code> if the subscription was successful.</p>
+<p>Attempts to unsubscribe from the device quaternion data. It returns <code>true</code> if the unsubscription was successful.</p>
 <h3 id='return-values-14'>Return Values</h3>
 <table><thead>
 <tr>
@@ -858,21 +937,21 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </thead><tbody>
 <tr>
 <td><code>true</code></td>
-<td>The subscription was successful</td>
+<td>The unsubscription was successful</td>
 </tr>
 <tr>
 <td><code>false</code></td>
-<td>The subscription failed</td>
+<td>The unsubscription failed</td>
 </tr>
 </tbody></table>
-<h2 id='unsubscribefromworldframequaternion'>UnsubscribeFromWorldFrameQuaternion()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">UnsubscribeFromWorldFrameQuaternion</span><span class="p">();</span>
+<h2 id='issubscribedtoquaterniondata'>IsSubscribedToQuaternionData()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">IsSubscribedToQuaternionData</span><span class="p">();</span>
 </code></pre>
 <blockquote>
-<p>Attempts to unsubscribe from the device world frame quaternion data, returns <code>true</code> if successful.</p>
+<p>Returns <code>true</code> if the device is subscribed to quaternion data.</p>
 </blockquote>
-<pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">unsubscriptionSuccessful</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">UnsubscribeFromWorldFrameQuaternion</span><span class="p">();</span>
+<pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">isSubscribed</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">IsSubscribedToQuaternionData</span><span class="p">();</span>
 </code></pre>
-<p>Attempts to unsubscribe from the device world frame quaternion data. It returns <code>true</code> if the unsubscription was successful.</p>
+<p>Returns a <code>bool</code> that represents if the device is subscribed to quaternion data.</p>
 <h3 id='return-values-15'>Return Values</h3>
 <table><thead>
 <tr>
@@ -882,167 +961,13 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 </thead><tbody>
 <tr>
 <td><code>true</code></td>
-<td>The unsubscription was successful</td>
+<td>The device is subscribed to Quaternion Data</td>
 </tr>
 <tr>
 <td><code>false</code></td>
-<td>The unsubscription failed</td>
+<td>The device is not subscribed to Quaternion Data or is not initialised</td>
 </tr>
 </tbody></table>
-<h2 id='issubscribedtoworldframequaternion'>IsSubscribedToWorldFrameQuaternion()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">IsSubscribedToWorldFrameQuaternion</span><span class="p">();</span>
-</code></pre>
-<blockquote>
-<p>Returns <code>true</code> if the device is subscribed to world frame quaternion data.</p>
-</blockquote>
-<pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">isSubscribed</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">IsSubscribedToWorldFrameQuaternion</span><span class="p">();</span>
-</code></pre>
-<p>Returns a <code>bool</code> that represents if the device is subscribed to world frame quaternion data.</p>
-<h3 id='return-values-16'>Return Values</h3>
-<table><thead>
-<tr>
-<th>Returns</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>true</code></td>
-<td>The device is subscribed to world frame Quaternion</td>
-</tr>
-<tr>
-<td><code>false</code></td>
-<td>The device is not subscribed to world frame Quaternion or not initialised</td>
-</tr>
-</tbody></table>
-<h2 id='getworldframequaternion'>GetWorldFrameQuaternion()</h2><pre class="highlight csharp tab-csharp"><code><span class="n">Quaternion</span> <span class="nf">GetWorldFrameQuaternion</span><span class="p">();</span>
-</code></pre>
-<blockquote>
-<p>Returns a <code>Quaternion</code> object representing the orientation of the device in the world frame.</p>
-</blockquote>
-<pre class="highlight csharp tab-csharp"><code><span class="n">Quaternion</span> <span class="n">deviceQuaternion</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">GetWorldFrameQuaternion</span><span class="p">();</span>
-</code></pre>
-<p>Returns a <code><a href="https://docs.unity3d.com/ScriptReference/Quaternion.html">Quaternion</a></code> object representing the orientation of the device in the world frame.</p>
-<h3 id='return-values-17'>Return Values</h3>
-<table><thead>
-<tr>
-<th>Returns</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>deviceQuaternion</code></td>
-<td>The device orientation in the world frame expressed through a <a href="https://docs.unity3d.com/ScriptReference/Quaternion.html">Quaternion</a> object</td>
-</tr>
-<tr>
-<td><code><a href="https://docs.unity3d.com/ScriptReference/Quaternion-identity.html">Quaternion.identity</a></code></td>
-<td>Returns the identity <code><a href="https://docs.unity3d.com/ScriptReference/Quaternion.html">Quaternion</a> (x=0 , y=0 , z=0, w=1)</code> if the device is not subscribed or not initialised</td>
-</tr>
-</tbody></table>
-<h1 id='sensor-frame-rpy'>Sensor Frame RPY</h1>
-<p>Sensor frame Roll, Pitch and Yaw contain the sensor information about the orientation of the device relative to the sensors frame. <a href="https://en.wikipedia.org/wiki/Aircraft_principal_axes">Roll, Pitch and Yaw</a> represent rotations of the device around its X, Y and Z axis, respectively, as shown in this <a href="#sensor-frame">picture</a> (not to be mistaken with <a href="https://en.wikipedia.org/wiki/Euler_angles">Euler angles</a>).</p>
-<h2 id='subscribetosensorframerpy'>SubscribeToSensorFrameRPY()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">SubscribeToSensorFrameRPY</span><span class="p">();</span>
-</code></pre>
-<blockquote>
-<p>Attempts to subscribe to the device sensor frame RPY data, returns <code>true</code> if successful.</p>
-</blockquote>
-<pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">subscriptionSuccessful</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">SubscribeToSensorFrameRPY</span><span class="p">());</span>
-</code></pre>
-<p>Attempts to subscribe to the device sensor frame RPY data. It returns <code>true</code> if the subscription was successful.</p>
-<h3 id='return-values-18'>Return Values</h3>
-<table><thead>
-<tr>
-<th>Returns</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>true</code></td>
-<td>The subscription was successful</td>
-</tr>
-<tr>
-<td><code>false</code></td>
-<td>The subscription failed</td>
-</tr>
-</tbody></table>
-<h2 id='unsubscribefromsensorframerpy'>UnsubscribeFromSensorFrameRPY()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">UnsubscribeFromSensorFrameRPY</span><span class="p">();</span>
-</code></pre>
-<blockquote>
-<p>Attempts to unsubscribe from the device sensor frame RPY data, returns <code>true</code> if successful.</p>
-</blockquote>
-<pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">unsubscriptionSuccessful</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">UnsubscribeFromSensorFrameRPY</span><span class="p">();</span>
-</code></pre>
-<p>Attempts to unsubscribe from the device sensor frame RPY data. It returns <code>true</code> if the unsubscription was successful.</p>
-<h3 id='return-values-19'>Return Values</h3>
-<table><thead>
-<tr>
-<th>Returns</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>true</code></td>
-<td>The unsubscription was successful</td>
-</tr>
-<tr>
-<td><code>false</code></td>
-<td>The unsubscription failed</td>
-</tr>
-</tbody></table>
-<h2 id='issubscribedtosensorframerpy'>IsSubscribedToSensorFrameRPY()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">IsSubscribedToSensorFrameRPY</span><span class="p">();</span>
-</code></pre>
-<blockquote>
-<p>Returns <code>true</code> if the device is subscribed to sensor frame RPY data.</p>
-</blockquote>
-<pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">isSubscribed</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">IsSubscribedToSensorFrameRPY</span><span class="p">();</span>
-</code></pre>
-<p>Returns a <code>bool</code> that represents if the device is subscribed to world sensor frame RPY data.</p>
-<h3 id='return-values-20'>Return Values</h3>
-<table><thead>
-<tr>
-<th>Returns</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>true</code></td>
-<td>The device is subscribed to sensor frame RPY</td>
-</tr>
-<tr>
-<td><code>false</code></td>
-<td>The device is not subscribed to sensor frame RPY or not initialized</td>
-</tr>
-</tbody></table>
-<h2 id='getsensorframerpy'>GetSensorFrameRpy()</h2><pre class="highlight csharp tab-csharp"><code><span class="n">Vector3</span> <span class="nf">GetSensorFrameRpy</span><span class="p">();</span>
-</code></pre>
-<blockquote>
-<p>Returns a <code>Vector3</code> object representing the RPY of the device.</p>
-</blockquote>
-<pre class="highlight csharp tab-csharp"><code><span class="n">Vector3</span> <span class="n">rollPitchYaw</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">GetSensorFrameRpy</span><span class="p">();</span>
-</code></pre>
-<p>Returns a <code><a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a></code> object representing the current Roll, Pitch and Yaw of the device.</p>
-<h3 id='return-values-21'>Return Values</h3>
-<table><thead>
-<tr>
-<th>Returns</th>
-<th>Min (per axis)</th>
-<th>Max (per axis)</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>rollPitchYaw</code></td>
-<td>0</td>
-<td>360</td>
-<td>The device roll, pitch and yaw expressed through a <code><a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a></code> object</td>
-</tr>
-<tr>
-<td><code><a href="https://docs.unity3d.com/ScriptReference/Vector3-zero.html">Vector3.zero</a></code></td>
-<td></td>
-<td></td>
-<td>Returns a zeroed <code><a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a></code> if the device is not subscribed or not initialised</td>
-</tr>
-</tbody></table>
-<h1 id='motion-data'>Motion Data</h1>
-<p>Motion Data contains the sensor information about the movements of the device, collected from the <a href="https://en.wikipedia.org/wiki/Gyroscope">gyroscope</a>, <a href="https://en.wikipedia.org/wiki/Accelerometer">accelerometer</a> and <a href="https://en.wikipedia.org/wiki/Magnetometer">magnetometer</a>.</p>
 <h2 id='subscribetomotiondata'>SubscribeToMotionData()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">SubscribeToMotionData</span><span class="p">();</span>
 </code></pre>
 <blockquote>
@@ -1051,7 +976,7 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 <pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">subscriptionSuccessful</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">SubscribeToMotionData</span><span class="p">();</span>
 </code></pre>
 <p>Attempts to subscribe to the device motion data. It returns <code>true</code> if the subscription was successful.</p>
-<h3 id='return-values-22'>Return Values</h3>
+<h3 id='return-values-16'>Return Values</h3>
 <table><thead>
 <tr>
 <th>Returns</th>
@@ -1075,7 +1000,7 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 <pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">unsubscriptionSuccessful</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">UnsubscribeFromMotionData</span><span class="p">();</span>
 </code></pre>
 <p>Attempts to unsubscribe from the device motion data. It returns <code>true</code> if the unsubscription was successful.</p>
-<h3 id='return-values-23'>Return Values</h3>
+<h3 id='return-values-17'>Return Values</h3>
 <table><thead>
 <tr>
 <th>Returns</th>
@@ -1099,7 +1024,7 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 <pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">isSubscribed</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">IsSubscribedToMotionData</span><span class="p">();</span>
 </code></pre>
 <p>Returns a <code>bool</code> that represents if the device is subscribed to motion data.</p>
-<h3 id='return-values-24'>Return Values</h3>
+<h3 id='return-values-18'>Return Values</h3>
 <table><thead>
 <tr>
 <th>Returns</th>
@@ -1115,6 +1040,228 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 <td>The device is not subscribed to Motion Data or not initialised</td>
 </tr>
 </tbody></table>
+<h1 id='grip-data'>Grip Data</h1>
+<p><code>GripData</code> contains the sensor information from squeezing the Gripable Play device.
+All of these methods require subscription to <code>GripData</code>.</p>
+<h2 id='getgripdata'>GetGripData()</h2><pre class="highlight csharp tab-csharp"><code><span class="n">GripData</span> <span class="nf">GetGripData</span><span class="p">();</span>
+
+<span class="k">public</span> <span class="k">sealed</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">GripData</span> <span class="p">:</span> <span class="n">pb</span><span class="p">::</span><span class="n">IMessage</span><span class="p">&lt;</span><span class="n">GripData</span><span class="p">&gt;</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Timestamp</span><span class="p">;</span>
+    <span class="k">public</span> <span class="kt">float</span> <span class="n">Force</span><span class="p">;</span>
+    <span class="k">public</span> <span class="kt">float</span> <span class="n">CenterOfPressure</span><span class="p">;</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>Returns a protobuf containing data from the grip sensor.</p>
+</blockquote>
+<pre class="highlight csharp tab-csharp"><code><span class="n">GripData</span> <span class="n">gripData</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">GetGripData</span><span class="p">();</span>
+</code></pre>
+<p>Returns a <code>GripData</code> protobuf containing data from the grip sensor, including the grip force and timestamp.</p>
+<h3 id='return-values-19'>Return Values</h3>
+<table><thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>GripData</code></td>
+<td>Protobuf containing the grip data</td>
+</tr>
+<tr>
+<td>empty </code>GripData</code></td>
+<td>Empty GripData protobuf if not subscribed or not initialised</td>
+</tr>
+</tbody></table>
+
+<aside class="warning">The <code>CenterOfPressure</code> attribute of <code>GripData</code> is currently not used and will be implemented in future releases.</aside>
+<h2 id='getgripforce'>GetGripForce()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">float</span> <span class="nf">GetGripForce</span><span class="p">();</span>
+</code></pre>
+<blockquote>
+<p>Returns a <code>float</code> value for Grip Force in Kg.</p>
+</blockquote>
+<pre class="highlight csharp tab-csharp"><code><span class="kt">float</span> <span class="n">gripForce</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">GetGripForce</span><span class="p">();</span>
+</code></pre>
+<p>Returns the force in Kg that is currently being applied to the Gripable Play device. This is equivalent to retrieving the force attribute from a <code><a href="#getgripdata">GripData</a></code> object. It is sampled at 50Hz.</p>
+<h3 id='return-values-20'>Return Values</h3>
+<table><thead>
+<tr>
+<th>Returns</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>gripForce</code></td>
+<td><code>-129f</code></td>
+<td><code>128f</code></td>
+<td>Returns the Grip Force in Kg as a float</td>
+</tr>
+<tr>
+<td><code>0f</code></td>
+<td></td>
+<td></td>
+<td>Returns 0 if the device is not subscribed or not initialised</td>
+</tr>
+</tbody></table>
+<h2 id='getnormalizegripforce'>GetNormalizeGripForce()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">float</span> <span class="nf">GetNormalizeGripForce</span><span class="p">();</span>
+</code></pre>
+<blockquote>
+<p>Returns a <code>float</code> value of the normalized Grip Force.</p>
+</blockquote>
+<pre class="highlight csharp tab-csharp"><code><span class="kt">float</span> <span class="n">normalizeGripForce</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">GetNormalizeGripForce</span><span class="p">();</span>
+</code></pre>
+<p>Returns the normalized Grip Force, based on the current <a href="#setgripcalibrationlevel">Grip Calibration Level</a>.</p>
+<h3 id='return-values-21'>Return Values</h3>
+<table><thead>
+<tr>
+<th>Returns</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>normalizeGripForce</code></td>
+<td><code>0f</code></td>
+<td><code>1f</code></td>
+<td>Returns the normalized Grip Force as a float</td>
+</tr>
+<tr>
+<td><code>0f</code></td>
+<td></td>
+<td></td>
+<td>Returns 0 if the device is not subscribed or not initialised</td>
+</tr>
+</tbody></table>
+<h1 id='quaternion-data'>Quaternion Data</h1>
+<p>Quaternion data contains the sensor information about the orientation of the device in 3D space, in the World Frame.
+All of these methods require subscription to <code>QuaternionData</code>.</p>
+<h2 id='getquaternion'>GetQuaternion()</h2><pre class="highlight csharp tab-csharp"><code><span class="n">Quaternion</span> <span class="nf">GetQuaternion</span><span class="p">();</span>
+</code></pre>
+<blockquote>
+<p>Returns a <code>Quaternion</code> struct representing the orientation of the device in the world frame.</p>
+</blockquote>
+<pre class="highlight csharp tab-csharp"><code><span class="n">Quaternion</span> <span class="n">deviceQuaternion</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">GetQuaternion</span><span class="p">();</span>
+</code></pre>
+<p>Returns a <code><a href="https://docs.unity3d.com/ScriptReference/Quaternion.html">Quaternion</a></code> object representing the orientation of the device in the world frame.</p>
+<h3 id='return-values-22'>Return Values</h3>
+<table><thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>deviceQuaternion</code></td>
+<td>The device orientation in the world frame expressed through a <a href="https://docs.unity3d.com/ScriptReference/Quaternion.html">Quaternion</a> object</td>
+</tr>
+<tr>
+<td><code><a href="https://docs.unity3d.com/ScriptReference/Quaternion-identity.html">Quaternion.identity</a></code></td>
+<td>Returns the identity <code><a href="https://docs.unity3d.com/ScriptReference/Quaternion.html">Quaternion</a> (x=0 , y=0 , z=0, w=1)</code> if the device is not subscribed or not initialised</td>
+</tr>
+</tbody></table>
+<h2 id='getwristrpy'>GetWristRpy()</h2>
+<p>Wrist RPY (Roll, Pitch, Yaw) contains information about the orientation of the device relative to the user&#39;s wrist. <a href="https://en.wikipedia.org/wiki/Aircraft_principal_axes">Roll, Pitch and Yaw</a> represent rotations of the device around its X, Y and Z axis, respectively, as shown in this <a href="#sensor-frame">picture</a> (not to be mistaken with <a href="https://en.wikipedia.org/wiki/Euler_angles">Euler angles</a>).</p>
+<pre class="highlight csharp tab-csharp"><code><span class="n">WristRpyData</span> <span class="nf">GetWristRpy</span><span class="p">();</span>
+
+<span class="k">public</span> <span class="k">sealed</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">WristRpyData</span> <span class="p">:</span> <span class="n">pb</span><span class="p">::</span><span class="n">IMessage</span><span class="p">&lt;</span><span class="n">WristRpyData</span><span class="p">&gt;</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">float</span> <span class="n">Roll</span><span class="p">;</span>
+    <span class="k">public</span> <span class="kt">float</span> <span class="n">Pitch</span><span class="p">;</span>
+    <span class="k">public</span> <span class="kt">float</span> <span class="n">Yaw</span><span class="p">;</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>Returns a protobuf containing RPY orientation data.</p>
+</blockquote>
+<pre class="highlight csharp tab-csharp"><code><span class="n">WristRpyData</span> <span class="n">rpyData</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">GetWristRpyData</span><span class="p">();</span>
+</code></pre>
+<p>Returns a <code>WristRpyData</code> protobuf representing the device&#39;s current orientation as Roll, Pitch and Yaw values.</p>
+<h3 id='return-values-23'>Return Values</h3>
+<table><thead>
+<tr>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>WristRpyData</code></td>
+<td>Protobuf containing the Wrist RPY data</td>
+</tr>
+<tr>
+<td>empty </code>WristRpyData</code></td>
+<td>Empty WristRpyData protobuf if not subscribed or not initialised</td>
+</tr>
+</tbody></table>
+<h2 id='getwristrpyasvector3'>GetWristRpyAsVector3()</h2><pre class="highlight csharp tab-csharp"><code><span class="n">Vector3</span> <span class="nf">GetWristRpyAsVector3</span><span class="p">();</span>
+</code></pre>
+<blockquote>
+<p>Returns a <code>Vector3</code> object representing the orientation of the device as RPY.</p>
+</blockquote>
+<pre class="highlight csharp tab-csharp"><code><span class="n">Vector3</span> <span class="n">rollPitchYaw</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">GetWristRpyAsVector3</span><span class="p">();</span>
+</code></pre>
+<p>Returns a <code><a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a></code> object representing the current Roll, Pitch and Yaw of the device.</p>
+<h3 id='return-values-24'>Return Values</h3>
+<table><thead>
+<tr>
+<th>Returns</th>
+<th>Min (per axis)</th>
+<th>Max (per axis)</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>Roll/Pitch/Yaw</code></td>
+<td>0</td>
+<td>360</td>
+<td>The device roll, pitch and yaw expressed through a <code><a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a></code> object</td>
+</tr>
+<tr>
+<td><code><a href="https://docs.unity3d.com/ScriptReference/Vector3-zero.html">Vector3.zero</a></code></td>
+<td></td>
+<td></td>
+<td>Returns a zeroed <code><a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a></code> if the device is not subscribed or not initialised</td>
+</tr>
+</tbody></table>
+<h2 id='getnormalizerpyasvector3'>GetNormalizeRpyAsVector3()</h2><pre class="highlight csharp tab-csharp"><code><span class="n">Vector3</span> <span class="nf">GetNormalizeRpyAsVector3</span><span class="p">();</span>
+</code></pre>
+<blockquote>
+<p>Returns a <code>Vector3</code> object representing the normalized orientation of the device as RPY.</p>
+</blockquote>
+<pre class="highlight csharp tab-csharp"><code><span class="n">Vector3</span> <span class="n">normalizedRpy</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">GetNormalizeRpyAsVector3</span><span class="p">();</span>
+</code></pre>
+<p>Returns a <code><a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a></code> object representing the normalized Roll, Pitch and Yaw values of the device.
+This is calculated based on the current <a href="#setrpycalibrationlevel">RPY Calibration Level</a>. </p>
+<h3 id='return-values-25'>Return Values</h3>
+<table><thead>
+<tr>
+<th>Returns</th>
+<th>Min (per axis)</th>
+<th>Max (per axis)</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>Roll/Pitch/Yaw</code></td>
+<td>0</td>
+<td>1</td>
+<td>The device&#39;s normalized roll, pitch and yaw expressed through a <code><a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a></code> object</td>
+</tr>
+<tr>
+<td><code><a href="https://docs.unity3d.com/ScriptReference/Vector3-zero.html">Vector3.zero</a></code></td>
+<td></td>
+<td></td>
+<td>Returns a zeroed <code><a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a></code> if the device is not subscribed or not initialised</td>
+</tr>
+</tbody></table>
+<h1 id='motion-data'>Motion Data</h1>
+<p>Motion Data contains the sensor information about the movements of the device, collected from the <a href="https://en.wikipedia.org/wiki/Gyroscope">gyroscope</a>, <a href="https://en.wikipedia.org/wiki/Accelerometer">accelerometer</a> and <a href="https://en.wikipedia.org/wiki/Magnetometer">magnetometer</a>.
+All of these methods require subscription to <code>MoitonData</code>.</p>
 <h2 id='getlinearacceleration'>GetLinearAcceleration()</h2><pre class="highlight csharp tab-csharp"><code><span class="n">Vector3</span> <span class="nf">GetLinearAcceleration</span><span class="p">();</span>
 </code></pre>
 <blockquote>
@@ -1123,7 +1270,7 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 <pre class="highlight csharp tab-csharp"><code><span class="n">Vector3</span> <span class="n">linearAcceleration</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">GetLinearAcceleration</span><span class="p">();</span>
 </code></pre>
 <p>Returns a <code><a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a></code> object representing the linear acceleration of the device alongside its axes, expressed in G.</p>
-<h3 id='return-values-25'>Return Values</h3>
+<h3 id='return-values-26'>Return Values</h3>
 <table><thead>
 <tr>
 <th>Returns</th>
@@ -1153,7 +1300,7 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 <pre class="highlight csharp tab-csharp"><code><span class="n">Vector3</span> <span class="n">angularVelocity</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">GetAngularVelocity</span><span class="p">();</span>
 </code></pre>
 <p>Returns a <code><a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a></code> object representing the angular velocity of the device alongside its axes, expressed in degrees/sec.</p>
-<h3 id='return-values-26'>Return Values</h3>
+<h3 id='return-values-27'>Return Values</h3>
 <table><thead>
 <tr>
 <th>Returns</th>
@@ -1183,7 +1330,7 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 <pre class="highlight csharp tab-csharp"><code><span class="n">Vector3</span> <span class="n">magneticHeading</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">GetMagneticHeading</span><span class="p">();</span>
 </code></pre>
 <p>Returns a <code><a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a></code> object representing the magnetic heading of the device alongside its axes, expressed in microtesla.</p>
-<h3 id='return-values-27'>Return Values</h3>
+<h3 id='return-values-28'>Return Values</h3>
 <table><thead>
 <tr>
 <th>Returns</th>
@@ -1203,6 +1350,46 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 <td></td>
 <td></td>
 <td>Returns a zeroed <code><a href="https://docs.unity3d.com/ScriptReference/Vector3.html">Vector3</a></code> if the device is not subscribed or not initialised</td>
+</tr>
+</tbody></table>
+<h1 id='zeroing'>Zeroing</h1>
+<p>It is important that a Gripable Play Device is zeroed before entering into a game. This ensures that the game is playable regardless of the orientation of the device&#39;s starting position.</p>
+<h2 id='resetwristrpy'>ResetWristRpy()</h2><pre class="highlight csharp tab-csharp"><code><span class="k">void</span> <span class="nf">ResetWristRpy</span><span class="p">();</span>
+</code></pre>
+<blockquote>
+<p>Zeroes the RPY values on the device </p>
+</blockquote>
+<pre class="highlight csharp tab-csharp"><code><span class="n">gripablePlay</span><span class="p">.</span><span class="nf">ResetWristRpy</span><span class="p">();</span>
+</code></pre>
+<p>Sets the Roll, Pitch and Yaw outputs of the device to zero. </p>
+<h2 id='resetwristrpybygravity'>ResetWristRpyByGravity()</h2><pre class="highlight csharp tab-csharp"><code><span class="k">void</span> <span class="nf">ResetWristRpyByGravity</span><span class="p">();</span>
+</code></pre>
+<blockquote>
+<p>Zeroes the RPY values of the device and sets it&#39;s orientation</p>
+</blockquote>
+<pre class="highlight csharp tab-csharp"><code><span class="n">gripablePlay</span><span class="p">.</span><span class="nf">ResetWristRpyByGravity</span><span class="p">();</span>
+</code></pre>
+<p><a href="#motiondata">Motion Data</a> must be subscribed to in order for this to function. This sets the Roll, Pitch and Yaw values of the device to zero. It also calculates the orientation of the device, inverting the axes accordingly so that inputs to the games are not reversed when the Gripable Play Device is upside-down.</p>
+<h2 id='showsqueezetostartdialogue'>ShowSqueezeToStartDialogue()</h2><pre class="highlight csharp tab-csharp"><code><span class="n">SqueezeToStartDialogue</span> <span class="nf">ShowSqueezeToStartDialogue</span><span class="p">(</span><span class="kt">bool</span> <span class="n">resetWristRpy</span> <span class="p">=</span> <span class="k">false</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Shows a squeeze to start dialogue canvas prefab in the game UI and returns a <code>ShowSqueezeToStartDialogue</code> script attached to that dialogue</p>
+</blockquote>
+<pre class="highlight csharp tab-csharp"><code><span class="n">SqueezeToStartDialogue</span> <span class="n">squeezeToStartDialogue</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">ShowResetRpyDialogue</span><span class="p">();</span>
+<span class="n">squeezeToStartDialogue</span><span class="p">.</span><span class="n">OnClose</span> <span class="p">+=</span> <span class="nf">DoSomethingWhenDialogueIsClosed</span><span class="p">();</span>
+</code></pre>
+<p>Shows a dialogue canvas game object to the player prompting them to squeeze. This will close the dialogue with a callback (to start the game). If the <code>resetWristRpy</code> parameter is set to <code>true</code>, the <code><a href="#resetwristrpybygravity">ResetWristRpyByGravity()</a></code> function is also called, subscribing to <a href="#motiondata">Motion Data</a> in the process.
+The function returns a reference to the <code>SqueezeToStartDialogue</code> script that is attached to the dialogue game object. This can be used to subscribe to the <code>OnClose</code> action that&#39;s invoked when the dialogue closes.</p>
+<h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>resetWristRpy</code></td>
+<td>optional <code>bool</code> which will trigger the <code><a href="#resetwristrpybygravity">ResetWristRpyByGravity()</a></code> function when the dialogue closes</td>
 </tr>
 </tbody></table>
 <h1 id='connection-events'>Connection Events</h1>
@@ -1248,6 +1435,74 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 <td>Device is attempting to disconnect.</td>
 </tr>
 </tbody></table>
+<h1 id='calibration'>Calibration</h1>
+<blockquote>
+<p><code>CalibrationLevel</code> enum corresponds to preset calibration levels</p>
+</blockquote>
+<pre class="highlight csharp tab-csharp"><code><span class="k">public</span> <span class="k">enum</span> <span class="n">CalibrationLevel</span>
+<span class="p">{</span>
+    <span class="n">LOW</span> <span class="p">=</span> <span class="m">0</span><span class="p">,</span>
+    <span class="n">MEDIUM</span> <span class="p">=</span> <span class="m">1</span><span class="p">,</span>
+    <span class="n">HIGH</span> <span class="p">=</span> <span class="m">2</span>
+<span class="p">}</span>
+</code></pre>
+<p>Calibration is used for calculating normalized grip and RPY functions. Force and Rotation Gestures can also be configured based on the set CalibrationLevel.</p>
+
+<aside class="notice">
+In the future, Calibration will be calculated based on inputs from the User.
+</aside>
+<h2 id='setgripcalibrationlevel'>SetGripCalibrationLevel()</h2><pre class="highlight csharp tab-csharp"><code><span class="k">void</span> <span class="nf">SetGripCalibrationLevel</span><span class="p">(</span><span class="n">CalibrationLevel</span> <span class="n">level</span><span class="p">);</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="n">gripablePlay</span><span class="p">.</span><span class="nf">SetGripCalibrationLevel</span><span class="p">(</span><span class="n">CalibrationLevel</span><span class="p">.</span><span class="n">MEDIUM</span><span class="p">);</span>
+</code></pre>
+<p>Sets the calibration level of the device for normalizing Grip Force.</p>
+<h3 id='query-parameters-4'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>level</code></td>
+<td>Sets <code>CalibrationLevel</code> for Grip Force</td>
+</tr>
+</tbody></table>
+<h2 id='setrpycalibrationlevel'>SetRpyCalibrationLevel()</h2><pre class="highlight csharp tab-csharp"><code><span class="k">void</span> <span class="nf">SetRpyCalibrationLevel</span><span class="p">(</span><span class="n">CalibrationLevel</span> <span class="n">level</span><span class="p">);</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="n">gripablePlay</span><span class="p">.</span><span class="nf">SetRpyCalibrationLevel</span><span class="p">(</span><span class="n">CalibrationLevel</span><span class="p">.</span><span class="n">MEDIUM</span><span class="p">);</span>
+</code></pre>
+<p>Sets the calibration for all RPY axes of the Gripable Play Device. Used for normalize RPY functions. Can be set separately (see below).</p>
+<h3 id='query-parameters-5'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>level</code></td>
+<td>Sets the same <code>CalibrationLevel</code> for Roll, Pitch and Yaw.</td>
+</tr>
+</tbody></table>
+<h2 id='individual-rpy-calibration'>Individual RPY Calibration</h2><pre class="highlight csharp tab-csharp"><code><span class="k">void</span> <span class="nf">SetRollCalibrationLevel</span><span class="p">(</span><span class="n">CalibrationLevel</span> <span class="n">level</span><span class="p">);</span>
+<span class="k">void</span> <span class="nf">SetPitchCalibrationLevel</span><span class="p">(</span><span class="n">CalibrationLevel</span> <span class="n">level</span><span class="p">);</span>
+<span class="k">void</span> <span class="nf">SetYawCalibrationLevel</span><span class="p">(</span><span class="n">CalibrationLevel</span> <span class="n">level</span><span class="p">);</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="n">gripablePlay</span><span class="p">.</span><span class="nf">SetRollCalibrationLevel</span><span class="p">(</span><span class="n">CalibrationLevel</span><span class="p">.</span><span class="n">LOW</span><span class="p">);</span>
+<span class="n">gripablePlay</span><span class="p">.</span><span class="nf">SetPitchCalibrationLevel</span><span class="p">(</span><span class="n">CalibrationLevel</span><span class="p">.</span><span class="n">MEDIUM</span><span class="p">);</span>
+<span class="n">gripablePlay</span><span class="p">.</span><span class="nf">SetYawCalibrationLevel</span><span class="p">(</span><span class="n">CalibrationLevel</span><span class="p">.</span><span class="n">HIGH</span><span class="p">);</span>
+</code></pre>
+<p>Sets the calibration for individual RPY axes </p>
+<h3 id='query-parameters-6'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>level</code></td>
+<td>Sets the same <code>CalibrationLevel</code> for Roll/Pitch/Yaw.</td>
+</tr>
+</tbody></table>
 <h1 id='gestures'>Gestures</h1>
 <blockquote>
 <p>To subscribe a handler to an event, assign a reference to an encapsulated method which has no parameters and no return value.</p>
@@ -1288,6 +1543,14 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 <tr>
 <td><code>OnRelease</code></td>
 <td>When the device is released, more specifically when the Grip Force reading goes from a <code>MAX_THRESHOLD</code> to a <code>MIN_THRESHOLD</code> within a given time period.</td>
+</tr>
+<tr>
+<td><code>OnDoubleSqueeze</code></td>
+<td>When two squeeze events occur within a time threshold.</td>
+</tr>
+<tr>
+<td><code>OnDoubleRelease</code></td>
+<td>When two release events occur within a time threshold.</td>
 </tr>
 </tbody></table>
 <h2 id='rotation-gestures-callbacks'>Rotation Gestures Callbacks</h2>
@@ -1348,10 +1611,101 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
     <span class="n">RADIAL</span><span class="p">,</span>
     <span class="n">NEUTRAL_YAW</span><span class="p">,</span>
     <span class="n">NEUTRAL_ROLL</span><span class="p">,</span>
-    <span class="n">NEUTRAL_PITCH</span>
+    <span class="n">NEUTRAL_PITCH</span><span class="p">,</span>
+    <span class="n">DOUBLE_SQUEEZE</span><span class="p">,</span>
+    <span class="n">DOUBLE_RELEASE</span>
 <span class="p">}</span>
 </code></pre>
 <p>To configure gestures, the desired gesture type must be specified. The list of available gestures is defined by the <code>GestureType enum</code>.</p>
+<h2 id='getforcegestureconfig'>GetForceGestureConfig()</h2><pre class="highlight csharp tab-csharp"><code><span class="n">ForceConfig</span> <span class="nf">GetForceGestureConfig</span><span class="p">(</span><span class="n">GestureType</span> <span class="n">gestureType</span><span class="p">);</span>
+
+<span class="k">public</span> <span class="k">sealed</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">ForceConfig</span> <span class="p">:</span> <span class="n">pb</span><span class="p">::</span><span class="n">IMessage</span><span class="p">&lt;</span><span class="n">ForceConfig</span><span class="p">&gt;</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">float</span> <span class="n">ReleaseThreshold</span><span class="p">;</span>
+    <span class="k">public</span> <span class="kt">float</span> <span class="n">SqueezeThreshold</span><span class="p">;</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">TimeThreshold</span><span class="p">;</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>Returns a protobuf containing the configuration of the passed force gesture.</p>
+</blockquote>
+<pre class="highlight csharp tab-csharp"><code><span class="n">ForceConfig</span> <span class="n">forceConfig</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">GetForceGestureConfig</span><span class="p">(</span><span class="n">GestureType</span><span class="p">.</span><span class="n">SQUEEZE</span><span class="p">);</span>
+</code></pre>
+<p>Returns a <code>ForceConfig</code> protobuf containing the configuration of the specified force gesture.</p>
+<h3 id='query-parameters-and-return-values'>Query Parameters and Return Values</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>gestureType</code></td>
+<td><code>ForceConfig</code></td>
+<td>Protobuf containing the force gesture configuration of the specified force gesture type</td>
+</tr>
+</tbody></table>
+<h2 id='getrotationgestureconfig'>GetRotationGestureConfig()</h2><pre class="highlight csharp tab-csharp"><code><span class="n">RotationConfig</span> <span class="nf">GetRotationGestureConfig</span><span class="p">(</span><span class="n">GestureType</span> <span class="n">gestureType</span><span class="p">);</span>
+
+<span class="k">public</span> <span class="k">sealed</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">RotationConfig</span> <span class="p">:</span> <span class="n">pb</span><span class="p">::</span><span class="n">IMessage</span><span class="p">&lt;</span><span class="n">RotationConfig</span><span class="p">&gt;</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="n">RegionConfig</span> <span class="n">RegionA</span><span class="p">;</span>
+    <span class="k">public</span> <span class="n">RegionConfig</span> <span class="n">RegionB</span><span class="p">;</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">TimeThreshold</span><span class="p">;</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">sealed</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">RegionConfig</span> <span class="p">:</span> <span class="n">pb</span><span class="p">::</span><span class="n">IMessage</span><span class="p">&lt;</span><span class="n">RegionConfig</span><span class="p">&gt;</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">float</span> <span class="n">Start</span><span class="p">;</span>
+    <span class="k">public</span> <span class="kt">float</span> <span class="n">End</span><span class="p">;</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>Returns a protobuf containing the configuration of the passed rotation gesture.</p>
+</blockquote>
+<pre class="highlight csharp tab-csharp"><code><span class="n">RotationConfig</span> <span class="n">rotationConfig</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">GetRotationGestureConfig</span><span class="p">(</span><span class="n">GestureType</span><span class="p">.</span><span class="n">EXTENSION</span><span class="p">);</span>
+</code></pre>
+<p>Returns a <code>RotationConfig</code> protobuf containing the configuration of the specified rotation gesture.</p>
+<h3 id='query-parameters-and-return-values-2'>Query Parameters and Return Values</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>gestureType</code></td>
+<td><code>ForceConfig</code></td>
+<td>Protobuf containing the configuration of the specified rotation gesture</td>
+</tr>
+</tbody></table>
+<h2 id='getgesturetimethreshold'>GetGestureTimeThreshold()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">int</span> <span class="nf">GetGestureTimeThreshold</span><span class="p">(</span><span class="n">GestureType</span> <span class="n">gestureType</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Returns the time threshold of the specified gesture as an <code>int</code>.</p>
+</blockquote>
+<pre class="highlight csharp tab-csharp"><code><span class="kt">int</span> <span class="n">timeThreshold</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">GetTimeThreshold</span><span class="p">(</span><span class="n">GestureType</span><span class="p">.</span><span class="n">FLEXION</span><span class="p">);</span>
+</code></pre>
+<p>Returns the time threshold of the specified gesture as an <code>int</code>.</p>
+<h3 id='query-parameters-and-return-values-3'>Query Parameters and Return Values</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>gestureType</code></td>
+<td><code>int</code></td>
+<td>time threshold of specified gesture</td>
+</tr>
+</tbody></table>
 <h2 id='configureforcegesture'>ConfigureForceGesture()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">ConfigureForceGesture</span><span class="p">(</span>
   <span class="n">GestureType</span> <span class="n">gestureType</span><span class="p">,</span>
   <span class="kt">float</span> <span class="n">releaseThreshold</span><span class="p">,</span>
@@ -1375,7 +1729,7 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 <span class="p">);</span>
 </code></pre>
 <p>Configures the force and time thresholds for the specified force gesture. In the example, the squeeze gesture is configured to trigger when 0.5 Kg to at least 1 Kg of pressure force is detected on the finger bar, within 5 seconds.</p>
-<h3 id='query-parameters-and-return-values'>Query Parameters and Return Values</h3>
+<h3 id='query-parameters-and-return-values-4'>Query Parameters and Return Values</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1420,7 +1774,7 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 Each region is defined by a start and end angle. An angle is considered in the region if it exists between the start and end angle, traced anti-clockwise around a circle.</p>
 
 <p>In the example, the extension gesture is configured such that the start region (neutral position in this case) is set from 350 and 10 degrees (including 0 degrees), and the end region (extended position) is set from 60 to 90 degrees. If the Gripable Play device&#39;s pitch changes from a value within the start region to a value in the end region in less than the time threshold, the OnExtension event is triggered and any attached handlers are called.</p>
-<h3 id='query-parameters-and-return-values-2'>Query Parameters and Return Values</h3>
+<h3 id='query-parameters-and-return-values-5'>Query Parameters and Return Values</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1439,6 +1793,42 @@ Each region is defined by a start and end angle. An angle is considered in the r
 <td>Configures the gesture with the specified <code>GestureType</code> with the specified start and end regions (<code>Regions</code>) and time threshold (<code>int</code>), returns <code>false</code> if the configuration was incorrect</td>
 </tr>
 </tbody></table>
+<h2 id='configureforcegesturesbycalibration'>ConfigureForceGesturesByCalibration()</h2><pre class="highlight csharp tab-csharp"><code><span class="k">void</span> <span class="nf">ConfigureForceGesturesByCalibration</span><span class="p">();</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="n">gripablePlay</span><span class="p">.</span><span class="nf">ConfigureForceGesturesByCalibration</span><span class="p">();</span>
+</code></pre>
+<p>Configures Squeeze, Release, Double Squeeze and Double Release gestures based on Grip Force <code>CalibrationLevel</code> preset</p>
+<h2 id='configurerotationgesturesbycalibration'>ConfigureRotationGesturesByCalibration()</h2><pre class="highlight csharp tab-csharp"><code><span class="k">void</span> <span class="nf">ConfigureRotationGesturesByCalibration</span><span class="p">();</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="n">gripablePlay</span><span class="p">.</span><span class="nf">ConfigureRotationGesturesByCalibration</span><span class="p">();</span>
+</code></pre>
+<p>Configures Pronation, Supination, Radial, Ulnar, Extension and Flexion gestures based on RPY <code>CalibrationLevel</code> presets</p>
+<h2 id='triggergesture'>TriggerGesture()</h2><pre class="highlight csharp tab-csharp"><code><span class="k">void</span> <span class="nf">TriggerGesture</span><span class="p">(</span><span class="n">GestureType</span> <span class="n">gesture</span><span class="p">)</span>
+</code></pre>
+<blockquote>
+<p>Triggers the gesture passed as a parameter</p>
+</blockquote>
+<pre class="highlight csharp tab-csharp"><code><span class="n">gripablePlay</span><span class="p">.</span><span class="nf">TriggerGesture</span><span class="p">(</span><span class="n">GestureType</span><span class="p">.</span><span class="n">SQUEEZE</span><span class="p">)</span>
+</code></pre>
+<p>Used to test firing gesture events without using the Gripable Device. </p>
+<h3 id='query-parameters-7'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>gestureType</code></td>
+<td>Triggers the gesture with the specified <code>GestureType</code></td>
+</tr>
+</tbody></table>
+<h1 id='vibration'>Vibration</h1><h2 id='sendrumble'>SendRumble()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">SendRumbleCommand</span><span class="p">(</span><span class="n">VibrationEffect</span> <span class="n">vibrationEffect</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Sends a command to the Gripable Play Device to vibrate with a particular effect</p>
+</blockquote>
+<pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">hasVibrated</span> <span class="p">=</span> <span class="n">gripablePlay</span><span class="p">.</span><span class="nf">SendRumbleCommand</span><span class="p">(</span><span class="n">VibrationEffect</span><span class="p">.</span><span class="n">STRONG_CLICK_80</span><span class="p">);</span>
+</code></pre>
+<p>Instructs the Gripable Play Device to vibrate with the specified vibration effect.</p>
 <h1 id='frames-of-reference'>Frames of Reference</h1>
 <p>Two different frames of reference can be used when working with the deice position and orientation: world frame and sensor frame.</p>
 <h2 id='world-frame'>World Frame</h2>
@@ -1462,7 +1852,7 @@ Each region is defined by a start and end angle. An angle is considered in the r
 <span class="n">udpManager</span><span class="p">.</span><span class="nf">StartClient</span><span class="p">(</span><span class="n">ipAddress</span><span class="p">,</span> <span class="n">port</span><span class="p">);</span>
 </code></pre>
 <p>Starts sending packets of serialised data from all the connected Gripable Play devices to the specified IP address and port via UDP.</p>
-<h3 id='query-parameters-2'>Query Parameters</h3>
+<h3 id='query-parameters-8'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameters</th>
@@ -1482,7 +1872,7 @@ Each region is defined by a start and end angle. An angle is considered in the r
 <pre class="highlight csharp tab-csharp"><code><span class="n">udpManager</span><span class="p">.</span><span class="nf">StopClient</span><span class="p">();</span>
 </code></pre>
 <p>Stops sending UDP packets to the IP address and port specified in the <code>UdpClientManager</code>, if started.</p>
-<h3 id='query-parameters-3'>Query Parameters</h3>
+<h3 id='query-parameters-9'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameters</th>
@@ -1502,7 +1892,7 @@ Each region is defined by a start and end angle. An angle is considered in the r
 <pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="n">udpStarted</span> <span class="p">=</span> <span class="n">udpManager</span><span class="p">.</span><span class="nf">IsStarted</span><span class="p">();</span>
 </code></pre>
 <p>Returns a <code>bool</code> that represents if the UDP Client is currently sending packets.</p>
-<h3 id='return-values-28'>Return Values</h3>
+<h3 id='return-values-29'>Return Values</h3>
 <table><thead>
 <tr>
 <th>Returns</th>
