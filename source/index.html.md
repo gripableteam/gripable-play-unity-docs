@@ -140,6 +140,37 @@ Returns | Description
 <code>true</code> | Successfully triggered disconnection attempt
 </code>false</code> | Failed to trigger disconnection attempt
 
+## Connection Events
+
+> To subscribe a handler to an event, assign a reference to an encapsulated method which has no parameters and no return value.
+
+```csharp
+class MyView : MonoBehaviour {
+
+  private GripablePlay _gripablePlay;
+
+  Awake(){
+    // make sure you have a reference to your Gripable Play before trying to assign to it
+    _gripablePlay.OnConnected += DoSomethingWhenTheGripableConnectes    
+  }
+ 
+  public void DoSomethingWhenTheGripableConnects(){
+    Debug.Log("YAY, the Gripable has connected")
+  }
+}
+```
+
+ <code>GripablePlay</code> has a series of [Action Delegate](https://docs.microsoft.com/en-us/dotnet/api/system.action?view=netframework-4.7.2) connection events, which are fired at different stages of the connection process.
+
+
+Callback Name | Triggered
+--------- | -------
+<code>OnConnected</code> | Device has been successfully connected and is ready.
+<code>OnDisconnect</code> | Device has been fully disconnected.
+<code>OnConnecting</code> | Device is attempting to connect.
+<code>OnDisconnecting</code> | Device is attempting to disconnect. 
+
+
 # Device Info
 
 ## IsInitialized()
@@ -817,36 +848,6 @@ The function returns a reference to the <code>SqueezeToStartDialogue</code> scri
 Parameter | Description
 --------- | -----------
 <code>resetWristRpy</code> | optional <code>bool</code> which will trigger the <code>[ResetWristRpyByGravity()](#resetwristrpybygravity)</code> function when the dialogue closes
-
-# Connection Events
-
-> To subscribe a handler to an event, assign a reference to an encapsulated method which has no parameters and no return value.
-
-```csharp
-class MyView : MonoBehaviour {
-
-  private GripablePlay _gripablePlay;
-
-  Awake(){
-    // make sure you have a reference to your Gripable Play before trying to assign to it
-    _gripablePlay.OnConnected += DoSomethingWhenTheGripableConnectes    
-  }
- 
-  public void DoSomethingWhenTheGripableConnects(){
-    Debug.Log("YAY, the Gripable has connected")
-  }
-}
-```
-
- <code>GripablePlay</code> has a series of [Action Delegate](https://docs.microsoft.com/en-us/dotnet/api/system.action?view=netframework-4.7.2) connection events, which are fired at different stages of the connection process.
-
-
-Callback Name | Triggered
---------- | -------
-<code>OnConnected</code> | Device has been successfully connected and is ready.
-<code>OnDisconnect</code> | Device has been fully disconnected.
-<code>OnConnecting</code> | Device is attempting to connect.
-<code>OnDisconnecting</code> | Device is attempting to disconnect. 
 
 # Calibration
 
