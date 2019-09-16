@@ -851,73 +851,62 @@ Parameter | Description
 
 # Calibration
 
-> <code>CalibrationLevel</code> enum corresponds to preset calibration levels
+> The <code>CalibrationData</code> struct is used to determine the maximum and minimum values for normalized data. The struct contains default values for ROLL, PITCH, YAW and GRIP in LOW, MEDIUM and HIGH levels.
+
 
 ```csharp 
-public enum CalibrationLevel
+public struct CalibrationData
 {
-    LOW = 0,
-    MEDIUM = 1,
-    HIGH = 2
+    public float Min;
+    public float Max;
+
+    public static CalibrationData ROLL_LOW = new CalibrationData { Min = 345, Max = 20 };
+    ...
 }
 ```
 
-Calibration is used for calculating normalized grip and RPY functions. Force and Rotation Gestures can also be configured based on the set CalibrationLevel.
+Calibration is used for calculating normalized grip and RPY functions. Force and Rotation Gestures can also be configured by the current set Calibration using the <code>[ConfigureForceGesturesByCalibration()](#configureforcegesturesbycalibration)</code> and <code>[ConfigureRotationGesturesByCalibration()](#configurerotationgesturesbycalibration)</code> methods, respectively. These must be called after setting/updating the calibration.
 
 <aside class="notice">
-In the future, Calibration will be calculated based on inputs from the User.
+Calibration is currently set by the patientapp, however these methods can be used to set calibration from Unity code.
 </aside>
 
-## SetGripCalibrationLevel()
+## SetGripCalibration()
 
 ```csharp
-void SetGripCalibrationLevel(CalibrationLevel level);
+void SetGripCalibration(CalibrationData calibrationData);
 ```
 
 ```csharp
-gripablePlay.SetGripCalibrationLevel(CalibrationLevel.MEDIUM);
+CalibrationData calibrationData = new CalibrationData 
+{
+    Min = 2.7f,
+    Max = 3f
+};
+
+gripablePlay.SetGripCalibration(calibrationData);
 ```
 
-Sets the calibration level of the device for normalizing Grip Force.
+Sets the calibration for normalizing Grip Force.
 
 ### Query Parameters
 
 Parameter | Description
 --------- | -----------
-<code>level</code> | Sets <code>CalibrationLevel</code> for Grip Force
-
-
-## SetRpyCalibrationLevel()
-
-```csharp
-void SetRpyCalibrationLevel(CalibrationLevel level);
-```
-
-```csharp
-gripablePlay.SetRpyCalibrationLevel(CalibrationLevel.MEDIUM);
-```
-
-Sets the calibration for all RPY axes of the Gripable Play Device. Used for normalize RPY functions. Can be set separately (see below).
-
-### Query Parameters
-
-Parameter | Description
---------- | -----------
-<code>level</code> | Sets the same <code>CalibrationLevel</code> for Roll, Pitch and Yaw.
-
+<code>calibrationData</code> | Sets <code>CalibrationData</code> for Grip Force
 
 ## Individual RPY Calibration
 
 ```csharp
-void SetRollCalibrationLevel(CalibrationLevel level);
-void SetPitchCalibrationLevel(CalibrationLevel level);
-void SetYawCalibrationLevel(CalibrationLevel level);
+void SetRollCalibration(CalibrationData calibrationData);
+void SetPitchCalibration(CalibrationData calibrationData);
+void SetYawCalibration(CalibrationData calibrationData);
 ```
 
 ```csharp
-gripablePlay.SetRollCalibrationLevel(CalibrationLevel.LOW);
-gripablePlay.SetPitchCalibrationLevel(CalibrationLevel.MEDIUM);
-gripablePlay.SetYawCalibrationLevel(CalibrationLevel.HIGH);
+gripablePlay.SetRollCalibration(CalibrationData.ROLL_LOW);
+gripablePlay.SetPitchCalibration(CalibrationData.PITCH_LOW);
+gripablePlay.SetYawCalibration(CalibrationData.YAW_HIGH);
 ```
 
 Sets the calibration for individual RPY axes 
@@ -926,8 +915,7 @@ Sets the calibration for individual RPY axes
 
 Parameter | Description
 --------- | -----------
-<code>level</code> | Sets the same <code>CalibrationLevel</code> for Roll/Pitch/Yaw.
-
+<code>calibrationData</code> | Sets <code>CalibrationData</code> for Roll/Pitch/Yaw.
 
 # Gestures
 
@@ -1177,7 +1165,7 @@ void ConfigureForceGesturesByCalibration();
 gripablePlay.ConfigureForceGesturesByCalibration();
 ```
 
-Configures Squeeze, Release, Double Squeeze and Double Release gestures based on Grip Force <code>CalibrationLevel</code> preset
+Configures Squeeze, Release, Double Squeeze and Double Release gestures based on set Grip <code>CalibrationData</code>
 
 ## ConfigureRotationGesturesByCalibration()
 
@@ -1189,7 +1177,7 @@ void ConfigureRotationGesturesByCalibration();
 gripablePlay.ConfigureRotationGesturesByCalibration();
 ```
 
-Configures Pronation, Supination, Radial, Ulnar, Extension and Flexion gestures based on RPY <code>CalibrationLevel</code> presets
+Configures Pronation, Supination, Radial, Ulnar, Extension and Flexion gestures based on set RPY <code>CalibrationData</code>
 
 
 ## TriggerGesture()
