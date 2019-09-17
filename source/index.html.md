@@ -650,7 +650,7 @@ Returns | Description
 
 ## GetWristRpy()
 
-Wrist RPY (Roll, Pitch, Yaw) contains information about the orientation of the device relative to the user's wrist. [Roll, Pitch and Yaw](https://en.wikipedia.org/wiki/Aircraft_principal_axes) represent rotations of the device around its X, Y and Z axis, respectively, as shown in this [picture](#sensor-frame) (not to be mistaken with [Euler angles](https://en.wikipedia.org/wiki/Euler_angles)).
+Wrist RPY (Roll, Pitch, Yaw) contains information about the orientation of the device relative to the user's wrist. [Roll, Pitch and Yaw](https://en.wikipedia.org/wiki/Aircraft_principal_axes) represent rotations of the device around its X, Y and Z axis, respectively, as shown in this [picture](#wrist-rpy) (not to be mistaken with [Euler angles](https://en.wikipedia.org/wiki/Euler_angles)).
 
 ```csharp
 WristRpyData GetWristRpy();
@@ -1227,9 +1227,15 @@ The world frame of reference is the static frame of reference, independent of th
 
 ![World frame animated](potato-world-frame.gif)
 
-## Sensor Frame
+## Wrist RPY
 
-The sensor frame is the frame relative to the device itself.
+The Wrist RPY is relative to the device itself. Where:
+
+Cartesian | Aircraft
+--------- | --------
+x | Roll
+y | Pitch
+z | Yaw
 
 ![Sensor frame animated](potato-local-frame.gif)
 ![Sensor frame with hand](xyz.png)
@@ -1307,20 +1313,20 @@ The Test View is an optional UI tool used to show the data coming from each conn
 
 ## Structure
 
-The Test View shows data and allows actions to be performed on two Gripable Plays at the same time, corresponing to the <code>Gripable.Play1</code> and <code>Gripable.Play2</code> objects.
+The Test View shows data and allows actions to be performed on two Gripable Plays at the same time, corresponding to the <code>Gripable.Play1</code> and <code>Gripable.Play2</code> objects.
 
 For each of the connected Gripable Plays, several tabs are available in the Test View, grouping together data and actions of similar nature.
 
-In order to open the Test View for one of the two Gripable Plays, the corresponing button on the left (top on portrait mode) must be selected. Similarly, tabs for a specific Gripable Play can be navigated through the buttons on the left (bottom on portrait mode), as shown in the picture below:
+In order to open the Test View for one of the two Gripable Plays, the corresponding button on the left (top on portrait mode) must be selected. Similarly, tabs for a specific Gripable Play can be navigated through the buttons on the left (bottom on portrait mode), as shown in the picture below:
 
 ![Test View buttons](testview-buttons.png)
 
 The tabs available in the Test View are as follows:
 
-* **General tab** shows the basic device info, allows for the connection/disconnection of the Gripable Play and to start/stop the UDP Client.
-* **Grip Data tab** shows data from the grip sensor, as well as allowing subscription.
+* **General tab** shows the basic device info, allows for the connection/disconnection of the Gripable Play and to start/stop the UDP Client. There is also an exit button.
+* **Grip Data tab** shows data from the grip sensor, as well as allowing subscription. Difficulty calibration is also set here.
 * **World Frame Data tab** shows orientation data in the world frame, as well as allowing subscription.
-* **Sensor Frame Data tab** shows orientation data in the sensor frame, as well as allowing subscription.
+* **Wrist RPY Data tab** shows orientation data as Roll, Pitch and Yaw, as well as allowing subscription. Difficulty calibration is also set here.
 * **Motion Data tab** shows all motion data coming from the sensors (accelerometer, gyroscope and magnetometer), as well as allowing subscription.
 * **Force Gestures tab** shows a trigger count for the force gestures, as well as allowing their threshold configuration.
 * **Roll Gestures tab**, **Pitch Gestures tab** and **Yaw Gestures tab** show a trigger count for the rotation gestures on the three axes, as well as allowing their threshold configuration.
