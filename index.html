@@ -258,6 +258,9 @@
                   <li>
                     <a href="#disconnect" class="toc-h2 toc-link" data-title="Disconnect()">Disconnect()</a>
                   </li>
+                  <li>
+                    <a href="#connection-events" class="toc-h2 toc-link" data-title="Connection Events">Connection Events</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -378,16 +381,10 @@
               </ul>
           </li>
           <li>
-            <a href="#connection-events" class="toc-h1 toc-link" data-title="Connection Events">Connection Events</a>
-          </li>
-          <li>
             <a href="#calibration" class="toc-h1 toc-link" data-title="Calibration">Calibration</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#setgripcalibrationlevel" class="toc-h2 toc-link" data-title="SetGripCalibrationLevel()">SetGripCalibrationLevel()</a>
-                  </li>
-                  <li>
-                    <a href="#setrpycalibrationlevel" class="toc-h2 toc-link" data-title="SetRpyCalibrationLevel()">SetRpyCalibrationLevel()</a>
+                    <a href="#setgripcalibration" class="toc-h2 toc-link" data-title="SetGripCalibration()">SetGripCalibration()</a>
                   </li>
                   <li>
                     <a href="#individual-rpy-calibration" class="toc-h2 toc-link" data-title="Individual RPY Calibration">Individual RPY Calibration</a>
@@ -447,7 +444,7 @@
                     <a href="#world-frame" class="toc-h2 toc-link" data-title="World Frame">World Frame</a>
                   </li>
                   <li>
-                    <a href="#sensor-frame" class="toc-h2 toc-link" data-title="Sensor Frame">Sensor Frame</a>
+                    <a href="#wrist-rpy" class="toc-h2 toc-link" data-title="Wrist RPY">Wrist RPY</a>
                   </li>
               </ul>
           </li>
@@ -596,6 +593,49 @@ In the future, Bluetooth devices will be scanned automatically without the Andro
 <tr>
 <td></code>false</code></td>
 <td>Failed to trigger disconnection attempt</td>
+</tr>
+</tbody></table>
+<h2 id='connection-events'>Connection Events</h2>
+<blockquote>
+<p>To subscribe a handler to an event, assign a reference to an encapsulated method which has no parameters and no return value.</p>
+</blockquote>
+<pre class="highlight csharp tab-csharp"><code><span class="k">class</span> <span class="nc">MyView</span> <span class="p">:</span> <span class="n">MonoBehaviour</span> <span class="p">{</span>
+
+  <span class="k">private</span> <span class="n">GripablePlay</span> <span class="n">_gripablePlay</span><span class="p">;</span>
+
+  <span class="nf">Awake</span><span class="p">(){</span>
+    <span class="c1">// make sure you have a reference to your Gripable Play before trying to assign to it</span>
+    <span class="n">_gripablePlay</span><span class="p">.</span><span class="n">OnConnected</span> <span class="p">+=</span> <span class="n">DoSomethingWhenTheGripableConnectes</span>    
+  <span class="p">}</span>
+
+  <span class="k">public</span> <span class="k">void</span> <span class="nf">DoSomethingWhenTheGripableConnects</span><span class="p">(){</span>
+    <span class="n">Debug</span><span class="p">.</span><span class="nf">Log</span><span class="p">(</span><span class="s">"YAY, the Gripable has connected"</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<p><code>GripablePlay</code> has a series of <a href="https://docs.microsoft.com/en-us/dotnet/api/system.action?view=netframework-4.7.2">Action Delegate</a> connection events, which are fired at different stages of the connection process.</p>
+
+<table><thead>
+<tr>
+<th>Callback Name</th>
+<th>Triggered</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>OnConnected</code></td>
+<td>Device has been successfully connected and is ready.</td>
+</tr>
+<tr>
+<td><code>OnDisconnect</code></td>
+<td>Device has been fully disconnected.</td>
+</tr>
+<tr>
+<td><code>OnConnecting</code></td>
+<td>Device is attempting to connect.</td>
+</tr>
+<tr>
+<td><code>OnDisconnecting</code></td>
+<td>Device is attempting to disconnect.</td>
 </tr>
 </tbody></table>
 <h1 id='device-info'>Device Info</h1><h2 id='isinitialized'>IsInitialized()</h2><pre class="highlight csharp tab-csharp"><code><span class="kt">bool</span> <span class="nf">IsInitialized</span><span class="p">();</span>
@@ -1165,7 +1205,7 @@ All of these methods require subscription to <code>QuaternionData</code>.</p>
 </tr>
 </tbody></table>
 <h2 id='getwristrpy'>GetWristRpy()</h2>
-<p>Wrist RPY (Roll, Pitch, Yaw) contains information about the orientation of the device relative to the user&#39;s wrist. <a href="https://en.wikipedia.org/wiki/Aircraft_principal_axes">Roll, Pitch and Yaw</a> represent rotations of the device around its X, Y and Z axis, respectively, as shown in this <a href="#sensor-frame">picture</a> (not to be mistaken with <a href="https://en.wikipedia.org/wiki/Euler_angles">Euler angles</a>).</p>
+<p>Wrist RPY (Roll, Pitch, Yaw) contains information about the orientation of the device relative to the user&#39;s wrist. <a href="https://en.wikipedia.org/wiki/Aircraft_principal_axes">Roll, Pitch and Yaw</a> represent rotations of the device around its X, Y and Z axis, respectively, as shown in this <a href="#wrist-rpy">picture</a> (not to be mistaken with <a href="https://en.wikipedia.org/wiki/Euler_angles">Euler angles</a>).</p>
 <pre class="highlight csharp tab-csharp"><code><span class="n">WristRpyData</span> <span class="nf">GetWristRpy</span><span class="p">();</span>
 
 <span class="k">public</span> <span class="k">sealed</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">WristRpyData</span> <span class="p">:</span> <span class="n">pb</span><span class="p">::</span><span class="n">IMessage</span><span class="p">&lt;</span><span class="n">WristRpyData</span><span class="p">&gt;</span>
@@ -1392,69 +1432,34 @@ The function returns a reference to the <code>SqueezeToStartDialogue</code> scri
 <td>optional <code>bool</code> which will trigger the <code><a href="#resetwristrpybygravity">ResetWristRpyByGravity()</a></code> function when the dialogue closes</td>
 </tr>
 </tbody></table>
-<h1 id='connection-events'>Connection Events</h1>
-<blockquote>
-<p>To subscribe a handler to an event, assign a reference to an encapsulated method which has no parameters and no return value.</p>
-</blockquote>
-<pre class="highlight csharp tab-csharp"><code><span class="k">class</span> <span class="nc">MyView</span> <span class="p">:</span> <span class="n">MonoBehaviour</span> <span class="p">{</span>
-
-  <span class="k">private</span> <span class="n">GripablePlay</span> <span class="n">_gripablePlay</span><span class="p">;</span>
-
-  <span class="nf">Awake</span><span class="p">(){</span>
-    <span class="c1">// make sure you have a reference to your Gripable Play before trying to assign to it</span>
-    <span class="n">_gripablePlay</span><span class="p">.</span><span class="n">OnConnected</span> <span class="p">+=</span> <span class="n">DoSomethingWhenTheGripableConnectes</span>    
-  <span class="p">}</span>
-
-  <span class="k">public</span> <span class="k">void</span> <span class="nf">DoSomethingWhenTheGripableConnects</span><span class="p">(){</span>
-    <span class="n">Debug</span><span class="p">.</span><span class="nf">Log</span><span class="p">(</span><span class="s">"YAY, the Gripable has connected"</span><span class="p">)</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-<p><code>GripablePlay</code> has a series of <a href="https://docs.microsoft.com/en-us/dotnet/api/system.action?view=netframework-4.7.2">Action Delegate</a> connection events, which are fired at different stages of the connection process.</p>
-
-<table><thead>
-<tr>
-<th>Callback Name</th>
-<th>Triggered</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>OnConnected</code></td>
-<td>Device has been successfully connected and is ready.</td>
-</tr>
-<tr>
-<td><code>OnDisconnect</code></td>
-<td>Device has been fully disconnected.</td>
-</tr>
-<tr>
-<td><code>OnConnecting</code></td>
-<td>Device is attempting to connect.</td>
-</tr>
-<tr>
-<td><code>OnDisconnecting</code></td>
-<td>Device is attempting to disconnect.</td>
-</tr>
-</tbody></table>
 <h1 id='calibration'>Calibration</h1>
 <blockquote>
-<p><code>CalibrationLevel</code> enum corresponds to preset calibration levels</p>
+<p>The <code>CalibrationData</code> struct is used to determine the maximum and minimum values for normalized data. The struct contains default values for ROLL, PITCH, YAW and GRIP in LOW, MEDIUM and HIGH levels.</p>
 </blockquote>
-<pre class="highlight csharp tab-csharp"><code><span class="k">public</span> <span class="k">enum</span> <span class="n">CalibrationLevel</span>
+<pre class="highlight csharp tab-csharp"><code><span class="k">public</span> <span class="k">struct</span> <span class="nc">CalibrationData</span>
 <span class="p">{</span>
-    <span class="n">LOW</span> <span class="p">=</span> <span class="m">0</span><span class="p">,</span>
-    <span class="n">MEDIUM</span> <span class="p">=</span> <span class="m">1</span><span class="p">,</span>
-    <span class="n">HIGH</span> <span class="p">=</span> <span class="m">2</span>
+    <span class="k">public</span> <span class="kt">float</span> <span class="n">Min</span><span class="p">;</span>
+    <span class="k">public</span> <span class="kt">float</span> <span class="n">Max</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="n">CalibrationData</span> <span class="n">ROLL_LOW</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CalibrationData</span> <span class="p">{</span> <span class="n">Min</span> <span class="p">=</span> <span class="m">345</span><span class="p">,</span> <span class="n">Max</span> <span class="p">=</span> <span class="m">20</span> <span class="p">};</span>
+    <span class="p">...</span>
 <span class="p">}</span>
 </code></pre>
-<p>Calibration is used for calculating normalized grip and RPY functions. Force and Rotation Gestures can also be configured based on the set CalibrationLevel.</p>
+<p>Calibration is used for calculating normalized grip and RPY functions. Force and Rotation Gestures can also be configured by the current set Calibration using the <code><a href="#configureforcegesturesbycalibration">ConfigureForceGesturesByCalibration()</a></code> and <code><a href="#configurerotationgesturesbycalibration">ConfigureRotationGesturesByCalibration()</a></code> methods, respectively. These must be called after setting/updating the calibration.</p>
 
 <aside class="notice">
-In the future, Calibration will be calculated based on inputs from the User.
+Calibration is currently set by the patientapp, however these methods can be used to set calibration from Unity code.
 </aside>
-<h2 id='setgripcalibrationlevel'>SetGripCalibrationLevel()</h2><pre class="highlight csharp tab-csharp"><code><span class="k">void</span> <span class="nf">SetGripCalibrationLevel</span><span class="p">(</span><span class="n">CalibrationLevel</span> <span class="n">level</span><span class="p">);</span>
-</code></pre><pre class="highlight csharp tab-csharp"><code><span class="n">gripablePlay</span><span class="p">.</span><span class="nf">SetGripCalibrationLevel</span><span class="p">(</span><span class="n">CalibrationLevel</span><span class="p">.</span><span class="n">MEDIUM</span><span class="p">);</span>
+<h2 id='setgripcalibration'>SetGripCalibration()</h2><pre class="highlight csharp tab-csharp"><code><span class="k">void</span> <span class="nf">SetGripCalibration</span><span class="p">(</span><span class="n">CalibrationData</span> <span class="n">calibrationData</span><span class="p">);</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="n">CalibrationData</span> <span class="n">calibrationData</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CalibrationData</span> 
+<span class="p">{</span>
+    <span class="n">Min</span> <span class="p">=</span> <span class="m">2.7f</span><span class="p">,</span>
+    <span class="n">Max</span> <span class="p">=</span> <span class="m">3f</span>
+<span class="p">};</span>
+
+<span class="n">gripablePlay</span><span class="p">.</span><span class="nf">SetGripCalibration</span><span class="p">(</span><span class="n">calibrationData</span><span class="p">);</span>
 </code></pre>
-<p>Sets the calibration level of the device for normalizing Grip Force.</p>
+<p>Sets the calibration for normalizing Grip Force.</p>
 <h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -1463,14 +1468,18 @@ In the future, Calibration will be calculated based on inputs from the User.
 </tr>
 </thead><tbody>
 <tr>
-<td><code>level</code></td>
-<td>Sets <code>CalibrationLevel</code> for Grip Force</td>
+<td><code>calibrationData</code></td>
+<td>Sets <code>CalibrationData</code> for Grip Force</td>
 </tr>
 </tbody></table>
-<h2 id='setrpycalibrationlevel'>SetRpyCalibrationLevel()</h2><pre class="highlight csharp tab-csharp"><code><span class="k">void</span> <span class="nf">SetRpyCalibrationLevel</span><span class="p">(</span><span class="n">CalibrationLevel</span> <span class="n">level</span><span class="p">);</span>
-</code></pre><pre class="highlight csharp tab-csharp"><code><span class="n">gripablePlay</span><span class="p">.</span><span class="nf">SetRpyCalibrationLevel</span><span class="p">(</span><span class="n">CalibrationLevel</span><span class="p">.</span><span class="n">MEDIUM</span><span class="p">);</span>
+<h2 id='individual-rpy-calibration'>Individual RPY Calibration</h2><pre class="highlight csharp tab-csharp"><code><span class="k">void</span> <span class="nf">SetRollCalibration</span><span class="p">(</span><span class="n">CalibrationData</span> <span class="n">calibrationData</span><span class="p">);</span>
+<span class="k">void</span> <span class="nf">SetPitchCalibration</span><span class="p">(</span><span class="n">CalibrationData</span> <span class="n">calibrationData</span><span class="p">);</span>
+<span class="k">void</span> <span class="nf">SetYawCalibration</span><span class="p">(</span><span class="n">CalibrationData</span> <span class="n">calibrationData</span><span class="p">);</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="n">gripablePlay</span><span class="p">.</span><span class="nf">SetRollCalibration</span><span class="p">(</span><span class="n">CalibrationData</span><span class="p">.</span><span class="n">ROLL_LOW</span><span class="p">);</span>
+<span class="n">gripablePlay</span><span class="p">.</span><span class="nf">SetPitchCalibration</span><span class="p">(</span><span class="n">CalibrationData</span><span class="p">.</span><span class="n">PITCH_LOW</span><span class="p">);</span>
+<span class="n">gripablePlay</span><span class="p">.</span><span class="nf">SetYawCalibration</span><span class="p">(</span><span class="n">CalibrationData</span><span class="p">.</span><span class="n">YAW_HIGH</span><span class="p">);</span>
 </code></pre>
-<p>Sets the calibration for all RPY axes of the Gripable Play Device. Used for normalize RPY functions. Can be set separately (see below).</p>
+<p>Sets the calibration for individual RPY axes </p>
 <h3 id='query-parameters-5'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -1479,28 +1488,8 @@ In the future, Calibration will be calculated based on inputs from the User.
 </tr>
 </thead><tbody>
 <tr>
-<td><code>level</code></td>
-<td>Sets the same <code>CalibrationLevel</code> for Roll, Pitch and Yaw.</td>
-</tr>
-</tbody></table>
-<h2 id='individual-rpy-calibration'>Individual RPY Calibration</h2><pre class="highlight csharp tab-csharp"><code><span class="k">void</span> <span class="nf">SetRollCalibrationLevel</span><span class="p">(</span><span class="n">CalibrationLevel</span> <span class="n">level</span><span class="p">);</span>
-<span class="k">void</span> <span class="nf">SetPitchCalibrationLevel</span><span class="p">(</span><span class="n">CalibrationLevel</span> <span class="n">level</span><span class="p">);</span>
-<span class="k">void</span> <span class="nf">SetYawCalibrationLevel</span><span class="p">(</span><span class="n">CalibrationLevel</span> <span class="n">level</span><span class="p">);</span>
-</code></pre><pre class="highlight csharp tab-csharp"><code><span class="n">gripablePlay</span><span class="p">.</span><span class="nf">SetRollCalibrationLevel</span><span class="p">(</span><span class="n">CalibrationLevel</span><span class="p">.</span><span class="n">LOW</span><span class="p">);</span>
-<span class="n">gripablePlay</span><span class="p">.</span><span class="nf">SetPitchCalibrationLevel</span><span class="p">(</span><span class="n">CalibrationLevel</span><span class="p">.</span><span class="n">MEDIUM</span><span class="p">);</span>
-<span class="n">gripablePlay</span><span class="p">.</span><span class="nf">SetYawCalibrationLevel</span><span class="p">(</span><span class="n">CalibrationLevel</span><span class="p">.</span><span class="n">HIGH</span><span class="p">);</span>
-</code></pre>
-<p>Sets the calibration for individual RPY axes </p>
-<h3 id='query-parameters-6'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>level</code></td>
-<td>Sets the same <code>CalibrationLevel</code> for Roll/Pitch/Yaw.</td>
+<td><code>calibrationData</code></td>
+<td>Sets <code>CalibrationData</code> for Roll/Pitch/Yaw.</td>
 </tr>
 </tbody></table>
 <h1 id='gestures'>Gestures</h1>
@@ -1796,11 +1785,11 @@ Each region is defined by a start and end angle. An angle is considered in the r
 <h2 id='configureforcegesturesbycalibration'>ConfigureForceGesturesByCalibration()</h2><pre class="highlight csharp tab-csharp"><code><span class="k">void</span> <span class="nf">ConfigureForceGesturesByCalibration</span><span class="p">();</span>
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="n">gripablePlay</span><span class="p">.</span><span class="nf">ConfigureForceGesturesByCalibration</span><span class="p">();</span>
 </code></pre>
-<p>Configures Squeeze, Release, Double Squeeze and Double Release gestures based on Grip Force <code>CalibrationLevel</code> preset</p>
+<p>Configures Squeeze, Release, Double Squeeze and Double Release gestures based on set Grip <code>CalibrationData</code></p>
 <h2 id='configurerotationgesturesbycalibration'>ConfigureRotationGesturesByCalibration()</h2><pre class="highlight csharp tab-csharp"><code><span class="k">void</span> <span class="nf">ConfigureRotationGesturesByCalibration</span><span class="p">();</span>
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="n">gripablePlay</span><span class="p">.</span><span class="nf">ConfigureRotationGesturesByCalibration</span><span class="p">();</span>
 </code></pre>
-<p>Configures Pronation, Supination, Radial, Ulnar, Extension and Flexion gestures based on RPY <code>CalibrationLevel</code> presets</p>
+<p>Configures Pronation, Supination, Radial, Ulnar, Extension and Flexion gestures based on set RPY <code>CalibrationData</code></p>
 <h2 id='triggergesture'>TriggerGesture()</h2><pre class="highlight csharp tab-csharp"><code><span class="k">void</span> <span class="nf">TriggerGesture</span><span class="p">(</span><span class="n">GestureType</span> <span class="n">gesture</span><span class="p">)</span>
 </code></pre>
 <blockquote>
@@ -1809,7 +1798,7 @@ Each region is defined by a start and end angle. An angle is considered in the r
 <pre class="highlight csharp tab-csharp"><code><span class="n">gripablePlay</span><span class="p">.</span><span class="nf">TriggerGesture</span><span class="p">(</span><span class="n">GestureType</span><span class="p">.</span><span class="n">SQUEEZE</span><span class="p">)</span>
 </code></pre>
 <p>Used to test firing gesture events without using the Gripable Device. </p>
-<h3 id='query-parameters-7'>Query Parameters</h3>
+<h3 id='query-parameters-6'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1835,8 +1824,28 @@ Each region is defined by a start and end angle. An angle is considered in the r
 <p>The world frame of reference is the static frame of reference, independent of the device orientation.</p>
 
 <p><img src="images/potato-world-frame.gif" alt="World frame animated" /></p>
-<h2 id='sensor-frame'>Sensor Frame</h2>
-<p>The sensor frame is the frame relative to the device itself.</p>
+<h2 id='wrist-rpy'>Wrist RPY</h2>
+<p>The Wrist RPY is relative to the device itself. Where:</p>
+
+<table><thead>
+<tr>
+<th>Cartesian</th>
+<th>Aircraft</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>x</td>
+<td>Roll</td>
+</tr>
+<tr>
+<td>y</td>
+<td>Pitch</td>
+</tr>
+<tr>
+<td>z</td>
+<td>Yaw</td>
+</tr>
+</tbody></table>
 
 <p><img src="images/potato-local-frame.gif" alt="Sensor frame animated" />
 <img src="images/xyz.png" alt="Sensor frame with hand" /></p>
@@ -1852,7 +1861,7 @@ Each region is defined by a start and end angle. An angle is considered in the r
 <span class="n">udpManager</span><span class="p">.</span><span class="nf">StartClient</span><span class="p">(</span><span class="n">ipAddress</span><span class="p">,</span> <span class="n">port</span><span class="p">);</span>
 </code></pre>
 <p>Starts sending packets of serialised data from all the connected Gripable Play devices to the specified IP address and port via UDP.</p>
-<h3 id='query-parameters-8'>Query Parameters</h3>
+<h3 id='query-parameters-7'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameters</th>
@@ -1872,7 +1881,7 @@ Each region is defined by a start and end angle. An angle is considered in the r
 <pre class="highlight csharp tab-csharp"><code><span class="n">udpManager</span><span class="p">.</span><span class="nf">StopClient</span><span class="p">();</span>
 </code></pre>
 <p>Stops sending UDP packets to the IP address and port specified in the <code>UdpClientManager</code>, if started.</p>
-<h3 id='query-parameters-9'>Query Parameters</h3>
+<h3 id='query-parameters-8'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameters</th>
@@ -1911,21 +1920,21 @@ Each region is defined by a start and end angle. An angle is considered in the r
 <h1 id='the-test-view'>The Test View</h1>
 <p>The Test View is an optional UI tool used to show the data coming from each connected Gripable Play, as well as allowing basic actions to be performed on them. It is responsive to different screen layouts and resolutions and updates automatically every time the screen orientation changes (landscape/portrait mode).</p>
 <h2 id='structure'>Structure</h2>
-<p>The Test View shows data and allows actions to be performed on two Gripable Plays at the same time, corresponing to the <code>Gripable.Play1</code> and <code>Gripable.Play2</code> objects.</p>
+<p>The Test View shows data and allows actions to be performed on two Gripable Plays at the same time, corresponding to the <code>Gripable.Play1</code> and <code>Gripable.Play2</code> objects.</p>
 
 <p>For each of the connected Gripable Plays, several tabs are available in the Test View, grouping together data and actions of similar nature.</p>
 
-<p>In order to open the Test View for one of the two Gripable Plays, the corresponing button on the left (top on portrait mode) must be selected. Similarly, tabs for a specific Gripable Play can be navigated through the buttons on the left (bottom on portrait mode), as shown in the picture below:</p>
+<p>In order to open the Test View for one of the two Gripable Plays, the corresponding button on the left (top on portrait mode) must be selected. Similarly, tabs for a specific Gripable Play can be navigated through the buttons on the left (bottom on portrait mode), as shown in the picture below:</p>
 
 <p><img src="images/testview-buttons.png" alt="Test View buttons" /></p>
 
 <p>The tabs available in the Test View are as follows:</p>
 
 <ul>
-<li><strong>General tab</strong> shows the basic device info, allows for the connection/disconnection of the Gripable Play and to start/stop the UDP Client.</li>
-<li><strong>Grip Data tab</strong> shows data from the grip sensor, as well as allowing subscription.</li>
+<li><strong>General tab</strong> shows the basic device info, allows for the connection/disconnection of the Gripable Play and to start/stop the UDP Client. There is also an exit button.</li>
+<li><strong>Grip Data tab</strong> shows data from the grip sensor, as well as allowing subscription. Difficulty calibration is also set here.</li>
 <li><strong>World Frame Data tab</strong> shows orientation data in the world frame, as well as allowing subscription.</li>
-<li><strong>Sensor Frame Data tab</strong> shows orientation data in the sensor frame, as well as allowing subscription.</li>
+<li><strong>Wrist RPY Data tab</strong> shows orientation data as Roll, Pitch and Yaw, as well as allowing subscription. Difficulty calibration is also set here.</li>
 <li><strong>Motion Data tab</strong> shows all motion data coming from the sensors (accelerometer, gyroscope and magnetometer), as well as allowing subscription.</li>
 <li><strong>Force Gestures tab</strong> shows a trigger count for the force gestures, as well as allowing their threshold configuration.</li>
 <li><strong>Roll Gestures tab</strong>, <strong>Pitch Gestures tab</strong> and <strong>Yaw Gestures tab</strong> show a trigger count for the rotation gestures on the three axes, as well as allowing their threshold configuration.</li>
